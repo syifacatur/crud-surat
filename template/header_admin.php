@@ -120,6 +120,7 @@ if(empty($sess)){
                     echo "<li><a href='data_user.php'><i class='fa fa-user'></i> Data User</a></li>";
                   }
                   echo "<li><a href='data_produk.php'><i class='fa fa-archive'></i> Surat Perintah Tugas </a></li>";
+                  echo "<li><a href='form_spt.php'><i class='fa fa-archive'></i> Form_SPT </a></li>";
                   echo "</ul>";
                   echo "<li class='treeview'>";
                   echo "<a href='#'>";
