@@ -18,7 +18,7 @@ include 'koneksidb.php';
     <div class="col-sm-12">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Dasar Hukum</h3> 
+          <a href="cetak_suratperintah.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a> 
           <div class="box-tools pull-left">
             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahproduk"><i class="fa fa-plus"></i> Tambah</a>
           </div>
