@@ -77,6 +77,5 @@ $endX = 195; // Posisi X akhir dari garis (kanan)
 $y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
 $pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
-
 //output
 $pdf->Output('Surat Tugas.pdf');
