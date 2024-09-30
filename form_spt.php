@@ -157,12 +157,11 @@ include 'koneksidb.php';
                                       <span class="text-red">*</span></label>
                                     <div class="col-sm-8"><select type="text" class="form-control" name="anggaran" placeholder="anggaran" value="<?php echo $row['anggaran']; ?>"></div>
                                     <option value="">-pilih anggaran-</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
+                                    <option value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD </option>
+                                    <option value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                                    <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian</option>
+                                    <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                    
 
                                      </select>
                                     </div>
@@ -249,12 +248,11 @@ include 'koneksidb.php';
                       <label class="col-sm-3 control-label text-right">Anggaran<span class="text-red">*</span></label>
                       <div class="col-sm-8"><select type="text" class="form-control" name="anggaran" placeholder="" value=""></div>
                       <option value="">-pilih anggaran-</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
+                      <option value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD </option>
+                      <option value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                      <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian</option>
+                      <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                    
                   </select>
                       </div>
                     </div>
