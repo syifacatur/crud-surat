@@ -64,7 +64,7 @@ include 'koneksidb.php';
                       <!--<a href="form_edituser.php?id=<?php echo $row['id_user']?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
                       <a href="#" class="btn btn-success btn-flat btn-xs" data-toggle="modal" data-target="#updateproduk<?php echo $no; ?>"><i class="fa fa-pencil"></i> Edit</a>
                       <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>                       
-                      <a href="cetak form_spt.php?id<?php echo $row['id_spt']?>" data="_blank"><button class="btn btn-default btn-xs" data="_blank" ><i class="fa fa-print"></i> Cetak SPT</button></a>
+                      <a href="cetak_dinamis.php?id<?php echo $row['id_spt']?>" data="_blank"><button class="btn btn-default btn-xs" data="_blank" ><i class="fa fa-print"></i> Cetak SPT</button></a>
                      
 
                       
