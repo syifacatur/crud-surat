@@ -29,6 +29,7 @@ include 'koneksidb.php';
             <table id="datatable" class="table table-bordered table-striped">
               <thead>
                 <tr>
+                  <th>No</th>
                   <th>No SPT</th>
                   <th>Dasar Undangan</th>
                   <th>Lokasi</th>
@@ -49,6 +50,7 @@ include 'koneksidb.php';
                   ?>
                   <tr>
                     <td><?php echo $no++; ?></td>
+                    <td><?php echo $row['no_spt'];?></td>
                     <td><?php echo $row['dasar_undangan'];?></td>
                     <td><?php echo $row['lokasi'];?></td>
                     <td><?php echo $row['tgl_kegiatan'];?></td>
@@ -105,6 +107,13 @@ include 'koneksidb.php';
                                   <div class="form-group">
                                     <div class="row">
                                       <div class="col-sm-8"><input type="hidden" class="form-control" name="id_spt" placeholder="ID spt" value="<?php echo $row['id_spt']; ?>"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="row">
+                                    <label class="col-sm-3 control-label text-right">NO SPT
+                                      <span class="text-red">*</span></label>
+                                    <div class="col-sm-8"><input type="text" class="form-control" name="no_spt" placeholder="no_spt" value="<?php echo $row['no_spt']; ?>"></div>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -199,6 +208,12 @@ include 'koneksidb.php';
                 </div>
                 <div class="modal-body">
                   <form action="function_spt.php?act=tambahproduk" method="post" role="form">
+                  <div class="form-group">
+                      <div class="row">
+                      <label class="col-sm-3 control-label text-right">NO SPT<span class="text-red">*</span></label>
+                      <div class="col-sm-8"><input type="text" class="form-control" name="no_spt" placeholder="" value=""></div>
+                      </div>
+                    </div>
                     <div class="form-group">
                       <div class="row">
                       <label class="col-sm-3 control-label text-right">Dasar Undangan<span class="text-red">*</span></label>
