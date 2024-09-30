@@ -6,7 +6,7 @@ include('library/TCPDF-main/tcpdf.php');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "wma_baru";
+$dbname = "crud_surat";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -59,13 +59,23 @@ if ($result->num_rows > 0) {
     $pdf->Line(9, 43, 200, 43);
     $pdf->Ln(4);
 
+    
     // ISI
     $pdf->SetFont('Helvetica', '', 13);
-    $pdf->Cell(190, 5, "SURAT TUGAS", 0, 1, 'C');
-    $pdf->Cell(190, 5, "NOMOR : 000.1.2.3.664", 0, 1, 'C');
-    $pdf->Ln(10); // Spasi
+    $pdf->Cell(180, 5, "SURAT TUGAS", 0, 1, 'C');
+    
+    $query = "SELECT * FROM form_spt ";
+    $result = $conn->query($query);
+    if ($row = $result->fetch_assoc()) {
+    
 
+  $pdf->MultiCell(180, 10,  'Nomor :' .$row['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
 
+    }
+
+    $query = "SELECT * FROM tb_produk ";
+    $result = $conn->query($query);
 
     // Isi Surat
     // $pdf->MultiCell(0, 10, $no++ . '. ', 0, 'L');
@@ -73,10 +83,34 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $pdf->MultiCell(0, 10, $no . '. ' .$row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
         $no++;
+        $pdf->Ln(2); // Spasi
+
     }
     // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
 
-    $pdf->Ln(10); // Spasi
+
+    $query = "SELECT * FROM form_spt ";
+    $result = $conn->query($query);
+
+    $no = 6;
+    while ($row = $result->fetch_assoc()) {
+        $pdf->MultiCell(0, 10, $no . '. ' .$row['dasar_undangan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+        $pdf->MultiCell(0, 10, '' .$row['anggaran'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+        $no++;$pdf->Ln(2); // Spasi
+
+       
+
+
+    }
+
+$pdf->SetFont('helvetica', '', 13);
+$pdf->Ln(2);
+$pdf->Cell(180,5,"MEMERINTAHKAN:",0,1,'C');
+$pdf->Ln(2);
+$pdf->Cell(12,9,'Kepada   :   Terlampir dengan 0 pengikut',0,1,'L');
+$pdf->Cell(12,9,'Untuk      :   Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
+$pdf->Ln(10);
+
 
     // Output PDF ke browser
     $pdf->Output('surat_dari_database.pdf', 'I');
