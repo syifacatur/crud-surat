@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "wma_baru";
+$dbname = "crud-surat";
 
 $koneksi = mysqli_connect($server,$user,$pass,$dbname);
 
