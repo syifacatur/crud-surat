@@ -37,6 +37,7 @@ include 'koneksidb.php';
                   <th>Pulang</th>
                   <th>Tanggal SPT</th>
                   <th>Anggaran</th>
+                  <th>Maksud dan Tujuan</th>
                   <th>NIP Penandatangan</th>
                   <th>Opsi</th>
                 </tr>
@@ -57,6 +58,7 @@ include 'koneksidb.php';
                     <td><?php echo $row['tgl_pulang'];?></td>
                     <td><?php echo $row['tgl_spt'];?></td>
                     <td><?php echo $row['anggaran'];?></td>
+                    <td><?php echo $row['maksud_tujuan'];?></td>
                     <td><?php echo $row['NIP_penandatangan'];?></td>
                     <td>
                       <!--<a href="form_edituser.php?id=<?php echo $row['id_user']?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
@@ -168,6 +170,13 @@ include 'koneksidb.php';
                                   </div>
                                   <div class="form-group">
                                     <div class="row">
+                                    <label class="col-sm-3 control-label text-right">Maksud dan Tujuan
+                                      <span class="text-red">*</span></label>
+                                    <div class="col-sm-8"><input type="text" class="form-control" name="maksud_tujuan" placeholder="maksud_tujuan" value="<?php echo $row['maksud_tujuan']; ?>"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="row">
                                     <label class="col-sm-3 control-label text-right">NIP Penandatangan
                                       <span class="text-red">*</span></label>
                                     <div class="col-sm-8"><input type="text" class="form-control" name="NIP_penandatangan" placeholder="NIP_penandatangan" value="<?php echo $row['NIP_penandatangan']; ?>"></div>
@@ -254,6 +263,12 @@ include 'koneksidb.php';
                       <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
                                     
                   </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                      <label class="col-sm-3 control-label text-right">Maksud dan Tujuan<span class="text-red">*</span></label>
+                      <div class="col-sm-8"><input type="text" class="form-control" name="maksud_tujuan" placeholder="" value=""></div>
                       </div>
                     </div>
                     <div class="form-group">
