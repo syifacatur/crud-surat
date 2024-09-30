@@ -46,7 +46,7 @@ $pdf->SetFont('helvetica', '', 13);
 
 // Data Undang-Undang (array)
 $undang_undang = [
-    "Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis                  Pengelolaan Keuangan Daerah (Berita Negara Republik Indonesia Tahun 2020 Nomor          1781);",
+    "Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis Pengelolaan Keuangan Daerah (Berita Negara Republik Indonesia Tahun 2020 Nomor          1781);",
     "Peraturan Menteri Dalam Negeri Nomor 15 Tahun 2023 tentang Pedoman Penyusunan         Anggaran Pendapatan dan Belanja Daerah Tahun Anggaran 2024(Berita Negara                   Republik Indonesia Tahun 2023 Nomor 799);",
     "Peraturan Daerah Provinsi Jawa Tengah Nomor 14 Tahun 2023 tentang Anggaran                Pendapatan dan Belanja Daerah Tahun 2024,(Lembaran Daerah Provinsi Jawa Tengah        Tahun 2023 Nomor 14);",
     "Peraturan Gubernur Jawa Tengah Nomor 62 Tahun 2023 tentang Penjabaran Anggaran       Pendapatan dan Belanja Daerah Tahun 2024 (Berita Daerah Provinsi Jawa Tengah               Nomor 62);",
@@ -59,7 +59,7 @@ $undang_undang = [
 $no = 1; // Variabel untuk nomor urut
 foreach ($undang_undang as $uu) {
     // Tampilkan nomor urut dan teks Undang-Undang
-    $pdf->MultiCell(0, 10, $no . '. ' . $uu, 0, 'L');
+    $pdf->MultiCell(0, 0.7, $no . '. ' . $uu, 0, 'J');
     $no++; // Tambahkan nomor urut
     $pdf->Ln(1); // Spasi kecil antar item
    
@@ -68,6 +68,8 @@ foreach ($undang_undang as $uu) {
 $pdf->SetFont('helvetica', '', 13);
 $pdf->Ln(2);
 $pdf->Cell(190,5,"MEMERINTAHKAN:",0,1,'C');
+$pdf->Cell(4);
+$pdf->MultiCell(190, 0.7, 'Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis Pengelolaan Keuangan Daerah (Berita Negara Republik Indonesia Tahun 2020 Nomor 1781);', 0, 'J', 0, 15);
 $pdf->Ln(2);
 $pdf->Cell(12,9,'Kepada   :   Terlampir dengan 0 pengikut',0,1,'L');
 $pdf->Cell(12,3,'untuk      :    1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:',0,1,'L');
