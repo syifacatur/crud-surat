@@ -136,14 +136,14 @@ include 'koneksidb.php';
                                     <div class="row">
                                     <label class="col-sm-3 control-label text-right">Berangkat
                                       <span class="text-red">*</span></label>
-                                    <div class="col-sm-8"><input type="text" class="form-control" name="tgl_kegiatan" placeholder="tgl_kegiatan" value="<?php echo $row['tgl_kegiatan']; ?>"></div>
+                                    <div class="col-sm-8"><input type="date" class="form-control" name="tgl_kegiatan" placeholder="tgl_kegiatan" value="<?php echo $row['tgl_kegiatan']; ?>"></div>
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <div class="row">
                                     <label class="col-sm-3 control-label text-right">Pulang
                                       <span class="text-red">*</span></label>
-                                    <div class="col-sm-8"><input type="text" class="form-control" name="tgl_pulang" placeholder="tgl_pulang" value="<?php echo $row['tgl_pulang']; ?>"></div>
+                                    <div class="col-sm-8"><input type="date" class="form-control" name="tgl_pulang" placeholder="tgl_pulang" value="<?php echo $row['tgl_pulang']; ?>"></div>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -237,13 +237,13 @@ include 'koneksidb.php';
                     <div class="form-group">
                       <div class="row">
                       <label class="col-sm-3 control-label text-right">Berangkat<span class="text-red">*</span></label>
-                      <div class="col-sm-8"><input type="text" class="form-control" name="tgl_kegiatan" placeholder="" value=""></div>
+                      <div class="col-sm-8"><input type="date" class="form-control" name="tgl_kegiatan" placeholder="" value=""></div>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="row">
                       <label class="col-sm-3 control-label text-right">Pulang<span class="text-red">*</span></label>
-                      <div class="col-sm-8"><input type="text" class="form-control" name="tgl_pulang" placeholder="" value=""></div>
+                      <div class="col-sm-8"><input type="date" class="form-control" name="tgl_pulang" placeholder="" value=""></div>
                       </div>
                     </div>
                     <div class="form-group">
