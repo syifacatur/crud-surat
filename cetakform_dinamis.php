@@ -127,32 +127,32 @@ if ($result->num_rows > 0) {
         $pdf->Ln(3); // Spasi
 
     }
+    //$pdf->SetFont('helvetica', '', 8);
+    //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
+// Mengatur ketebalan garis
+//$pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
 
-    $pdf->Ln(11);
-    $pdf->SetFont('helvetica', '', 8);
-    $pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
-    // Mengatur ketebalan garis
-    $pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
+// Menggambar garis horizontal di bagian bawah halaman
+//$startX = 15; // Posisi X awal dari garis (kiri)
+//$endX = 195; // Posisi X akhir dari garis (kanan)
+//$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
-    // Menggambar garis horizontal di bagian bawah halaman
-    $startX = 15; // Posisi X awal dari garis (kiri)
-    $endX = 195; // Posisi X akhir dari garis (kanan)
-    $y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
+//$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-    $pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-    $pdf->SetFont('helvetica', '', 12);
-    $pdf->Ln(15);
     $query = "SELECT * FROM form_spt ";
     $result = $conn->query($query);
     if ($row = $result->fetch_assoc()) {
 
         $pdf->SetX(38);
-        $pdf->MultiCell(180, 3, 'b. Tempat yang dituju     :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+        $pdf->MultiCell(55, 50, 'a. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(10, 50, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(85, 50, $row['lokasi'], 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        // $pdf->MultiCell(120, 10, 'a. lokasi      :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
         $pdf->Ln(3); // Spasi
 
     }
-
+    $pdf->Ln(10);
     $pdf->SetX(38);
     $pdf->Cell(12, 5, 'c. Untuk selama              :  1(satu)hari', 0, 1, 'L');
 
@@ -214,23 +214,24 @@ if ($result->num_rows > 0) {
         $pdf->Ln(3); // Spasi
 
     }
-    $pdf->SetY(-30); // Set posisi Y ke 30 mm dari bawah
-    $pdf->SetFont('helvetica', '', 8);
-    $pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
-    $pdf->Ln(5);
 
-    // Mengatur ketebalan garis
-    $pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
+//$pdf->SetY(-30); // Set posisi Y ke 30 mm dari bawah
+//$pdf->SetFont('helvetica', '', 8);
+//$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
+//$pdf->Ln(5);
 
-    // Menggambar garis horizontal di bagian bawah halaman
-    $startX = 15; // Posisi X awal dari garis (kiri)
-    $endX = 195; // Posisi X akhir dari garis (kanan)
-    $y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
+// Mengatur ketebalan garis
+//$pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
 
-    $pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
+// Menggambar garis horizontal di bagian bawah halaman
+//$startX = 15; // Posisi X awal dari garis (kiri)
+//$endX = 195; // Posisi X akhir dari garis (kanan)
+//$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
+//$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-
+       
+    
     // Output PDF ke browser
     $pdf->Output('surat_dari_database.pdf', 'I');
 
