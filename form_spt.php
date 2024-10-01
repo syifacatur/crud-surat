@@ -69,11 +69,11 @@ include 'koneksidb.php';
                   
                     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
                   }
-
                   $no = 1;
                   $queryview = mysqli_query($koneksi, "SELECT * FROM form_spt");
                   while ($row = mysqli_fetch_assoc($queryview)) {
-
+                    $date_awal = new DateTime($row['tgl_kegiatan']);
+                    $date_akhir = new DateTime($row['tgl_pulang']);
                     ?>
                     <tr>
                       <td><?php echo $no++; ?></td>
@@ -82,7 +82,7 @@ include 'koneksidb.php';
                       <td><?php echo $row['lokasi']; ?></td>
                       <td><?php echo tgl_indo($row['tgl_kegiatan']); ?></td>
                       <td><?php echo tgl_indo($row['tgl_pulang']); ?></td>
-                      <td><?php echo $row['tgl_spt']; ?></td>
+                      <td><?php echo date_diff($date_awal,$date_akhir)->format('%d Hari'); ?></td>
                       <td><?php echo $row['anggaran']; ?></td>
                       <td><?php echo $row['maksud_tujuan']; ?></td>
                       <td><?php echo $row['NIP_penandatangan']; ?></td>
@@ -110,7 +110,8 @@ include 'koneksidb.php';
                                 </div>
                                 <div class="modal-body">
                                   <h4 align="center">Apakah anda yakin ingin menghapus
-                                    <?php echo $row['no_spt']; ?><strong><span class="grt"></span></strong> ?</h4>
+                                    <?php echo $row['no_spt']; ?><strong><span class="grt"></span></strong> ?
+                                  </h4>
                                 </div>
                                 <div class="modal-footer">
                                   <button id="nodelete" type="button" class="btn btn-danger pull-left"
