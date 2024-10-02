@@ -139,6 +139,8 @@ $query = "SELECT * FROM form_spt ";
 
 //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
+$pdf->AddPage();
+
 $pdf->SetFont('helvetica', '', 12);
     $pdf->Ln(15);
     $query = "SELECT * FROM form_spt ";
@@ -153,19 +155,68 @@ $pdf->SetFont('helvetica', '', 12);
         $pdf->Ln(3); // Spasi
 
     }
+    function tgl_indo($tanggal)
+    {
+      $bulan = array(
+        1 => 'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+      );
+      $pecahkan = explode('-', $tanggal);
 
-    $pdf->Ln(10);
-    $pdf->SetX(38);
-    $pdf->Cell(12, 30, 'c. Untuk selama                          :  1(satu)hari', 0, 1, 'L');
+      // variabel pecahkan 0 = tanggal
+      // variabel pecahkan 1 = bulan
+      // variabel pecahkan 2 = tahun
+    
+      return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+    }
+
+    $query = "SELECT * FROM form_spt ";
+    $result = $conn->query($query);
+    if ($row = $result->fetch_assoc()) {
+        $date_awal = new DateTime($row['tgl_kegiatan']);
+        $date_akhir = new DateTime($row['tgl_pulang']);
+        
+
+    $selisih = $date_awal->diff($date_akhir);
+
+// Ambil jumlah hari dari hasil perhitungan
+$jumlah_hari = $selisih->days;
+
+
+if ($jumlah_hari == 0) {
+    $jumlah_hari = 1;
+}
+// Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
+$pdf->SetX(43);
+$pdf->Ln(10);
+$pdf->SetX(43);
+$pdf->MultiCell(55, 20, 'Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(0, 25, '' . $jumlah_hari . ' Hari',  0, 1);
+$pdf->SetX(43);
+$pdf->Ln(1);
+
+    }
 
 $query = "SELECT * FROM form_spt ";
     $result = $conn->query($query);
     if ($row = $result->fetch_assoc()) {
     
   $pdf->SetX(43);
+  
         $pdf->MultiCell(55, 20, 'Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
         $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-        $pdf->MultiCell(85, 20, $row['tgl_kegiatan'], 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(85, 20, tgl_indo($row['tgl_kegiatan']), 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
         // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
         $pdf->Ln(3); // Spasi
 
@@ -178,7 +229,7 @@ if ($row = $result->fetch_assoc()) {
     $pdf->SetX(43);
     $pdf->MultiCell(55, 40, 'Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, $row['tgl_pulang'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, tgl_indo($row['tgl_pulang']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
     }
@@ -205,7 +256,7 @@ $result = $conn->query($query);
 if ($row = $result->fetch_assoc()) {
     
 
-  $pdf->MultiCell(260, 5,  'Pada Tanggal :' .$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+  $pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
 
     }
