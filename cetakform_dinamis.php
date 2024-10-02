@@ -249,14 +249,23 @@ if ($row = $result->fetch_assoc()) {
     $pdf->Cell(12,5,'kembali sebagiamana mestinya.',0,1,'L');
     $pdf->Ln(10);
 
-    $pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
+    $pdf->SetX(108);
+    $pdf->MultiCell(30, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(5);
+    //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
 
     $query = "SELECT * FROM form_spt ";
 $result = $conn->query($query);
 if ($row = $result->fetch_assoc()) {
     
-
-  $pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->SetX(108);
+    $pdf->MultiCell(30, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, tgl_indo($row['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+  
+    //$pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
 
     }
