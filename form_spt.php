@@ -82,7 +82,7 @@ include 'koneksidb.php';
                       <td><?php echo $row['lokasi']; ?></td>
                       <td><?php echo tgl_indo($row['tgl_kegiatan']); ?></td>
                       <td><?php echo tgl_indo($row['tgl_pulang']); ?></td>
-                      <td><?php echo date_diff($date_awal,$date_akhir)->format('%d Hari'); ?></td>
+                      <td><?php echo tgl_indo($row['tgl_spt']); ?></td>
                       <td><?php echo $row['anggaran']; ?></td>
                       <td><?php echo $row['maksud_tujuan']; ?></td>
                       <td><?php echo $row['NIP_penandatangan']; ?></td>
@@ -193,7 +193,7 @@ include 'koneksidb.php';
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">Tanggal SPT
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><input type="text" class="form-control" name="tgl_spt"
+                                          <div class="col-sm-8"><input type="date" class="form-control" name="tgl_spt"
                                               placeholder="tgl_spt" value="<?php echo $row['tgl_spt']; ?>"></div>
                                         </div>
                                       </div>
@@ -320,7 +320,7 @@ include 'koneksidb.php';
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Tanggal SPT<span
                               class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="tgl_spt" placeholder=""
+                          <div class="col-sm-8"><input type="date" class="form-control" name="tgl_spt" placeholder=""
                               value=""></div>
                         </div>
                       </div>
