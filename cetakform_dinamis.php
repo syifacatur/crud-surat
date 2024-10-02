@@ -6,7 +6,7 @@ include('library/TCPDF-main/tcpdf.php');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "crud-surat";
+$dbname = "crud_surat";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -158,6 +158,29 @@ if ($result_dasar->num_rows > 0) {
         return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
     }
 
+    function angka_ke_kata($angka) {
+        $angka = abs($angka);
+        $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+        
+        if ($angka < 12) {
+            return $huruf[$angka];
+        } elseif ($angka < 20) {
+            return angka_ke_kata($angka - 10) . " belas";
+        } elseif ($angka < 100) {
+            return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
+        } elseif ($angka < 200) {
+            return "seratus " . angka_ke_kata($angka - 100);
+        } elseif ($angka < 1000) {
+            return angka_ke_kata(floor($angka / 100)) . " ratus " . angka_ke_kata($angka % 100);
+        } elseif ($angka < 2000) {
+            return "seribu " . angka_ke_kata($angka - 1000);
+        } elseif ($angka < 1000000) {
+            return angka_ke_kata(floor($angka / 1000)) . " ribu " . angka_ke_kata($angka % 1000);
+        } elseif ($angka < 1000000000) {
+            return angka_ke_kata(floor($angka / 1000000)) . " juta " . angka_ke_kata($angka % 1000000);
+        }
+    }
+
     $date_awal = new DateTime($row_isi['tgl_kegiatan']);
     $date_akhir = new DateTime($row_isi['tgl_pulang']);
 
@@ -173,12 +196,18 @@ if ($result_dasar->num_rows > 0) {
     } else {
         $jumlah_hari = $jumlah_hari + 1;
     }
+
+    // Ubah angka ke kata
+$kata_hari = angka_ke_kata($jumlah_hari);
+
+// Format  hari"
+$teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     // Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
     $pdf->Ln(10);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 20, 'c. Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(0, 0, '' . $jumlah_hari . ' Hari', 0, 1);
+    $pdf->MultiCell(0, 0, '' .  $teks_hari . 'hari', 0, 1);
     $pdf->Ln(1);
     $pdf->SetX(42.5);
     $pdf->MultiCell(50.5, 0, 'Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
