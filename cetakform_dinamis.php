@@ -6,7 +6,7 @@ include('library/TCPDF-main/tcpdf.php');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "crud_surat";
+$dbname = "crud-surat";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,11 +18,11 @@ if ($conn->connect_error) {
 
 // Query untuk mengambil data dari tabel surat
 
-$query = "SELECT * FROM tb_produk ";
-$result = $conn->query($query);
+$query_dasar = "SELECT * FROM tb_produk ";
+$result_dasar = $conn->query($query_dasar);
 
 // Periksa apakah data ditemukan
-if ($result->num_rows > 0) {
+if ($result_dasar->num_rows > 0) {
     // Mengambil data dari query
     // $row = $result->fetch_assoc();
 
@@ -59,30 +59,27 @@ if ($result->num_rows > 0) {
     $pdf->Line(9, 43, 200, 43);
     $pdf->Ln(4);
 
-    
+
     // ISI
     $pdf->SetFont('Helvetica', '', 13);
     $pdf->Cell(180, 5, "SURAT TUGAS", 0, 1, 'C');
-    
-    $pdf->SetFont('helvetica', '', 13);
-    $query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-    if ($row = $result->fetch_assoc()) {
-    
 
-  $pdf->MultiCell(180, 10,  'Nomor :' .$row['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
-    $pdf->Ln(3); // Spasi
-
-    }
     $pdf->SetFont('helvetica', '', 13);
-    $query = "SELECT * FROM tb_produk ";
-    $result = $conn->query($query);
+
+    $query_isi = "SELECT * FROM form_spt ";
+    $result_isi = $conn->query($query_isi);
+    $row_isi = $result_isi->fetch_assoc();
+    $pdf->MultiCell(180, 10, 'Nomor :' . $row_isi['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3);
+    $pdf->SetFont('helvetica', '', 13);
+    $query_dasar = "SELECT * FROM tb_produk ";
+    $result_dasar = $conn->query($query_dasar);
 
     // Isi Surat
     // $pdf->MultiCell(0, 10, $no++ . '. ', 0, 'L');
     $no = 1;
-    while ($row = $result->fetch_assoc()) {
-        $pdf->MultiCell(0, 10, $no . '. ' .$row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    while ($row = $result_dasar->fetch_assoc()) {
+        $pdf->MultiCell(0, 10, $no . '. ' . $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
         $no++;
         $pdf->Ln(2); // Spasi
 
@@ -90,163 +87,128 @@ if ($result->num_rows > 0) {
     // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
 
     $pdf->SetFont('helvetica', '', 13);
-    $query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-
     $no = 6;
-    while ($row = $result->fetch_assoc()) {
-        $pdf->MultiCell(0, 10, $no . '. ' .$row['dasar_undangan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-        $pdf->MultiCell(0, 10, '' .$row['anggaran'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-        $no++;$pdf->Ln(2); // Spasi
+    $pdf->MultiCell(0, 10, $no . '. ' . 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran'], 0, 'J', 0, 1);
+    $pdf->Ln(1);
+    $no++;    // Justify untuk rata kiri-kanan ('J')
+    $pdf->MultiCell(0, 10, $no . '. ' . $row_isi['dasar_undangan'] ."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $no++;
+    $pdf->Ln(2);
 
-       
+    $pdf->SetFont('helvetica', '', 13);
+    $pdf->Ln(2);
+    $pdf->Cell(180, 5, "MEMERINTAHKAN:", 0, 1, 'C');
+    $pdf->Ln(2);
+    $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+    $pdf->Cell(12, 9, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
+    $pdf->Ln(10);
 
-
-    }
-
-$pdf->SetFont('helvetica', '', 13);
-$pdf->Ln(2);
-$pdf->Cell(180,5,"MEMERINTAHKAN:",0,1,'C');
-$pdf->Ln(2);
-$pdf->Cell(12,9,'Kepada   :   Terlampir dengan 0 pengikut',0,1,'L');
-$pdf->Cell(12,9,'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
-$pdf->Ln(10);
-
-$pdf->SetFont('helvetica', '', 12);
-$query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-    if ($row = $result->fetch_assoc()) {
-
-    
+    $pdf->SetFont('helvetica', '', 12);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 40, 'a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(85, 40, $row['maksud_tujuan'], 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-        $pdf->Ln(3); // Spasi
-
-    }
+    $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, $row_isi['maksud_tujuan'], 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
     $pdf->Ln(11);
     //$pdf->SetFont('helvetica', '', 8);
     //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
 // Mengatur ketebalan garis
 //$pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
 
-// Menggambar garis horizontal di bagian bawah halaman
+    // Menggambar garis horizontal di bagian bawah halaman
 //$startX = 15; // Posisi X awal dari garis (kiri)
 //$endX = 195; // Posisi X akhir dari garis (kanan)
 //$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
-//$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
+    //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-$pdf->AddPage();
+    $pdf->AddPage();
 
-$pdf->SetFont('helvetica', '', 12);
+    $pdf->SetFont('helvetica', '', 12);
     $pdf->Ln(15);
-    $query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-    if ($row = $result->fetch_assoc()) {
-    
-        $pdf->SetX(38);
-        $pdf->MultiCell(55, 40, 'b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(85, 40, $row['lokasi'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        // $pdf->MultiCell(120, 10, 'a. Tempat yang dituju      :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-        $pdf->Ln(3); // Spasi
-
-    }
+    $pdf->SetX(38);
+    $pdf->MultiCell(55, 0, 'b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(75, 0, $row_isi['lokasi'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    // $pdf->MultiCell(120, 10, 'a. Tempat yang dituju      :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
     function tgl_indo($tanggal)
     {
-      $bulan = array(
-        1 => 'Januari',
-        'Februari',
-        'Maret',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'Oktober',
-        'November',
-        'Desember'
-      );
-      $pecahkan = explode('-', $tanggal);
+        $bulan = array(
+            1 => 'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $pecahkan = explode('-', $tanggal);
 
-      // variabel pecahkan 0 = tanggal
-      // variabel pecahkan 1 = bulan
-      // variabel pecahkan 2 = tahun
-    
-      return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+
+        return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
     }
 
-    $query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-    if ($row = $result->fetch_assoc()) {
-        $date_awal = new DateTime($row['tgl_kegiatan']);
-        $date_akhir = new DateTime($row['tgl_pulang']);
-        
+    $date_awal = new DateTime($row_isi['tgl_kegiatan']);
+    $date_akhir = new DateTime($row_isi['tgl_pulang']);
+
 
     $selisih = $date_awal->diff($date_akhir);
 
-// Ambil jumlah hari dari hasil perhitungan
-$jumlah_hari = $selisih->days;
+    // Ambil jumlah hari dari hasil perhitungan
+    $jumlah_hari = $selisih->days;
 
 
-if ($jumlah_hari == 0) {
-    $jumlah_hari = 1;
-}
-// Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
-$pdf->SetX(43);
-$pdf->Ln(10);
-$pdf->SetX(43);
-$pdf->MultiCell(55, 20, 'Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(0, 25, '' . $jumlah_hari . ' Hari',  0, 1);
-$pdf->SetX(43);
-$pdf->Ln(1);
-
+    if ($jumlah_hari == 0) {
+        $jumlah_hari = 1;
+    } else {
+        $jumlah_hari = $jumlah_hari + 1;
     }
-
-$query = "SELECT * FROM form_spt ";
-    $result = $conn->query($query);
-    if ($row = $result->fetch_assoc()) {
-    
-  $pdf->SetX(43);
-  
-        $pdf->MultiCell(55, 20, 'Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-        $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-        $pdf->MultiCell(85, 20, tgl_indo($row['tgl_kegiatan']), 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-        // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-        $pdf->Ln(3); // Spasi
-
-    }
-
-$query = "SELECT * FROM form_spt ";
-$result = $conn->query($query);
-if ($row = $result->fetch_assoc()) {
-    $pdf->Ln(3);
-    $pdf->SetX(43);
-    $pdf->MultiCell(55, 40, 'Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, tgl_indo($row['tgl_pulang']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    // Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
+    $pdf->Ln(10);
+    $pdf->SetX(38);
+    $pdf->MultiCell(55, 20, 'c. Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(0, 0, '' . $jumlah_hari . ' Hari', 0, 1);
+    $pdf->Ln(1);
+    $pdf->SetX(42.5);
+    $pdf->MultiCell(50.5, 0, 'Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(85, 0, tgl_indo($row_isi['tgl_kegiatan']), 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
-    }
+
+
+    $pdf->Ln(3);
+    $pdf->SetX(42.5);
+    $pdf->MultiCell(50.5, 40, 'Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, tgl_indo($row_isi['tgl_pulang']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
 
     $pdf->Ln(3);
     $pdf->SetX(32);
-    $pdf->Cell(12,5,'2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.',0,1,'L');
+    $pdf->Cell(12, 5, '2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.', 0, 1, 'L');
     $pdf->SetX(32);
-    $pdf->Cell(12,5,'3. Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut.',0,1,'L');
+    $pdf->Cell(12, 5, '3. Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut.', 0, 1, 'L');
     $pdf->SetX(32);
-    $pdf->Cell(12,5,'4. Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas.',0,1,'L');
+    $pdf->Cell(12, 5, '4. Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas.', 0, 1, 'L');
     $pdf->SetX(32);
-    $pdf->Cell(12,5,'5. Perintah ini dilaksanakan dengan penuh tanggung jawab.',0,1,'L');
+    $pdf->Cell(12, 5, '5. Perintah ini dilaksanakan dengan penuh tanggung jawab.', 0, 1, 'L');
     $pdf->SetX(32);
-    $pdf->Cell(12,5,'6. Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan.',0,1,'L');
+    $pdf->Cell(12, 5, '6. Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan.', 0, 1, 'L');
     $pdf->SetX(37);
-    $pdf->Cell(12,5,'kembali sebagiamana mestinya.',0,1,'L');
+    $pdf->Cell(12, 5, 'kembali sebagiamana mestinya.', 0, 1, 'L');
     $pdf->Ln(10);
 
     $pdf->SetX(108);
@@ -255,51 +217,36 @@ if ($row = $result->fetch_assoc()) {
     $pdf->MultiCell(85, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(5);
     //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
-
-    $query = "SELECT * FROM form_spt ";
-$result = $conn->query($query);
-if ($row = $result->fetch_assoc()) {
-    
     $pdf->SetX(108);
     $pdf->MultiCell(30, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, tgl_indo($row['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-  
+    $pdf->MultiCell(85, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+
     //$pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
-
-    }
-$pdf->Ln(3); 
-$pdf->Cell(260,5,"Kepala Bidang Pengembangan Kompetensi",0,1,'C');
-$pdf->Ln(30);
-$pdf->Cell(260,5,"Dr.Anon Priyantoro, S.Pd, M.Pd",0,1,'C');
-$pdf->Cell(260,5,"Pembina Tingkat I",0,1,'C');
-
-$query = "SELECT * FROM form_spt ";
-$result = $conn->query($query);
-if ($row = $result->fetch_assoc()) {
-    
-
-  $pdf->MultiCell(260, 5,  'NIP. ' .$row['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3);
+    $pdf->Cell(260, 5, "Kepala Bidang Pengembangan Kompetensi", 0, 1, 'C');
+    $pdf->Ln(30);
+    $pdf->Cell(260, 5, "Dr.Anon Priyantoro, S.Pd, M.Pd", 0, 1, 'C');
+    $pdf->Cell(260, 5, "Pembina Tingkat I", 0, 1, 'C');
+    $pdf->MultiCell(260, 5, 'NIP. ' . $row_isi['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
-
-    }
-//$pdf->SetY(-30); // Set posisi Y ke 30 mm dari bawah
+    //$pdf->SetY(-30); // Set posisi Y ke 30 mm dari bawah
 //pdf->SetFont('helvetica', '', 8);
 //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
 //$pdf->Ln(5);
 
-// Mengatur ketebalan garis
+    // Mengatur ketebalan garis
 //$pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
 
-// Menggambar garis horizontal di bagian bawah halaman
+    // Menggambar garis horizontal di bagian bawah halaman
 //$startX = 15; // Posisi X awal dari garis (kiri)
 //$endX = 195; // Posisi X akhir dari garis (kanan)
 //$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
-//$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
+    //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-       
+
 
     // Output PDF ke browser
     $pdf->Output('surat_dari_database.pdf', 'I');
