@@ -76,21 +76,25 @@ if ($result_dasar->num_rows > 0) {
     $result_dasar = $conn->query($query_dasar);
 
     // Isi Surat
-    // $pdf->MultiCell(0, 10, $no++ . '. ', 0, 'L');
+    
     $no = 1;
+    $pdf->MultiCell(55, 40, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     while ($row = $result_dasar->fetch_assoc()) {
-        $pdf->MultiCell(0, 10, $no . '. ' . $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+        //$pdf->MultiCell(55, 40, 'Dasar :', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->SetX(36);
+        $pdf->MultiCell(0, 10, $no . '. ' . $row['kode_produk']."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
         $no++;
         $pdf->Ln(2); // Spasi
-
     }
     // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
 
     $pdf->SetFont('helvetica', '', 13);
     $no = 6;
-    $pdf->MultiCell(0, 10, $no . '. ' . 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran'], 0, 'J', 0, 1);
-    $pdf->Ln(1);
+    $pdf->SetX(36);
+    $pdf->MultiCell(0, 10, $no . '. ' . 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran']."\n", 0, 'J', 0, 1);
+    $pdf->Ln(2);
     $no++;    // Justify untuk rata kiri-kanan ('J')
+    $pdf->SetX(36);
     $pdf->MultiCell(0, 10, $no . '. ' . $row_isi['dasar_undangan'] ."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $no++;
     $pdf->Ln(2);
@@ -103,11 +107,11 @@ if ($result_dasar->num_rows > 0) {
     $pdf->Cell(12, 9, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(10);
 
-    $pdf->SetFont('helvetica', '', 12);
+    $pdf->SetFont('helvetica', '', 13);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 40, 'a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, $row_isi['maksud_tujuan'], 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 40, $row_isi['maksud_tujuan'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
     $pdf->Ln(11);
@@ -125,7 +129,7 @@ if ($result_dasar->num_rows > 0) {
 
     $pdf->AddPage();
 
-    $pdf->SetFont('helvetica', '', 12);
+    $pdf->SetFont('helvetica', '', 13);
     $pdf->Ln(15);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 0, 'b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -241,15 +245,16 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->Ln(10);
 
     $pdf->SetX(108);
-    $pdf->MultiCell(30, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(34.5, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->SetX(149);
+    $pdf->MultiCell(97, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(5);
     //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
     $pdf->SetX(108);
-    $pdf->MultiCell(30, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(32, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(80, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
 
     //$pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
