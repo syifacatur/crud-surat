@@ -6,7 +6,7 @@ include('library/TCPDF-main/tcpdf.php');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "crud_surat";
+$dbname = "crud-surat";
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -80,8 +80,7 @@ if ($result_dasar->num_rows > 0) {
     while ($row = $result_dasar->fetch_assoc()) {
         //$pdf->MultiCell(55, 40, 'Dasar :', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->SetX(36);
-        $pdf->MultiCell(0, 0, $no . '. '  , 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T'); 
-        $pdf->SetX(42);
+        $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
         $pdf->MultiCell(0, 0, $row['kode_produk']."\n", 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T');
         $no++;
         $pdf->Ln(2); // Spasi
