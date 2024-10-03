@@ -75,14 +75,14 @@ if ($result_dasar->num_rows > 0) {
     $query_dasar = "SELECT * FROM tb_produk ";
     $result_dasar = $conn->query($query_dasar);
 
-    // Isi Surat
-    
     $no = 1;
     $pdf->MultiCell(55, 40, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     while ($row = $result_dasar->fetch_assoc()) {
         //$pdf->MultiCell(55, 40, 'Dasar :', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->SetX(36);
-        $pdf->MultiCell(0, 10, $no . '. ' . $row['kode_produk']."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
+        $pdf->MultiCell(0, 0, $no . '. '  , 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T'); 
+        $pdf->SetX(42);
+        $pdf->MultiCell(0, 0, $row['kode_produk']."\n", 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T');
         $no++;
         $pdf->Ln(2); // Spasi
     }
