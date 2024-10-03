@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2024 at 05:21 AM
+-- Generation Time: Oct 03, 2024 at 02:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,6 +72,21 @@ INSERT INTO `cetak_surat` (`id_surat`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `daftar_nama`
+--
+
+CREATE TABLE `daftar_nama` (
+  `id_nama` int(11) NOT NULL,
+  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `NIP` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `pangkat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `opsi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `form_spt`
 --
 
@@ -94,8 +109,8 @@ CREATE TABLE `form_spt` (
 --
 
 INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-24', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', '197305011998011001', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2025-04-24', '2024-04-24', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '197305011998011001', '');
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', '197305011998011001', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2025-04-24', '2024-04-24', '2024-10-02', 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '197305011998011001', '');
 
 -- --------------------------------------------------------
 
@@ -159,6 +174,12 @@ ALTER TABLE `cetak_surat`
   ADD PRIMARY KEY (`id_surat`);
 
 --
+-- Indexes for table `daftar_nama`
+--
+ALTER TABLE `daftar_nama`
+  ADD PRIMARY KEY (`id_nama`);
+
+--
 -- Indexes for table `form_spt`
 --
 ALTER TABLE `form_spt`
@@ -193,16 +214,22 @@ ALTER TABLE `cetak_surat`
   MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `daftar_nama`
+--
+ALTER TABLE `daftar_nama`
+  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `form_spt`
 --
 ALTER TABLE `form_spt`
-  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tb_produk`
 --
 ALTER TABLE `tb_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
