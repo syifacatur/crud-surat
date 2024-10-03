@@ -92,7 +92,7 @@ include 'koneksidb.php';
                           data-target="#updateproduk<?php echo $no; ?>"><i class="fa fa-pencil"></i> Edit</a>
                         <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
                           data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
-                        <a target="_blank" href="cetakform_dinamis.php?id<?php echo $row['id_spt'] ?>" data="_blank"><button
+                        <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPT</button></a>
 
@@ -268,9 +268,9 @@ include 'koneksidb.php';
           </div>
 
           <!-- modal insert -->
-          <div class="example-modal">
+          <div class="example-modal modal-lg">
             <div id="tambahproduk" class="modal fade" role="dialog" style="display:none;">
-              <div class="modal-dialog">
+              <div class="modal-dialog  modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span

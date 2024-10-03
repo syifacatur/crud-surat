@@ -66,7 +66,8 @@ if ($result_dasar->num_rows > 0) {
 
     $pdf->SetFont('helvetica', '', 13);
 
-    $query_isi = "SELECT * FROM form_spt ";
+    $id = $_GET['id'];
+    $query_isi = "SELECT * FROM form_spt where id_spt='$id'";
     $result_isi = $conn->query($query_isi);
     $row_isi = $result_isi->fetch_assoc();
     $pdf->MultiCell(180, 10, 'Nomor :' . $row_isi['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
@@ -90,11 +91,13 @@ if ($result_dasar->num_rows > 0) {
     $pdf->SetFont('helvetica', '', 13);
     $no = 6;
     $pdf->SetX(36);
-    $pdf->MultiCell(0, 10, $no . '. ' . 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran']."\n", 0, 'J', 0, 1);
+    $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
+    $pdf->MultiCell(0, 10, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran']."\n", 0, 'J', 0, 1);
     $pdf->Ln(2);
     $no++;    // Justify untuk rata kiri-kanan ('J')
     $pdf->SetX(36);
-    $pdf->MultiCell(0, 10, $no . '. ' . $row_isi['dasar_undangan'] ."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
+    $pdf->MultiCell(0, 10, $row_isi['dasar_undangan'] ."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $no++;
     $pdf->Ln(2);
 
