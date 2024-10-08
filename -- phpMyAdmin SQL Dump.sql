@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2024 at 02:57 AM
+-- Generation Time: Oct 08, 2024 at 10:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crud_surat`
+-- Database: `crud-surat`
 --
 
 -- --------------------------------------------------------
@@ -35,15 +35,19 @@ CREATE TABLE `cetak_spt` (
   `tgl_pulang` varchar(255) DEFAULT NULL,
   `tgl_spt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `anggaran` varchar(255) DEFAULT NULL,
-  `nip_penandatangan` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+  `nip_penandatangan` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `NIP` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `pangkat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cetak_spt`
 --
 
-INSERT INTO `cetak_spt` (`id_cetak`, `cetak_undangan`, `cetak_lokasi`, `tgl_berangkat`, `tgl_pulang`, `tgl_spt`, `anggaran`, `nip_penandatangan`) VALUES
-(2, 'Surat Sekretaris Daerah Provinsi Jawa Tengah Nomor 000.8.3/261 Tanggal 29 Mei 2024.Hal Desk Pengisian Aplikasi Metal', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang	5 Juni ', '5 Juni 2024', '5 Juni 2024', '5 Juni 2024', '3', '197305011998011001');
+INSERT INTO `cetak_spt` (`id_cetak`, `cetak_undangan`, `cetak_lokasi`, `tgl_berangkat`, `tgl_pulang`, `tgl_spt`, `anggaran`, `nip_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
+(2, 'Surat Sekretaris Daerah Provinsi Jawa Tengah Nomor 000.8.3/261 Tanggal 29 Mei 2024.Hal Desk Pengisian Aplikasi Metal', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang	5 Juni ', '5 Juni 2024', '5 Juni 2024', '5 Juni 2024', '3', '197305011998011001', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -84,6 +88,16 @@ CREATE TABLE `daftar_nama` (
   `opsi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `daftar_nama`
+--
+
+INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
+(20, 'ADJI SURYA PRATAMA, SH', '198201102014061003', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan', ''),
+(22, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Pranata Komputer Ahli Pertama', ''),
+(23, 'BAGAS ARUNA YUDHATAMA, S.Kom', '-', '-', 'Tenaga Administrasi dan IT', ''),
+(24, 'ABDUR ROHMAN', '-', '-', 'Tenaga Penanganan Prasarana dan Sarana Umum', '');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +115,10 @@ CREATE TABLE `form_spt` (
   `anggaran` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `maksud_tujuan` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `NIP_penandatangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `NIP` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `pangkat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `opsi` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -108,9 +126,9 @@ CREATE TABLE `form_spt` (
 -- Dumping data for table `form_spt`
 --
 
-INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', '197305011998011001', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2025-04-24', '2024-04-24', '2024-10-02', 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '197305011998011001', '');
+INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', '197305011998011001', '', '', '', '', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '197305011998011001', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -217,13 +235,13 @@ ALTER TABLE `cetak_surat`
 -- AUTO_INCREMENT for table `daftar_nama`
 --
 ALTER TABLE `daftar_nama`
-  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `form_spt`
 --
 ALTER TABLE `form_spt`
-  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tb_produk`
