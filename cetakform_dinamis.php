@@ -76,18 +76,18 @@ if ($result_dasar->num_rows > 0) {
     $query_dasar = "SELECT * FROM tb_produk ";
     $result_dasar = $conn->query($query_dasar);
 
+
     $no = 1;
     $pdf->MultiCell(55, 40, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     while ($row = $result_dasar->fetch_assoc()) {
         //$pdf->MultiCell(55, 40, 'Dasar :', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->SetX(36);
-        $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
+        $pdf->Cell(0, 0, $no. '. ', 0, 'C', FALSE);
         $pdf->MultiCell(0, 0, $row['kode_produk']."\n", 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T');
         $no++;
         $pdf->Ln(2); // Spasi
+    
     }
-    // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-
     $pdf->SetFont('helvetica', '', 13);
     $no = 6;
     $pdf->SetX(36);
@@ -101,11 +101,97 @@ if ($result_dasar->num_rows > 0) {
     $no++;
     $pdf->Ln(2);
 
+   
+
     $pdf->SetFont('helvetica', '', 13);
     $pdf->Ln(2);
     $pdf->Cell(180, 5, "MEMERINTAHKAN:", 0, 1, 'C');
     $pdf->Ln(2);
-    $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+//$pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+    $query = "SELECT * FROM daftar_nama ";
+    $result = $conn->query($query);
+
+    
+    // Menghitung jumlah baris data
+    $jumlah_orang = mysqli_num_rows($result);
+    
+    //Jika jumlah orang kurang dari 5, tampilkan teks
+    if ($jumlah_orang < 5) {
+    $pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
+    $no = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+    //$pdf->MultiCell(55, 40, $no. '. '. ' Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(85, 40, $row['nama'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$no++;
+    //$pdf->Ln(5);
+    //$pdf->MultiCell(55, 40, ' NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(85, 40, $row['NIP'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+            $pdf->Ln(0);
+            $pdf->SetX(36);
+            $pdf->Cell(0, 0, $no. '. '.' Nama                           : ' . $row['nama'], 0, 1);
+            $no++;
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'NIP                              : ' . $row['NIP'], 0, 1);
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'pangkat/Gol. Ruang    : ' . $row['pangkat'], 0, 1);
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'jabatan                        : ' . $row['jabatan'], 0, 1);
+            
+        }
+    } else {
+        if ($jumlah_orang > 4) {
+            $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+            $pdf->AddPage();
+            // Header tabel
+            $pdf->SetFont('helvetica', 'B', 10);
+            $pdf->Cell(7, 10, 'NO', 1);
+            $pdf->Cell(70, 10, 'NAMA', 1);
+            $pdf->Cell(40, 10, 'NIP', 1);
+            $pdf->Cell(50, 10, 'PANGKAT', 1);
+            $pdf->Cell(55, 10, 'JABATAN', 1);
+            $pdf->Ln();
+        
+            // Isi tabel
+            $pdf->SetFont('helvetica', '', 10);
+            $no = 1;
+            while($row = mysqli_fetch_assoc($result)) {
+                $x = $pdf->GetX(30);
+                $y = $pdf->GetY(30);
+                $pdf->Cell(7, 10, $no, 1);
+                $no++;
+                $pdf->Cell(70, 10, $row['nama'], 1);
+                $pdf->Cell(40, 10, $row['NIP'], 1);
+                $pdf->Cell(50, 10, $row['pangkat'], 1);
+                $pdf->Cell(55, 10, $row['jabatan'], 1);
+                $pdf->Ln();
+            
+                
+                
+              
+            
+
+                // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(100, 10, $row['nama'], 1, 'C', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(50, 10, $row['jabatan'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+        
+
+        
+            }
+        
+        
+        }
+        
+        }
+        
+       
+        
+
+        $pdf->Ln(10);      
+    //$pdf->AddPage();
+    $pdf->SetFont('helvetica', '', 13);
     $pdf->Cell(12, 9, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(10);
 
@@ -129,10 +215,9 @@ if ($result_dasar->num_rows > 0) {
 
     //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-    $pdf->AddPage();
 
     $pdf->SetFont('helvetica', '', 13);
-    $pdf->Ln(15);
+    $pdf->Ln(8);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 0, 'b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -282,8 +367,8 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
 
     //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
 
-
-
+    
+   
     // Output PDF ke browser
     $pdf->Output('surat_dari_database.pdf', 'I');
 
