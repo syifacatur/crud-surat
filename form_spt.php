@@ -40,6 +40,7 @@ include 'koneksidb.php';
                     <th>Anggaran</th>
                     <th>Maksud dan Tujuan</th>
                     <th>NIP Penandatangan</th>
+                    
                     <th>Opsi</th>
                   </tr>
                 </thead>
@@ -86,6 +87,8 @@ include 'koneksidb.php';
                       <td><?php echo $row['anggaran']; ?></td>
                       <td><?php echo $row['maksud_tujuan']; ?></td>
                       <td><?php echo $row['NIP_penandatangan']; ?></td>
+        
+
                       <td>
                         <!--<a href="form_edituser.php?id=<?php echo $row['id_user'] ?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
                         <a href="#" class="btn btn-success btn-flat btn-xs" data-toggle="modal"
@@ -364,6 +367,38 @@ include 'koneksidb.php';
                           <label class="col-sm-3 control-label text-right">NIP penandatangan<span
                               class="text-red">*</span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="NIP_penandatangan"
+                              placeholder="" value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">Nama<span
+                              class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="nama"
+                              placeholder="" value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">NIP<span
+                              class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="NIP"
+                              placeholder="" value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">Pangkat<span
+                              class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="pangkat"
+                              placeholder="" value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">Jabatan<span
+                              class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="jabatan"
                               placeholder="" value=""></div>
                         </div>
                       </div>
