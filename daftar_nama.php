@@ -106,21 +106,17 @@ include 'koneksidb.php';
                                               placeholder="nama" value="<?php echo $row['nama']; ?>"></div>
                                           <option value=""></option>
                                           <option
-                                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
-                                            Koordinasi dan Konsultasi SKPD </option>
+                                            value="ADJI SURYA PRATAMA, SH">
+                                             ADJI SURYA PRATAMA, SH</option>
                                           <option
-                                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan
-                                            Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                                            value="ILHAM HABIBULLAH AKBAR, S.KOM">
+                                            ILHAM HABIBULLAH AKBAR, S.KOM</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan
-                                            Pengolahan Administrasi Kepegawaian</option>
+                                            value="BAGAS ARUNA YUDHATAMA, S.Kom">
+                                            BAGAS ARUNA YUDHATAMA, S.Kom</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan
-                                            Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                            value="ABDUR ROHMAN">
+                                            ABDUR ROHMAN</option>
 
 
                                           </select>
@@ -134,21 +130,17 @@ include 'koneksidb.php';
                                               placeholder="NIP" value="<?php echo $row['NIP']; ?>"></div>
                                           <option value=""></option>
                                           <option
-                                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
-                                            Koordinasi dan Konsultasi SKPD </option>
+                                            value="198201102014061003">
+                                            198201102014061003 </option>
                                           <option
-                                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan
-                                            Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                                            value="199607192022031008">
+                                            199607192022031008</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan
-                                            Pengolahan Administrasi Kepegawaian</option>
+                                            value="-">
+                                            - </option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan
-                                            Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                            value="427382638263">
+                                            427382638263</option>
 
 
                                           </select>
@@ -162,21 +154,17 @@ include 'koneksidb.php';
                                               placeholder="pangkat" value="<?php echo $row['pangkat']; ?>"></div>
                                           <option value=""></option>
                                           <option
-                                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
-                                            Koordinasi dan Konsultasi SKPD </option>
+                                            value="Penata Muda Tingkat I(III/B">
+                                            Penata Muda Tingkat I(III/B)</option>
                                           <option
-                                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan
-                                            Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                                            value="Penata Muda Tingkat (III/A)">
+                                            Penata Muda Tingkat (III/A)</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan
-                                            Pengolahan Administrasi Kepegawaian</option>
+                                            value="-">
+                                             - </option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan
-                                            Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                            value="-">
+                                            - </option>
 
 
                                           </select>
@@ -190,21 +178,17 @@ include 'koneksidb.php';
                                               placeholder="jabatan" value="<?php echo $row['jabatan']; ?>"></div>
                                           <option value=""></option>
                                           <option
-                                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
-                                            Koordinasi dan Konsultasi SKPD </option>
+                                            value="Pengelola Layanan Kehumasan">
+                                            Pengelola Layanan Kehumasan</option>
                                           <option
-                                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan
-                                            Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
+                                            value="Pranata Komputer Ahli Pertama">
+                                            Pranata Komputer Ahli Pertama</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan
-                                            Pengolahan Administrasi Kepegawaian</option>
+                                            value="Tenaga Administrasi dan IT">
+                                            Tenaga Administrasi dan IT</option>
                                           <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan
-                                            Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+                                            value="Tenaga Penanganan Prasarana dan Sarana Umum">
+                                            Tenaga Penanganan Prasarana dan Sarana Umum</option>
 
 
                                           </select>
@@ -253,14 +237,18 @@ include 'koneksidb.php';
                               value=""></div>
                           <option value=""></option>
                           <option
-                            value="Syifa Catur Wicaksono">
-                            syifa catur wicaksono </option>
-                          <option
-                            value="yodida ilham perdana">
-                            yodida ilham perdana</option>
-                          <option
-                            value="nastiti tri rahmawati">
-                            nastiti rahmawati</option>
+                                            value="ADJI SURYA PRATAMA, SH">
+                                             ADJI SURYA PRATAMA, SH</option>
+                                          <option
+                                            value="ILHAM HABIBULLAH AKBAR, S.KOM">
+                                            ILHAM HABIBULLAH AKBAR, S.KOM</option>
+                                          <option
+                                            value="BAGAS ARUNA YUDHATAMA, S.Kom">
+                                            BAGAS ARUNA YUDHATAMA, S.Kom</option>
+                                          <option
+                                            value="ABDUR ROHMAN">
+                                            ABDUR ROHMAN</option>
+                            
                            </select>
                         </div>
                         </div>
@@ -273,15 +261,19 @@ include 'koneksidb.php';
                               value=""></div>
                           <option value=""></option>
                           <option
-                            value="Syifa Catur Wicaksono">
-                            syifa catur wicaksono </option>
-                          <option
-                            value="yodida ilham perdana">
-                            yodida ilham perdana</option>
-                          <option
-                            value="nastiti tri rahmawati">
-                            nastiti rahmawati</option>
+                                            value="198201102014061003">
+                                            198201102014061003 </option>
+                                          <option
+                                            value="199607192022031008">
+                                            199607192022031008</option>
+                                          <option
+                                            value="29372937293">
+                                            29372937293</option>
+                                          <option
+                                            value="427382638263">
+                                            427382638263</option>
                            </select>
+                           
                         </div>
                         </div>
                         
@@ -293,14 +285,18 @@ include 'koneksidb.php';
                               value=""></div>
                           <option value=""></option>
                           <option
-                            value="Syifa Catur Wicaksono">
-                            syifa catur wicaksono </option>
-                          <option
-                            value="yodida ilham perdana">
-                            yodida ilham perdana</option>
-                          <option
-                            value="nastiti tri rahmawati">
-                            nastiti rahmawati</option>
+                                            value="Penata Muda Tingkat I(III/B">
+                                            Penata Muda Tingkat I(III/B)</option>
+                                          <option
+                                            value="Penata Muda Tingkat (III/A)">
+                                            Penata Muda Tingkat (III/A)</option>
+                                          <option
+                                            value="-">
+                                             - </option>
+                                          <option
+                                            value="-">
+                                            - </option>
+
                             </select>
                             </div>
                             </div>
@@ -314,14 +310,18 @@ include 'koneksidb.php';
                               value=""></div>
                           <option value=""></option>
                           <option
-                            value="Syifa Catur Wicaksono">
-                            syifa catur wicaksono </option>
-                          <option
-                            value="yodida ilham perdana">
-                            yodida ilham perdana</option>
-                          <option
-                            value="nastiti tri rahmawati">
-                            nastiti rahmawati</option>
+                                            value="Pengelola Layanan Kehumasan">
+                                            Pengelola Layanan Kehumasan</option>
+                                          <option
+                                            value="Pranata Komputer Ahli Pertama">
+                                            Pranata Komputer Ahli Pertama</option>
+                                          <option
+                                            value="Tenaga Administrasi dan IT">
+                                            Tenaga Administrasi dan IT</option>
+                                          <option
+                                            value="Tenaga Penanganan Prasarana dan Sarana Umum">
+                                            Tenaga Penanganan Prasarana dan Sarana Umum</option>
+
                           </select>
                         </div>
                         </div>
