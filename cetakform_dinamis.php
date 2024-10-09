@@ -62,7 +62,7 @@ if ($result_dasar->num_rows > 0) {
 
     // ISI
     $pdf->SetFont('Helvetica', '', 11,5);
-    $pdf->Cell(180, 5, "SURAT TUGAS", 0, 1, 'C');
+    $pdf->Cell(190, 5, "SURAT TUGAS", 0, 1, 'C');
 
     $pdf->SetFont('helvetica', '', 11,5);
 
@@ -70,7 +70,7 @@ if ($result_dasar->num_rows > 0) {
     $query_isi = "SELECT * FROM form_spt where id_spt='$id'";
     $result_isi = $conn->query($query_isi);
     $row_isi = $result_isi->fetch_assoc();
-    $pdf->MultiCell(180, 10, 'Nomor :' . $row_isi['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->MultiCell(190, 10, 'Nomor :' . $row_isi['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3);
     $query_dasar = "SELECT * FROM tb_produk ";
     $result_dasar = $conn->query($query_dasar);
@@ -102,7 +102,7 @@ if ($result_dasar->num_rows > 0) {
    
 
     $pdf->Ln(2);
-    $pdf->Cell(180, 5, "MEMERINTAHKAN:", 0, 1, 'C');
+    $pdf->Cell(190, 5, "MEMERINTAHKAN:", 0, 1, 'C');
     $pdf->Ln(2);
 //$pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
 $query = "SELECT * FROM daftar_nama ";
