@@ -76,121 +76,129 @@ if ($result_dasar->num_rows > 0) {
     $result_dasar = $conn->query($query_dasar);
 
 
+   
     $no = 1;
-    $pdf->MultiCell(55, 40, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    while ($row = $result_dasar->fetch_assoc()) {
-        //$pdf->MultiCell(55, 40, 'Dasar :', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->SetX(36);
-        $pdf->Cell(0, 0, $no. '. ', 0, 'C', FALSE);
-        $pdf->MultiCell(0, 0, $row['kode_produk']."\n", 0, 'J', 0, 1, '', '', true, 0, false, true, 40, 'T');
-        $no++;
-        $pdf->Ln(2); // Spasi
+    $pdf->Cell(30, 0, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(0);
     
+    while ($row = $result_dasar->fetch_assoc()) {
+        // Menentukan lebar kolom angka urut yang lebih besar, misalnya 15mm
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Angka urut dengan Cell
+        $pdf->MultiCell(0, 5, $row['kode_produk']."\n", 0, 'J', 0, 1);  // Isi teks menggunakan MultiCell
+        $no++;
+        $pdf->Ln(2);  // Spasi antar baris
     }
+    
+    
+    // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
+
     $no = 6;
-    $pdf->SetX(36);
-    $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
-    $pdf->MultiCell(0, 10, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada '.$row_isi['anggaran']."\n", 0, 'J', 0, 1);
-    $pdf->Ln(2);
-    $no++;    // Justify untuk rata kiri-kanan ('J')
-    $pdf->SetX(36);
-    $pdf->Cell(5, 0, $no. '. ', 0, 'C', FALSE);
-    $pdf->MultiCell(0, 10, $row_isi['dasar_undangan'] ."\n", 0, 'J', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    
+    // MultiCell untuk teks utama dengan Cell terpisah untuk nomor urut
+    $pdf->MultiCell(25, 7, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Cell(10, 5, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+    $pdf->MultiCell(0, 10, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran']."\n", 0, 'J', 0, 1);
+    $pdf->Ln(1);
+    $no++;  // Increment nomor urut
+    
+    // MultiCell berikutnya untuk dasar undangan
+    $pdf->MultiCell(25, 7, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Cell(10, 5, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+    $pdf->MultiCell(0, 10, $row_isi['dasar_undangan']. "\n", 0, 'J', 0, 1); // Kolom untuk isi teks
     $no++;
+    
     $pdf->Ln(2);
+
 
    
 
+    $pdf->SetFont('helvetica', '', 11,5);
     $pdf->Ln(2);
     $pdf->Cell(190, 5, "MEMERINTAHKAN:", 0, 1, 'C');
-    $pdf->Ln(2);
+    $pdf->Ln(4);
 //$pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
-$query = "SELECT * FROM daftar_nama ";
-$result = $conn->query($query);
+    $query = "SELECT * FROM daftar_nama ";
+    $result = $conn->query($query);
 
-
-// Menghitung jumlah baris data
-$jumlah_orang = mysqli_num_rows($result);
-
-//Jika jumlah orang kurang dari 5, tampilkan teks
-if ($jumlah_orang < 5) {
-//$pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
-//$no = 1;
-$pdf->MultiCell(55, 40, 'Kepada   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$no = 1;
-    while ($row = mysqli_fetch_assoc($result)) {
-//$pdf->MultiCell(55, 40, $no. '. '. ' Nama', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-//$no++;
-//$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-//$pdf->MultiCell(85, 40, $row['nama'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-//$pdf->Ln(5);
-//$pdf->MultiCell(55, 40, ' NIP', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-//$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-//$pdf->MultiCell(85, 40, $row['NIP'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Ln(0);
-        $pdf->SetX(36);
-        $pdf->Cell(0, 0,  $no. '. '.'  Nama                            : ' . $row['nama'], 0, 1);
-        $no++;
-        $pdf->SetX(43);
-        $pdf->Cell(0, 0, 'NIP                               : ' . $row['NIP'], 0, 1);
-        $pdf->SetX(43);
-        $pdf->Cell(0, 0, 'Pangkat/Gol. Ruang    :' . $row['pangkat'], 0, 1);
-        $pdf->SetX(43);
-        $pdf->Cell(0, 0, 'Jabatan                        : ' . $row['jabatan'], 0, 1);
-        
-    }
-} else {
-    if ($jumlah_orang > 4) {
-        $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
-        $pdf->AddPage();
-        // Header tabel
-        $pdf->SetFont('helvetica', 'B', 11);
-        $pdf->Cell(7, 10, 'NO', 1);
-        $pdf->Cell(70, 10, 'NAMA', 1);
-        $pdf->Cell(40, 10, 'NIP', 1);
-        $pdf->Cell(50, 10, 'PANGKAT', 1);
-        $pdf->Cell(55, 10, 'JABATAN', 1);
-        $pdf->Ln();
     
-        // Isi tabel
-        $pdf->SetFont('helvetica', '', 11);
-        $no = 1;
-        while($row = mysqli_fetch_assoc($result)) {
-            $x = $pdf->GetX(30);
-            $y = $pdf->GetY(30);
-            $pdf->Cell(7, 10, $no, 1);
+    // Menghitung jumlah baris data
+    $jumlah_orang = mysqli_num_rows($result);
+    
+    //Jika jumlah orang kurang dari 5, tampilkan teks
+    if ($jumlah_orang < 5) {
+    //$pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
+    //$no = 1;
+    $pdf->MultiCell(50, 40, 'Kepada   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $no = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+    //$pdf->MultiCell(55, 40, $no. '. '. ' Nama', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$no++;
+    //$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(85, 40, $row['nama'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->Ln(5);
+    //$pdf->MultiCell(55, 40, ' NIP', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    //$pdf->MultiCell(85, 40, $row['NIP'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+            $pdf->Ln(0);
+            $pdf->SetX(36);
+            $pdf->Cell(0, 0,  $no. '. '.'  Nama                            : ' . $row['nama'], 0, 1);
             $no++;
-            $pdf->Cell(70, 10, $row['nama'], 1);
-            $pdf->Cell(40, 10, $row['NIP'], 1);
-            $pdf->Cell(50, 10, $row['pangkat'], 1);
-            $pdf->Cell(55, 10, $row['jabatan'], 1);
-            $pdf->Ln();
-        
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'NIP                               : ' . $row['NIP'], 0, 1);
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'Pangkat/Gol. Ruang    :' . $row['pangkat'], 0, 1);
+            $pdf->SetX(43);
+            $pdf->Cell(0, 0, 'Jabatan                        : ' . $row['jabatan'], 0, 1);
             
-            
-          
-        
-
-            // MultiCell untuk kolom deskripsi
-            //$pdf->MultiCell(100, 10, $row['nama'], 1, 'C', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
-            //$pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
-            //$pdf->MultiCell(50, 10, $row['jabatan'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
-    
-
-    
         }
-    
-    
+    } else {
+        
+        if ($jumlah_orang > 4) {
+            $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+           $pdf->AddPage();
+           $pdf->SetFont('helvetica', '', 11);
+
+           // Header kolom
+$pdf->Cell(10, 10, 'No', 1, 0, 'C');
+$pdf->Cell(70, 10, 'Nama', 1, 0, 'C');
+$pdf->Cell(40, 10, 'NIP', 1, 0, 'C');
+$pdf->Cell(50, 10, 'Pangkat', 1, 0, 'C');
+$pdf->Cell(50, 10, 'Jabatan', 1, 1, 'C');
+        
+            // Isi tabel
+           
+            $no = 1;
+            while ($row = $result->fetch_assoc()) {
+                $pdf->Cell(10, 10, $no, 1, 0, 'C');
+                $no++;
+                $pdf->Cell(70, 10, $row['nama'], 1, 0, 'L');
+                $pdf->Cell(40, 10, $row['NIP'], 1, 0, 'C');
+                $pdf->Cell(50, 10, $row['pangkat'], 1, 0, 'L');
+                $pdf->Cell(50, 10, $row['jabatan'], 1, 1, 'L');
+                
+            }
+        }
     }
-    
-    }
-    
-   
-    
+                
+                
+              
+            
+
+                // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(100, 10, $row['nama'], 1, 'C', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+                //$pdf->MultiCell(50, 10, $row['jabatan'], 1, 'L', 0, 1, $x, $y);  // MultiCell untuk kolom deskripsi
+        
+
+
+        
+       
+        
 
         $pdf->Ln(10);      
-    //$pdf->AddPage();
-    $pdf->SetFont('helvetica', '', 11,5);
+    $pdf->AddPage();
+    $pdf->SetFont('helvetica', '', 11);
     $pdf->Cell(12, 9, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(10);
     $pdf->SetX(38);
@@ -199,7 +207,7 @@ $no = 1;
     $pdf->MultiCell(85, 40, $row_isi['maksud_tujuan'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
-    $pdf->Ln(11);
+    $pdf->Ln(3);
     //$pdf->SetFont('helvetica', '', 8);
     //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
 // Mengatur ketebalan garis
@@ -211,7 +219,6 @@ $no = 1;
 //$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
 
     //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
-
 
     $pdf->Ln(8);
     $pdf->SetX(38);
