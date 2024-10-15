@@ -20,39 +20,45 @@ include 'koneksidb.php';
 
 
 <script>
+
   $(document).ready(function() {
-    // Terapkan Select2 pada elemen dengan id 'nama'
-    $('#nama').select2({
+
+    // Terapkan Select2 pada elemen dengan id ' '
+    
+    $('#id_nama').select2({
+
       placeholder: "--PILIH--", // Placeholder untuk dropdown
       allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+            
     });
+   
     $('#NIP').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true          
     });
     $('#pangkat').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true          
     });
     $('#jabatan').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true          
     });
     $('#nama2').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true         
     });
     $('#NIP2').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--",    
+      allowClear: true          
     });
     $('#pangkat2').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true          
     });
     $('#jabatan2').select2({
-      placeholder: "--PILIH--", // Placeholder untuk dropdown
-      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      placeholder: "--PILIH--", 
+      allowClear: true         
     });
   });
 </script>
@@ -72,6 +78,7 @@ include 'koneksidb.php';
     <div class="col-sm-12">
       <div class="box box-success">
         <div class="box-header with-border">
+        <a href="cetakform_dinamis.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a> 
           <div class="box-tools pull-left">
             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahproduk"><i class="fa fa-plus"></i> Tambah</a>
           </div>
@@ -134,11 +141,11 @@ include 'koneksidb.php';
 
                       <div class="example-modal">
                         <div id="updateproduk<?php echo $no; ?>" class="modal fade" role="dialog" style="display:none;">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title">Edit Deskripsi</h3>
+                                <h3 class="modal-title">Edit</h3>
                               </div>
                               <div class="modal-body">
                                 <form action="function_nama.php?act=updateproduk" method="post" role="form">
@@ -151,19 +158,19 @@ include 'koneksidb.php';
 
                                   <div class="form-group">
                                     <div class="row">
-                                      <div class="col-sm-8"><input type="hidden" class="form-control" name="id_nama" placeholder="ID nama" value="<?php echo $row['id_nama']; ?>"></div>
+                                      <div class="col-sm-8"><input type="hidden" class="form-control select2" name="id_nama" placeholder="ID nama" value="<?php echo $row['id_nama']; ?>"></div>
                                     </div>
                                   </div>
                                   
                                   <div class="form-group">
                                         <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Nama
+                                          <label class="col-sm-3 control-label text-right">NAMA
                                             <span class="text-red">*</span></label>
-                                            <div class="col-sm-8"><select id="nama" class="form-control select2" name="nama" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
-                                          <option value="">--PILIH--"</option>
+                                            <div class="col-sm-8"><select id="id_nama" class="form-control select2" name="nama" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                           <option
                                             value="ADJI SURYA PRATAMA, SH">
-                                             ADJI SURYA PRATAMA, SH</option>
+                                             ADJI SURYA PRATAMA, SH </option>
                                           <option
                                             value="ILHAM HABIBULLAH AKBAR, S.KOM">
                                             ILHAM HABIBULLAH AKBAR, S.KOM</option>
@@ -176,13 +183,14 @@ include 'koneksidb.php';
                                           </select>
                                         </div>
                                       </div>
-                                      <div class="form-group">
+                                      <div class="form-group ">
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">NIP
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><select id="NIP" class="form-control select2" name="NIP"
+                                          <div class="col-sm-8"><select id="NIP" class="form-control select2" name="NIP" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                               placeholder="NIP" value="<?php echo $row['NIP']; ?>"></div>
-                                              <option value="">--PILIH--"</option>
+                                              <option value="">--PILIH--</option>
                                           <option
                                             value="198201102014061003">
                                             198201102014061003 </option>
@@ -202,11 +210,12 @@ include 'koneksidb.php';
                                       </div>
                                       <div class="form-group">
                                         <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Pangkat
+                                          <label class="col-sm-3 control-label text-right">PANGKAT
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><select id="pangkat" class="form-control" name="pangkat"
+                                          <div class="col-sm-8"><select id="pangkat" class="form-control select2" name="pangkat" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                               placeholder="pangkat" value="<?php echo $row['pangkat']; ?>"></div>
-                                              <option value="">--PILIH--"</option>
+                                              <option value="">--PILIH--</option>
                                           <option
                                             value="Penata Muda Tingkat I(III/B">
                                             Penata Muda Tingkat I(III/B)</option>
@@ -226,11 +235,12 @@ include 'koneksidb.php';
                                       </div>
                                       <div class="form-group">
                                         <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Jabatan
+                                          <label class="col-sm-3 control-label text-right">JABATAN
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><select id="jabatan" class="form-control" name="jabatan"
+                                          <div class="col-sm-8"><select id="jabatan" class="form-control select2" name="jabatan" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                               placeholder="jabatan" value="<?php echo $row['jabatan']; ?>"></div>
-                                              <option value="">--PILIH--"</option>
+                                              <option value="">--PILIH--</option>
                                           <option
                                             value="Pengelola Layanan Kehumasan">
                                             Pengelola Layanan Kehumasan</option>
@@ -276,7 +286,7 @@ include 'koneksidb.php';
         <!-- modal insert -->
         <div class="example-modal">
             <div id="tambahproduk" class="modal fade" role="dialog" style="display:none;">
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -287,7 +297,7 @@ include 'koneksidb.php';
                     <form action="function_nama.php?act=tambahproduk" method="post" role="form">
                     <div class="form-group">
                                         <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Nama
+                                          <label class="col-sm-3 control-label text-right">NAMA
                                             <span class="text-red">*</span></label>
                                             <div class="col-sm-8"><select id="nama2" class="form-control select2" name="nama" placeholder="Search.."value="<?php echo $row['nama']; ?>"></div>
                                           <option value="">--PILIH--"</option>
@@ -327,13 +337,11 @@ include 'koneksidb.php';
                                             value="427382638263">
                                             427382638263</option>
                            </select>
-                           
+                            </div>
                         </div>
-                        </div>
-                        
                         <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Pangkat<span
+                          <label class="col-sm-3 control-label text-right">PANGKAT<span
                               class="text-red">*</span></label>
                           <div class="col-sm-8"><select id="pangkat2" class="form-control select2" name="pangkat" placeholder=""
                               value=""></div>
@@ -350,15 +358,16 @@ include 'koneksidb.php';
                                           <option
                                             value="-">
                                             - </option>
-
-                            </select>
-                            </div>
-                            </div>
+                                          </select>
+                            
+                                        </div>
+                            
+                                      </div>
 
 
                             <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Jabatan<span
+                          <label class="col-sm-3 control-label text-right">JABATAN<span
                               class="text-red">*</span></label>
                           <div class="col-sm-8"><select id="jabatan2" class="form-control select2" name="jabatan" placeholder=""
                               value=""></div>
