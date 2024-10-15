@@ -128,7 +128,7 @@ if ($result_dasar->num_rows > 0) {
     $jumlah_orang = mysqli_num_rows($result);
     
     //Jika jumlah orang kurang dari 5, tampilkan teks
-    if ($jumlah_orang < 5) {
+    if ($jumlah_orang < 3) {
     //$pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
     //$no = 1;
     $pdf->MultiCell(50, 40, 'Kepada   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -151,7 +151,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(62);
             $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(150, 0, $row['nama'], 0, 'J'."\n", 0, 0, '73', '', true, 0, false, true, 40, 'T');
+            $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(7);
             
             $pdf->SetX(41);
@@ -178,7 +178,7 @@ if ($result_dasar->num_rows > 0) {
         }
     } else {
         
-        if ($jumlah_orang > 4) {
+        if ($jumlah_orang > 2) {
             $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
         }
     }
@@ -360,7 +360,7 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
 
     
 
-    if ($jumlah_orang > 4) {
+    if ($jumlah_orang > 2) {
 
     $pdf->AddPage('L');
     
