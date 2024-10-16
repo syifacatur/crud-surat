@@ -175,6 +175,8 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(75, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(7);
 
+            
+
         }
     } else {
         
@@ -184,10 +186,22 @@ if ($result_dasar->num_rows > 0) {
     }
           
                 
-
+    if ($jumlah_orang < 3) {
+$pdf->AddPage();
     $pdf->SetFont('helvetica', '', 12);
     $pdf->Cell(12, 20, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
-    $pdf->Ln(30);
+    $pdf->Ln(15);
+    } else {
+
+        if ($jumlah_orang >2) {
+            $pdf->SetFont('helvetica', '', 12);
+            $pdf->Cell(12, 15, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
+            $pdf->Ln(10);
+
+        }
+    }
+
+
     $pdf->SetX(38);
     $pdf->MultiCell(55, 40, 'a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -307,7 +321,10 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
 
-    $pdf->Ln(3);
+    //$jumlah_orang = mysqli_num_rows($result);
+    if ($jumlah_orang < 3) {
+
+    $pdf->Ln(5);
     $pdf->SetX(32);
     $pdf->Cell(12, 5, '2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.', 0, 1, 'L');
     $pdf->SetX(32);
@@ -321,6 +338,28 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->SetX(37);
     $pdf->Cell(12, 5, 'kembali sebagiamana mestinya.', 0, 1, 'L');
     $pdf->Ln(10);
+
+} else {
+        
+    if ($jumlah_orang > 2) {
+        $pdf->AddPage();
+        $pdf->Ln(10);
+        $pdf->SetX(32);
+        $pdf->Cell(12, 5, '2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.', 0, 1, 'L');
+        $pdf->SetX(32);
+        $pdf->Cell(12, 5, '3. Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut.', 0, 1, 'L');
+        $pdf->SetX(32);
+        $pdf->Cell(12, 5, '4. Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas.', 0, 1, 'L');
+        $pdf->SetX(32);
+        $pdf->Cell(12, 5, '5. Perintah ini dilaksanakan dengan penuh tanggung jawab.', 0, 1, 'L');
+        $pdf->SetX(32);
+        $pdf->Cell(12, 5, '6. Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan.', 0, 1, 'L');
+        $pdf->SetX(37);
+        $pdf->Cell(12, 5, 'kembali sebagiamana mestinya.', 0, 1, 'L');
+        $pdf->Ln(10);
+
+    }
+}
 
     $pdf->SetX(108);
     $pdf->MultiCell(34.5, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
