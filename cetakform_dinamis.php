@@ -116,9 +116,9 @@ if ($result_dasar->num_rows > 0) {
    
 
     $pdf->SetFont('helvetica', '', 12);
-    $pdf->Ln(2);
-    $pdf->Cell(190, 5, "MEMERINTAHKAN:", 0, 1, 'C');
-    $pdf->Ln(4);
+    $pdf->Ln(0);
+    $pdf->Cell(190, 9, "MEMERINTAHKAN:", 0, 1, 'C');
+    $pdf->Ln(0);
 //$pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
     $query = "SELECT * FROM daftar_nama ";
     $result = $conn->query($query);
@@ -187,7 +187,7 @@ if ($result_dasar->num_rows > 0) {
           
                 
     if ($jumlah_orang < 3) {
-    $pdf->AddPage();
+$pdf->AddPage();
     $pdf->SetFont('helvetica', '', 12);
     $pdf->Cell(12, 20, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(15);
