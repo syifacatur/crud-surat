@@ -420,31 +420,58 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     
 
     if ($jumlah_orang > 2) {
+        
 
-    $pdf->AddPage('L');
+    $pdf->AddPage('P');
     
-    $pdf->SetFont('helvetica', '', 12);
 
+    $pdf->SetFont('Helvetica', '', 10);
+    $pdf->SetX(100);
+    $pdf->Cell(0, 5, "Lampiran I", 0, 1, 'L'); 
+    $pdf->SetX(100);
+    $pdf->Cell(0, 5, "Surat Tugas Kepala Badan Pengembangan", 0, 1, 'L');
+    $pdf->SetX(100);
+    $pdf->Cell(0, 5, "Sumber Daya Manusia Daerah", 0, 1, 'L');
+    $pdf->SetX(100);
+    $pdf->Cell(0, 5, "Provinsi Jawa Tengah", 0, 1, 'L');
+    
+    
+   
+    $pdf->Ln(0);
+    
+    
+    $pdf->SetX(100); 
+    $pdf->Cell(20, 5, 'Tanggal', 0, 0, 'L'); 
+    $pdf->Cell(3, 5, ':', 0, 0, 'C');      
+    $pdf->Cell(80, 5, tgl_indo($row_isi['tgl_spt']), 0, 1, 'L'); 
+    $pdf->Ln(0);
+  
+    $pdf->SetX(100); 
+    $pdf->Cell(20, 5, 'Nomor', 0, 0, 'L'); 
+    $pdf->Cell(3, 5, ':', 0, 0, 'C');      
+    $pdf->Cell(80, 5, $row_isi['no_spt'], 0, 1, 'L'); 
+    $pdf->Ln(10);
+
+    $pdf->SetFont('Helvetica', '', 12);
+    
     // Header kolom
-$pdf->Cell(10, 10, 'No', 1, 0, 'C');
-$pdf->Cell(75, 10, 'Nama', 1, 0, 'C');
-$pdf->Cell(45, 10, 'NIP', 1, 0, 'C');
-$pdf->Cell(55, 10, 'Pangkat', 1, 0, 'C');
-$pdf->Cell(100, 10, 'Jabatan', 1, 1, 'C');
+$pdf->Cell(12, 6, 'No', 1, 0, 'C');
+$pdf->Cell(140, 6, 'Nama/NIP/Pangkat/Jabatan', 1, 0, 'C');
+$pdf->Cell(35, 6, 'Keterangan', 1, 0, 'C');
 
-
+           
  
      // Isi tabel
     
      
-     while ($row = $result->fetch_assoc()) {
-         $no = 1;
-         $pdf->MultiCell(10, 10, $row['id_nama'], 1, 0, 'C');
-         $no++;
-         $pdf->MultiCell(70, 10, $row['nama'], 1, 'L', 0, 0);
-         $pdf->MultiCell(50, 10, $row['NIP'], 1, 'L', 0, 0);
-         $pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 0);
-         $pdf->MultiCell(110, 10, $row['jabatan'], 1, 'L', 0, 0);
+     //while ($row = $result->fetch_assoc()) {
+         //$no = 1;
+         //$pdf->MultiCell(10, 10, $no++, 1, 0, 'C');
+         //$no++;
+         //$pdf->MultiCell(70, 10, $row['nama'], 1, 'L', 0, 0);
+         //$pdf->MultiCell(50, 10, $row['NIP'], 1, 'L', 0, 0);
+         //$pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 0);
+         //$pdf->MultiCell(110, 10, $row['jabatan'], 1, 'L', 0, 0);
 
          //$no = 1;
             //while ($row = $result->fetch_assoc()) {
@@ -458,7 +485,7 @@ $pdf->Cell(100, 10, 'Jabatan', 1, 1, 'C');
 
 
          
-     }
+     
      
  }
 
