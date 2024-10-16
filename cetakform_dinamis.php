@@ -89,7 +89,7 @@ if ($result_dasar->num_rows > 0) {
         $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Angka urut dengan Cell
         $pdf->MultiCell(0, 5, $row['kode_produk']."\n", 0, 'J', 0, 1);  // Isi teks menggunakan MultiCell
         $no++;
-        $pdf->Ln(2);  // Spasi antar baris
+        $pdf->Ln(0);  // Spasi antar baris
     }
     
     
@@ -101,7 +101,7 @@ if ($result_dasar->num_rows > 0) {
     $pdf->MultiCell(25, 7, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->Cell(10, 5, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
     $pdf->MultiCell(0, 10, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran']."\n", 0, 'J', 0, 1);
-    $pdf->Ln(1);
+    $pdf->Ln(0);
     $no++;  // Increment nomor urut
     
     // MultiCell berikutnya untuk dasar undangan
@@ -131,6 +131,7 @@ if ($result_dasar->num_rows > 0) {
     if ($jumlah_orang < 3) {
     //$pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
     //$no = 1;
+    $pdf->Ln(7);
     $pdf->MultiCell(50, 40, 'Kepada   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $no = 1;
    
@@ -181,7 +182,7 @@ if ($result_dasar->num_rows > 0) {
     } else {
         
         if ($jumlah_orang > 2) {
-            $pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
+            $pdf->Cell(12, 0, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
         }
     }
           
@@ -189,23 +190,23 @@ if ($result_dasar->num_rows > 0) {
     if ($jumlah_orang < 3) {
 $pdf->AddPage();
     $pdf->SetFont('helvetica', '', 12);
-    $pdf->Cell(12, 20, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
-    $pdf->Ln(15);
+    $pdf->Cell(12, 0, 'Untuk      :     1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
+    $pdf->Ln(5);
     } else {
 
         if ($jumlah_orang >2) {
             $pdf->SetFont('helvetica', '', 12);
-            $pdf->Cell(12, 15, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
-            $pdf->Ln(10);
+            $pdf->Cell(12, 0, 'Untuk      :    1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
+            $pdf->Ln(5);
 
         }
     }
 
 
     $pdf->SetX(38);
-    $pdf->MultiCell(55, 40, 'a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(85, 40, $row_isi['maksud_tujuan'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(55, 10, ' a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(10, 10, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(85, 10, $row_isi['maksud_tujuan'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
     $pdf->Ln(3);
@@ -223,7 +224,7 @@ $pdf->AddPage();
 
     $pdf->Ln(10);
     $pdf->SetX(38);
-    $pdf->MultiCell(55, 0, 'b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(55, 0, ' b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(75, 0, $row_isi['lokasi'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. Tempat yang dituju      :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
@@ -299,14 +300,14 @@ $kata_hari = angka_ke_kata($jumlah_hari);
 $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
 //$pdf->AddPage();
     // Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
-    $pdf->Ln(10);
+    $pdf->Ln(8);
     $pdf->SetX(38);
-    $pdf->MultiCell(55, 20, 'c. Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(55, 20, ' c. Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(0, 0, '' .  $teks_hari . 'hari', 0, 1);
     $pdf->Ln(1);
     $pdf->SetX(42.5);
-    $pdf->MultiCell(50.5, 0, 'Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(50.5, 0, ' Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(85, 0, tgl_indo($row_isi['tgl_kegiatan']), 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
@@ -315,51 +316,70 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
 
     $pdf->Ln(3);
     $pdf->SetX(42.5);
-    $pdf->MultiCell(50.5, 40, 'Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(50.5, 40, ' Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(85, 40, tgl_indo($row_isi['tgl_pulang']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
-    $pdf->Ln(3); // Spasi
+    $pdf->Ln(4); // Spasi
 
     //$jumlah_orang = mysqli_num_rows($result);
     if ($jumlah_orang < 3) {
 
-    $pdf->Ln(5);
-    $pdf->SetX(32);
-    $pdf->Cell(12, 5, '2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.', 0, 1, 'L');
-    $pdf->SetX(32);
-    $pdf->Cell(12, 5, '3. Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut.', 0, 1, 'L');
-    $pdf->SetX(32);
-    $pdf->Cell(12, 5, '4. Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas.', 0, 1, 'L');
-    $pdf->SetX(32);
-    $pdf->Cell(12, 5, '5. Perintah ini dilaksanakan dengan penuh tanggung jawab.', 0, 1, 'L');
-    $pdf->SetX(32);
-    $pdf->Cell(12, 5, '6. Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan.', 0, 1, 'L');
-    $pdf->SetX(37);
-    $pdf->Cell(12, 5, 'kembali sebagiamana mestinya.', 0, 1, 'L');
-    $pdf->Ln(10);
+        $no=2;
+        $pdf->Ln(2);
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
+        $pdf->Ln(10);
+
 
 } else {
         
     if ($jumlah_orang > 2) {
-        $pdf->AddPage();
+        $no=2;
+        $pdf->Ln(2);
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
+        $no++;
         $pdf->Ln(10);
-        $pdf->SetX(32);
-        $pdf->Cell(12, 5, '2. Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan.', 0, 1, 'L');
-        $pdf->SetX(32);
-        $pdf->Cell(12, 5, '3. Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut.', 0, 1, 'L');
-        $pdf->SetX(32);
-        $pdf->Cell(12, 5, '4. Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas.', 0, 1, 'L');
-        $pdf->SetX(32);
-        $pdf->Cell(12, 5, '5. Perintah ini dilaksanakan dengan penuh tanggung jawab.', 0, 1, 'L');
-        $pdf->SetX(32);
-        $pdf->Cell(12, 5, '6. Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan.', 0, 1, 'L');
-        $pdf->SetX(37);
-        $pdf->Cell(12, 5, 'kembali sebagiamana mestinya.', 0, 1, 'L');
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
+        $no++;
+        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
+       
         $pdf->Ln(10);
 
     }
 }
+
 
     $pdf->SetX(108);
     $pdf->MultiCell(34.5, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -417,23 +437,23 @@ $pdf->Cell(100, 10, 'Jabatan', 1, 1, 'C');
      // Isi tabel
     
      
-     //while ($row = $result->fetch_assoc()) {
-         //$no = 1;
-         //$pdf->MultiCell(10, 10, $row['id_nama'], 1, 0, 'C');
-         //$no++;
-         //$pdf->MultiCell(70, 10, $row['nama'], 1, 'L', 0, 0);
-         //$pdf->MultiCell(50, 10, $row['NIP'], 1, 'L', 0, 0);
-         //$pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 0);
-         //$pdf->MultiCell(110, 10, $row['jabatan'], 1, 'L', 0, 0);
-
+     while ($row = $result->fetch_assoc()) {
          $no = 1;
-            while ($row = $result->fetch_assoc()) {
-                $pdf->Cell(10, 10, $no, 1, 0, 'C');
-                $no++;
-                $pdf->Cell(75, 10, $row['nama'], 1, 0, 'L');
-                $pdf->Cell(45, 10, $row['NIP'], 1, 0, 'C');
-                $pdf->Cell(55, 10, $row['pangkat'], 1, 0, 'C');
-                $pdf->Cell(100, 10, $row['jabatan'], 1, 1, 'L');
+         $pdf->MultiCell(10, 10, $row['id_nama'], 1, 0, 'C');
+         $no++;
+         $pdf->MultiCell(70, 10, $row['nama'], 1, 'L', 0, 0);
+         $pdf->MultiCell(50, 10, $row['NIP'], 1, 'L', 0, 0);
+         $pdf->MultiCell(50, 10, $row['pangkat'], 1, 'L', 0, 0);
+         $pdf->MultiCell(110, 10, $row['jabatan'], 1, 'L', 0, 0);
+
+         //$no = 1;
+            //while ($row = $result->fetch_assoc()) {
+                //$pdf->Cell(10, 10, $no, 1, 0, 'C');
+                //$no++;
+                //$pdf->Cell(75, 10, $row['nama'], 1, 0, 'L');
+                //$pdf->Cell(45, 10, $row['NIP'], 1, 0, 'C');
+                //$pdf->Cell(55, 10, $row['pangkat'], 1, 0, 'C');
+                //$pdf->Cell(100, 10, $row['jabatan'], 1, 1, 'L');
                 
 
 
