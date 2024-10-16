@@ -187,7 +187,7 @@ if ($result_dasar->num_rows > 0) {
           
                 
     if ($jumlah_orang < 3) {
-$pdf->AddPage();
+    $pdf->AddPage();
     $pdf->SetFont('helvetica', '', 12);
     $pdf->Cell(12, 20, 'Untuk      : 1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(15);
