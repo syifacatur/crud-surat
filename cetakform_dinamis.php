@@ -137,17 +137,7 @@ if ($result_dasar->num_rows > 0) {
    
         while ($row = mysqli_fetch_assoc($result)) {
     
-            //$pdf->Ln(3);
-            //$pdf->SetX(36);
-            //$pdf->Cell(0, 0,  $no. '. '.'Nama' . $row['nama'], 0, 1);
-            //$no++;
-            //$pdf->SetX(43);
-            //$pdf->Cell(0, 0, 'NIP                                :' . $row['NIP'], 0, 1);
-            //$pdf->SetX(43);
-            //$pdf->Cell(0, 0, 'Pangkat/Gol. Ruang      :' . $row['pangkat'], 0, 1);
-            //$pdf->SetX(43);
-            //$pdf->Cell(0, 0, 'Jabatan                          :' . $row['jabatan'], 0, 1);
-           
+            
             $pdf->SetX(36);
             $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(62);
@@ -399,6 +389,11 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->Cell(260, 5, "Kepala Bidang Pengembangan Kompetensi", 0, 1, 'C');
     $pdf->Ln(30);
     $pdf->Cell(260, 5, "Dr.Anon Priyantoro, S.Pd, M.Pd", 0, 1, 'C');
+    $xStart = $pdf->GetX() + 100; // Sesuaikan posisi mulai garis (adjust sesuai kebutuhan)
+    $yStart = $pdf->GetY() -0;   // Posisikan garis sedikit di bawah teks
+    
+    // Menggambar garis dengan panjang yang diinginkan
+    $pdf->Line($xStart, $yStart, $xStart + 60, $yStart); // Garis dengan panjang 60 (sesuaikan)
     $pdf->Cell(260, 5, "Pembina Tingkat I", 0, 1, 'C');
     $pdf->MultiCell(260, 5, 'NIP. ' . $row_isi['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
@@ -453,14 +448,89 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->Ln(10);
 
     $pdf->SetFont('Helvetica', '', 12);
-    
+    $no = 1;
     // Header kolom
-$pdf->Cell(12, 6, 'No', 1, 0, 'C');
-$pdf->Cell(140, 6, 'Nama/NIP/Pangkat/Jabatan', 1, 0, 'C');
-$pdf->Cell(35, 6, 'Keterangan', 1, 0, 'C');
+    //$pdf->Cell(12, 6, 'No', 1, 0, 'C');
+    //$pdf->Cell(140, 6, 'Nama/NIP/Pangkat/Jabatan', 1, 0, 'C');
+    //$pdf->Cell(35, 6, 'Keterangan', 1, 0, 'C');
+   
 
+    $pdf->MultiCell(11, 0, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->SetX(21);
+    $pdf->MultiCell(141, 0,' Nama/NIP/Pangkat/Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->SetX(10);
+    $pdf->MultiCell(35, 0, 'Keterangan', 1, 'L', 0, 0, '162', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(5);
+
+   
+    while ($row = mysqli_fetch_assoc($result)) {
+
+    
+    
+
+//$pdf->SetX(36);
+$pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(21);
+$pdf->MultiCell(141, 0,' Nama', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(60);
+$pdf->MultiCell(5, 0, ': ', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(132, 0, $row['nama']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(21);
+$pdf->MultiCell(141, 0,'  NIP', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(60);
+$pdf->MultiCell(5, 0, ': ', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+//$pdf->SetX(70);
+$pdf->MultiCell(132, 0, $row['NIP']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(21);
+$pdf->MultiCell(141, 0,'  Pangkat/Gol', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(60);
+$pdf->MultiCell(5, 0, ': ', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(132, 0, $row['pangkat']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(21);
+$pdf->MultiCell(141, 0,'  Jabatan', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->SetX(60);
+$pdf->MultiCell(5, 0, ': ', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(132, 0, $row['jabatan']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+    }
            
- 
+    $pdf->Ln(10);
+    $pdf->SetX(108);
+    $pdf->MultiCell(34.5, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->SetX(149);
+    $pdf->MultiCell(97, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(5);
+    //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
+    $pdf->SetX(108);
+    $pdf->MultiCell(32, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(80, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+
+    //$pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
+    $pdf->Ln(3);
+    $pdf->Cell(260, 5, "Kepala Bidang Pengembangan Kompetensi", 0, 1, 'C');
+    $pdf->Ln(30);
+    $pdf->Cell(260, 5, "Dr.Anon Priyantoro, S.Pd, M.Pd", 0, 1, 'C');
+    $xStart = $pdf->GetX() + 100; // Sesuaikan posisi mulai garis (adjust sesuai kebutuhan)
+    $yStart = $pdf->GetY() -0;   // Posisikan garis sedikit di bawah teks
+    
+    // Menggambar garis dengan panjang yang diinginkan
+    $pdf->Line($xStart, $yStart, $xStart + 60, $yStart); // Garis dengan panjang 60 (sesuaikan)
+    $pdf->Cell(260, 5, "Pembina Tingkat I", 0, 1, 'C');
+    $pdf->Cell(260, 5, "Pembina Tingkat I", 0, 1, 'C');
+    $pdf->MultiCell(260, 5, 'NIP. ' . $row_isi['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+    $pdf->Ln(3); // Spasi
      // Isi tabel
     
      
