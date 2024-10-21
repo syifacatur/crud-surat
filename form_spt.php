@@ -302,8 +302,8 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                             <div class="col-sm-8"><select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>"></div>
                                           <option value="">--PILIH--</option>
                                           <option
-                                            value="KEPALA BADAN PENGEMBANGAN 
-SUMBER DAYA MANUSIA DAERAH
+                                            value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
@@ -316,8 +316,8 @@ NIP. 197212061994121001
 IV/D
 
 ">
-KEPALA BADAN PENGEMBANGAN 
-SUMBER DAYA MANUSIA DAERAH
+KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
@@ -583,8 +583,8 @@ IV/B
                           <option value=""></option>
                           <option value="">-pilih NIP-</option>
                           <option
-                            value="KEPALA BADAN PENGEMBANGAN 
-SUMBER DAYA MANUSIA DAERAH
+                            value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
@@ -595,8 +595,8 @@ Dr. Sadimin, S.Pd., M.Eng.
 Pembina Utama Madya
 NIP. 197212061994121001
 IV/D">
-KEPALA BADAN PENGEMBANGAN
-SUMBER DAYA MANUSIA DAERAH
+KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
