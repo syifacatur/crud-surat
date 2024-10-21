@@ -3,6 +3,8 @@ include 'template/header_admin.php';
 include 'koneksidb.php';
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="content-wrapper">
   <section class="content-header">
     <h1>Form_SPT
@@ -128,9 +130,9 @@ include 'koneksidb.php';
                         </div><!-- modal delete -->
 
                         <!-- modal update user -->
-                        <div class="example-modal">
+                        <div class="example-modal modal-lg">
                           <div id="updateproduk<?php echo $no; ?>" class="modal fade" role="dialog" style="display:none;">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -206,7 +208,7 @@ include 'koneksidb.php';
                                             <span class="text-red">*</span></label>
                                           <div class="col-sm-8"><select type="text" class="form-control" name="anggaran"
                                               placeholder="anggaran" value="<?php echo $row['anggaran']; ?>"></div>
-                                          <option value=""></option>
+                                              <option value="">--PILIH--"</option>
                                           <option
                                             value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
                                             Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
@@ -241,9 +243,164 @@ include 'koneksidb.php';
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">NIP Penandatangan
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><input type="text" class="form-control"
-                                              name="NIP_penandatangan" placeholder="NIP_penandatangan"
-                                              value="<?php echo $row['NIP_penandatangan']; ?>"></div>
+                                          <div class="col-sm-8"><select type="text" class="form-control" name="NIP_penandatangan"
+                                              placeholder="NIP_penandatangan" value="<?php echo $row['NIP_penandatangan']; ?>"></div>
+                                              <option value="">--PILIH--"</option>
+                                          <option
+                                            value="KEPALA BADAN PENGEMBANGAN 
+SUMBER DAYA MANUSIA DAERAH
+
+
+
+
+
+
+Dr. SADIMIN, S.Pd., M.Eng.
+Pembina Utama Madya
+NIP. 197212061994121001
+IV/D
+
+">
+KEPALA BADAN PENGEMBANGAN 
+SUMBER DAYA MANUSIA DAERAH
+
+
+
+
+
+
+Dr. SADIMIN, S.Pd., M.Eng.
+Pembina Utama Madya
+NIP. 197212061994121001
+IV/D
+
+ </option>
+                                          <option
+                                            value="Kepala Bidang Sertifikasi Kompetensi 
+Dan Penjaminan Mutu
+
+
+
+
+
+
+Sri Sulistiyati, SE, M.Kom
+Pembina Tingkat I
+NIP. 197001121992032006
+IV/B
+
+">
+Kepala Bidang Sertifikasi Kompetensi 
+Dan Penjaminan Mutu
+
+
+
+
+
+Sri Sulistiyati, SE, M.Kom
+Pembina Tingkat I
+NIP. 197001121992032006
+IV/B
+
+/option>
+                                          <option
+                                            value="Kepala Bidang Pengembangan
+ Kompetensi Teknis
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B
+
+">
+Kepala Bidang Pengembangan 
+Kompetensi Teknis
+
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B
+
+</option>
+                                          <option
+                                            value="Kabid Pengembangan Kompetensi 
+Jabatan Fungsional
+
+
+
+
+
+
+Dr. Anon Priyantoro, S.Pd., M.Pd
+Pembina Tingkat I
+NIP. 197305011998011001
+IV/B
+
+">
+Kabid Pengembangan Kompetensi 
+Jabatan Fungsional
+
+
+
+
+
+
+Dr. Anon Priyantoro, S.Pd., M.Pd
+Pembina Tingkat I
+NIP. 197305011998011001
+IV/B
+
+</option>
+<option
+                                            value="Plt. Kepala Bidang Pengembangan
+Kompetensi Manajerial
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B
+
+
+
+
+">
+Plt. Kepala Bidang Pengembangan
+ Kompetensi Manajerial
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B
+
+
+
+
+</option>
+
+
+
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="modal-footer">
@@ -329,6 +486,14 @@ include 'koneksidb.php';
                       </div>
                       <div class="form-group">
                         <div class="row">
+                          <label class="col-sm-3 control-label text-right">Maksud dan Tujuan<span
+                              class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="maksud_tujuan"
+                              placeholder="" value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
                           <label class="col-sm-3 control-label text-right">Anggaran<span
                               class="text-red">*</span></label>
                           <div class="col-sm-8"><select type="text" class="form-control" name="anggaran" placeholder=""
@@ -356,50 +521,135 @@ include 'koneksidb.php';
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Maksud dan Tujuan<span
+                          <label class="col-sm-3 control-label text-right">NIP Penandatangan<span
                               class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="maksud_tujuan"
-                              placeholder="" value=""></div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">NIP penandatangan<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="NIP_penandatangan"
-                              placeholder="" value=""></div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">Nama<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="nama"
-                              placeholder="" value=""></div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">NIP<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="NIP"
-                              placeholder="" value=""></div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">Pangkat<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="pangkat"
-                              placeholder="" value=""></div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">Jabatan<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><input type="text" class="form-control" name="jabatan"
-                              placeholder="" value=""></div>
+                          <div class="col-sm-8"><select type="text" class="form-control" name="NIP_penandatangan" placeholder=""
+                              value=""></div>
+                          <option value="">-pilih NIP-</option>
+                          <option
+                            value="KEPALA BADAN PENGEMBANGAN 
+SUMBER DAYA MANUSIA DAERAH
+
+
+
+
+
+
+Dr. Sadimin, S.Pd., M.Eng.
+Pembina Utama Madya
+NIP. 197212061994121001
+IV/D">
+KEPALA BADAN PENGEMBANGAN
+SUMBER DAYA MANUSIA DAERAH
+
+
+
+
+
+
+Dr. Sadimin, S.Pd., M.Eng.
+Pembina Utama Madya
+NIP. 197212061994121001
+IV/D </option>
+                          <option
+                            value="Kepala Bidang Sertifikasi Kompetensi
+Dan Penjaminan Mutu
+
+
+
+
+
+
+Sri Sulistiyati, SE, M.Kom
+Pembina Tingkat I
+NIP. 197001121992032006
+IV/B">
+Kepala Bidang Sertifikasi Kompetensi 
+Dan Penjaminan Mutu
+
+
+
+
+
+Sri Sulistiyati, SE, M.Kom
+Pembina Tingkat I
+NIP. 197001121992032006
+IV/B</option>
+                          <option
+                            value="Kepala Bidang Pengembangan
+Kompetensi Teknis
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B">
+Kepala Bidang Pengembangan 
+Kompetensi Teknis
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B</option>
+                          <option
+                            value="Kabid Pengembangan Kompetensi 
+Jabatan Fungsional
+
+
+
+
+
+
+Dr. Anon Priyantoro, S.Pd., M.Pd.
+Pembina Tingkat I
+NIP. 197305011998011001
+IV/B">
+Kabid Pengembangan Kompetensi 
+Jabatan Fungsional
+
+
+
+
+
+Dr. Anon Priyantoro, S.Pd., M.Pd.
+Pembina Tingkat I
+NIP. 197305011998011001
+IV/B</option>
+<option
+                            value="Plt. Kepala Bidang Pengembangan
+Kompetensi Manajerial
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B">
+Plt. Kepala Bidang Pengembangan 
+Kompetensi Manajerial
+
+
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B</option>
+
+                          </select>
                         </div>
                       </div>
                       <div class="modal-footer">
