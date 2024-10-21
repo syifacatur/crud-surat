@@ -80,17 +80,25 @@ if ($result_dasar->num_rows > 0) {
 
    
     $no = 1;
-    $pdf->Cell(30, 0, 'Dasar   :  ', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(0);
-    
-    while ($row = $result_dasar->fetch_assoc()) {
-        // Menentukan lebar kolom angka urut yang lebih besar, misalnya 15mm
-        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Angka urut dengan Cell
-        $pdf->MultiCell(0, 5, $row['kode_produk']."\n", 0, 'J', 0, 1);  // Isi teks menggunakan MultiCell
-        $no++;
-        $pdf->Ln(0);  // Spasi antar baris
-    }
+
+// Gabungkan "Dasar :" dan nomor pertama pada baris yang sama
+$pdf->Cell(30, 0, 'Dasar : ', 0, 0, 'L'); // Cell untuk "Dasar :"
+if ($row = $result_dasar->fetch_assoc()) {
+    // Tampilkan nomor pertama setelah "Dasar :"
+    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+    $pdf->MultiCell(0, 5, $row['kode_produk']."\n", 0, 'j', 0, 1);  // Teks
+    $no++; // Increment nomor
+    $pdf->Ln(0); // Spasi antar baris untuk keterbacaan
+}
+
+// Lanjutkan menampilkan baris berikutnya untuk nomor urut 2 dan seterusnya
+while ($row = $result_dasar->fetch_assoc()) {
+    $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
+    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+    $pdf->MultiCell(0, 5, $row['kode_produk']."\n", 0, 'j', 0, 1);  // Teks
+    $no++; // Increment nomor
+    $pdf->Ln(0); // Spasi antar baris untuk keterbacaan
+}
     
     
     // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
@@ -98,16 +106,16 @@ if ($result_dasar->num_rows > 0) {
     $no = 6;
     
     // MultiCell untuk teks utama dengan Cell terpisah untuk nomor urut
-    $pdf->MultiCell(25, 7, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Cell(10, 5, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
-    $pdf->MultiCell(0, 10, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran']."\n", 0, 'J', 0, 1);
+    $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
+    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+    $pdf->MultiCell(0, 5, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran']."\n", 0, 'J', 0, 1);
     $pdf->Ln(0);
     $no++;  // Increment nomor urut
     
     // MultiCell berikutnya untuk dasar undangan
-    $pdf->MultiCell(25, 7, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Cell(10, 5, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
-    $pdf->MultiCell(0, 10, $row_isi['dasar_undangan']. "\n", 0, 'J', 0, 1); // Kolom untuk isi teks
+    $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
+    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+    $pdf->MultiCell(0, 5, $row_isi['dasar_undangan']. "\n", 0, 'J', 0, 1); // Kolom untuk isi teks
     $no++;
     
     $pdf->Ln(2);
@@ -421,13 +429,13 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     
 
     $pdf->SetFont('Helvetica', '', 10);
-    $pdf->SetX(100);
+    $pdf->SetX(108);
     $pdf->Cell(0, 5, "Lampiran I", 0, 1, 'L'); 
-    $pdf->SetX(100);
+    $pdf->SetX(108);
     $pdf->Cell(0, 5, "Surat Tugas Kepala Badan Pengembangan", 0, 1, 'L');
-    $pdf->SetX(100);
+    $pdf->SetX(108);
     $pdf->Cell(0, 5, "Sumber Daya Manusia Daerah", 0, 1, 'L');
-    $pdf->SetX(100);
+    $pdf->SetX(108);
     $pdf->Cell(0, 5, "Provinsi Jawa Tengah", 0, 1, 'L');
     
     
@@ -435,13 +443,13 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->Ln(0);
     
     
-    $pdf->SetX(100); 
+    $pdf->SetX(108); 
     $pdf->Cell(20, 5, 'Tanggal', 0, 0, 'L'); 
     $pdf->Cell(3, 5, ':', 0, 0, 'C');      
     $pdf->Cell(80, 5, tgl_indo($row_isi['tgl_spt']), 0, 1, 'L'); 
     $pdf->Ln(0);
   
-    $pdf->SetX(100); 
+    $pdf->SetX(108); 
     $pdf->Cell(20, 5, 'Nomor', 0, 0, 'L'); 
     $pdf->Cell(3, 5, ':', 0, 0, 'C');      
     $pdf->Cell(80, 5, $row_isi['no_spt'], 0, 1, 'L'); 
@@ -455,12 +463,13 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     //$pdf->Cell(35, 6, 'Keterangan', 1, 0, 'C');
    
 
+   
     $pdf->MultiCell(11, 0, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(21);
-    $pdf->MultiCell(141, 0,' Nama/NIP/Pangkat/Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+    $pdf->MultiCell(151, 0,' Nama/NIP/Pangkat/Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(10);
-    $pdf->MultiCell(35, 0, 'Keterangan', 1, 'L', 0, 0, '162', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(5);
+    $pdf->MultiCell(25, 0, 'Keterangan', 1, 'L', 0, 0, '172', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln();
 
    
     while ($row = mysqli_fetch_assoc($result)) {
@@ -469,38 +478,41 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     
 
 //$pdf->SetX(36);
-$pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(21);
-$pdf->MultiCell(141, 0,' Nama', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(60);
-$pdf->MultiCell(5, 0, ': ', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(132, 0, $row['nama']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
-$pdf->Ln(5);
+// No
+$pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true);
 
-$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(21);
-$pdf->MultiCell(141, 0,'  NIP', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(60);
-$pdf->MultiCell(5, 0, ': ', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-//$pdf->SetX(70);
-$pdf->MultiCell(132, 0, $row['NIP']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
-$pdf->Ln(5);
+// Nama
+$pdf->MultiCell(50, 0, 'Nama', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 
-$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(21);
-$pdf->MultiCell(141, 0,'  Pangkat/Gol', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(60);
-$pdf->MultiCell(5, 0, ': ', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(132, 0, $row['pangkat']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
-$pdf->Ln(5);
+$pdf->Ln();
 
-$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(21);
-$pdf->MultiCell(141, 0,'  Jabatan', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->SetX(60);
-$pdf->MultiCell(5, 0, ': ', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(132, 0, $row['jabatan']."\n", 1, 'L', 0, 0, '65', '', true, 0, false, true, 40, 'T');
-$pdf->Ln(5);
+// NIP
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(50, 0, 'NIP', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+
+$pdf->Ln();
+
+// Pangkat/Gol
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(50, 0, 'Pangkat/Gol', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+$pdf->Ln();
+
+// Jabatan
+$pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(50, 0, 'Jabatan', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+$pdf->Ln();
     }
            
     $pdf->Ln(10);
