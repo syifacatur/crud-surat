@@ -390,15 +390,29 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->MultiCell(32, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(80, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(5);
 
-    //$pdf->MultiCell(260, 5, 'Pada Tanggal :'.$row['tgl_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
     
-    //$pdf->SetX(108);
-    $pdf->Ln(10); 
-    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN ", 0, 1, 'C');
-    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI ", 0, 1, 'C');
-    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');    // Spasi
-    $pdf->MultiCell(260, 5, '' . $row_isi['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+  // Example variable, this should be dynamically assigned in your script
+$selectedName = $row_isi['NIP_penandatangan']; // or use appropriate method to get the selected name
+
+// Check if the selected name is Dr. Sadimin
+if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
+    // Without "plh"
+    $pdf->Cell(260, 5, "", 0, 1, 'C');
+ 
+   
+} else {
+    $pdf->Ln(5); 
+    // With "plh"
+    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+}
+
+// This part will be the same for both cases
+$pdf->MultiCell(260, 5, $selectedName, 0, 'C', 0, 1); // Display selected name
+$pdf->Ln(3); // Add space
     //$xStart = $pdf->GetX() + 100; // Sesuaikan posisi mulai garis (adjust sesuai kebutuhan)
     //$yStart = $pdf->GetY() -37;   // Posisikan garis sedikit di bawah teks
     
@@ -528,15 +542,30 @@ $pdf->Ln();
     $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(80, 40, tgl_indo($row_isi['tgl_spt']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
 
-    $pdf->Ln(10); 
+    $pdf->Ln(5); 
 
     
-    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN ", 0, 1, 'C');
-    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI ", 0, 1, 'C');
-    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');    // Spasi
-    $pdf->MultiCell(260, 5, '' . $row_isi['NIP_penandatangan'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
-    $pdf->Ln(3); // Spasi
-     
+  // Example variable, this should be dynamically assigned in your script
+$selectedName = $row_isi['NIP_penandatangan']; // or use appropriate method to get the selected name
+
+// Check if the selected name is Dr. Sadimin
+if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
+    // Without "plh"
+    $pdf->Cell(260, 5, "", 0, 1, 'C');
+ 
+   
+} else {
+    $pdf->Ln(5); 
+    // With "plh"
+    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+}
+
+// This part will be the same for both cases
+$pdf->MultiCell(260, 5, $selectedName, 0, 'C', 0, 1); // Display selected name
+$pdf->Ln(3); // Add space
+
                 
 
 
