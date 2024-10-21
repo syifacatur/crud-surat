@@ -2,8 +2,64 @@
 include 'template/header_admin.php';
 include 'koneksidb.php';
 ?>
+<head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Sertakan jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Sertakan Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- Sertakan Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+<style>
+    .select2-container {
+        width: 100% !important; /* Mengatur lebar menjadi 100% dari elemen induknya */
+    }
+</style>
+
+
+<script>
+
+  $(document).ready(function() {
+
+    // Terapkan Select2 pada elemen dengan id ' '
+    
+    $('#NIP_penandatangan').select2({
+
+      placeholder: "--PILIH--", // Placeholder untuk dropdown
+      allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+            
+    });
+    $('#anggaran').select2({
+
+placeholder: "--PILIH--", // Placeholder untuk dropdown
+allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      
+});
+$('#NIP2').select2({
+
+placeholder: "--PILIH--", // Placeholder untuk dropdown
+allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      
+});
+$('#anggaran2').select2({
+
+placeholder: "--PILIH--", // Placeholder untuk dropdown
+allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      
+});
+  });
+
+    </script>
+</head>
+
+
 
 <div class="content-wrapper">
   <section class="content-header">
@@ -206,9 +262,8 @@ include 'koneksidb.php';
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">Anggaran
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><select type="text" class="form-control" name="anggaran"
-                                              placeholder="anggaran" value="<?php echo $row['anggaran']; ?>"></div>
-                                              <option value="">--PILIH--"</option>
+                                            <div class="col-sm-8"><select id="anggaran" class="form-control select2" name="anggaran" placeholder="Search.."value="<?php echo $row['anggaran']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                           <option
                                             value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
                                             Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
@@ -239,13 +294,13 @@ include 'koneksidb.php';
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="form-group">
+                                    
+                                  <div class="form-group">
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">NIP Penandatangan
                                             <span class="text-red">*</span></label>
-                                          <div class="col-sm-8"><select type="text" class="form-control" name="NIP_penandatangan"
-                                              placeholder="NIP_penandatangan" value="<?php echo $row['NIP_penandatangan']; ?>"></div>
-                                              <option value="">--PILIH--"</option>
+                                            <div class="col-sm-8"><select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>"></div>
+                                          <option value="">--PILIH--</option>
                                           <option
                                             value="KEPALA BADAN PENGEMBANGAN 
 SUMBER DAYA MANUSIA DAERAH
@@ -496,7 +551,7 @@ IV/B
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Anggaran<span
                               class="text-red">*</span></label>
-                          <div class="col-sm-8"><select type="text" class="form-control" name="anggaran" placeholder=""
+                          <div class="col-sm-8"><select id="anggaran2" class="form-control select2" name="anggaran" placeholder=""
                               value=""></div>
                           <option value="">-pilih anggaran-</option>
                           <option
@@ -523,8 +578,9 @@ IV/B
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">NIP Penandatangan<span
                               class="text-red">*</span></label>
-                          <div class="col-sm-8"><select type="text" class="form-control" name="NIP_penandatangan" placeholder=""
+                          <div class="col-sm-8"><select id="NIP2" class="form-control select2" name="NIP_penandatangan" placeholder=""
                               value=""></div>
+                          <option value=""></option>
                           <option value="">-pilih NIP-</option>
                           <option
                             value="KEPALA BADAN PENGEMBANGAN 
