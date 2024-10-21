@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2024 at 10:11 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 21 Okt 2024 pada 08.44
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cetak_spt`
+-- Struktur dari tabel `cetak_spt`
 --
 
 CREATE TABLE `cetak_spt` (
@@ -43,7 +43,7 @@ CREATE TABLE `cetak_spt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cetak_spt`
+-- Dumping data untuk tabel `cetak_spt`
 --
 
 INSERT INTO `cetak_spt` (`id_cetak`, `cetak_undangan`, `cetak_lokasi`, `tgl_berangkat`, `tgl_pulang`, `tgl_spt`, `anggaran`, `nip_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `cetak_spt` (`id_cetak`, `cetak_undangan`, `cetak_lokasi`, `tgl_bera
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cetak_surat`
+-- Struktur dari tabel `cetak_surat`
 --
 
 CREATE TABLE `cetak_surat` (
@@ -61,7 +61,7 @@ CREATE TABLE `cetak_surat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cetak_surat`
+-- Dumping data untuk tabel `cetak_surat`
 --
 
 INSERT INTO `cetak_surat` (`id_surat`, `deskripsi`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `cetak_surat` (`id_surat`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `daftar_nama`
+-- Struktur dari tabel `daftar_nama`
 --
 
 CREATE TABLE `daftar_nama` (
@@ -84,24 +84,22 @@ CREATE TABLE `daftar_nama` (
   `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `NIP` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `pangkat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `opsi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `daftar_nama`
+-- Dumping data untuk tabel `daftar_nama`
 --
 
-INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
-(20, 'ADJI SURYA PRATAMA, SH', '198201102014061003', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan', ''),
-(22, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Pranata Komputer Ahli Pertama', ''),
-(23, 'BAGAS ARUNA YUDHATAMA, S.Kom', '-', '-', 'Tenaga Administrasi dan IT', ''),
-(24, 'ABDUR ROHMAN', '-', '-', 'Tenaga Penanganan Prasarana dan Sarana Umum', '');
+INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
+(1, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan'),
+(45, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Tenaga Administrasi dan IT'),
+(57, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Pengelola Layanan Kehumasan');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `form_spt`
+-- Struktur dari tabel `form_spt`
 --
 
 CREATE TABLE `form_spt` (
@@ -123,17 +121,17 @@ CREATE TABLE `form_spt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `form_spt`
+-- Dumping data untuk tabel `form_spt`
 --
 
 INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', '197305011998011001', '', '', '', '', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '197305011998011001', '', '', '', '', '');
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA \r\nMANUSIA DAERAH PROVINSI JAWA TENGAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng.\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\nIV/D\r\n\r\n', '', '', '', '', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', 'KEPALA BADAN PENGEMBANGAN \r\nSUMBER DAYA MANUSIA DAERAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng.\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\nIV/D\r\n\r\n', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_produk`
+-- Struktur dari tabel `tb_produk`
 --
 
 CREATE TABLE `tb_produk` (
@@ -143,11 +141,11 @@ CREATE TABLE `tb_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `tb_produk`
+-- Dumping data untuk tabel `tb_produk`
 --
 
 INSERT INTO `tb_produk` (`id_produk`, `kode_produk`, `nama_produk`) VALUES
-(18, 'Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis Pengelolaan Keuangan Daerah (Berita Negara Republik Indonesia Tahun 2020 Nomor 1781);', ''),
+(18, 'Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis Pengelolaan Keuangan Daerah (Berita Negara Republik Indonesia Tahun 2020 Nomor 1781); Peraturan Menteri Dalam Negeri Nomor 77 Tahun 2020 tentang Pedoman Teknis Pengelolaan Keuangan ', ''),
 (19, 'Peraturan Menteri Dalam Negeri Nomor 15 Tahun 2023 tentang Pedoman Penyusunan Anggaran Pendapatan dan Belanja Daerah Tahun Anggaran 2024(Berita Negara Republik Indonesia Tahun 2023 Nomor 799);', ''),
 (21, 'Peraturan Daerah Provinsi Jawa Tengah Nomor 14 Tahun 2023 tentang Anggaran Pendapatan dan Belanja Daerah Tahun 2024,(Lembaran Daerah Provinsi Jawa Tengah Tahun 2023 Nomor 14);', ''),
 (22, 'Peraturan Gubernur Jawa Tengah Nomor 62 Tahun 2023 tentang Penjabaran Anggaran Pendapatan dan Belanja Daerah Tahun 2024 (Berita Daerah Provinsi Jawa Tengah Nomor 62);', ''),
@@ -156,7 +154,7 @@ INSERT INTO `tb_produk` (`id_produk`, `kode_produk`, `nama_produk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -168,7 +166,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama`, `user_role`) VALUES
@@ -180,77 +178,77 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama`, `user_role`) V
 --
 
 --
--- Indexes for table `cetak_spt`
+-- Indeks untuk tabel `cetak_spt`
 --
 ALTER TABLE `cetak_spt`
   ADD PRIMARY KEY (`id_cetak`);
 
 --
--- Indexes for table `cetak_surat`
+-- Indeks untuk tabel `cetak_surat`
 --
 ALTER TABLE `cetak_surat`
   ADD PRIMARY KEY (`id_surat`);
 
 --
--- Indexes for table `daftar_nama`
+-- Indeks untuk tabel `daftar_nama`
 --
 ALTER TABLE `daftar_nama`
   ADD PRIMARY KEY (`id_nama`);
 
 --
--- Indexes for table `form_spt`
+-- Indeks untuk tabel `form_spt`
 --
 ALTER TABLE `form_spt`
   ADD PRIMARY KEY (`id_spt`);
 
 --
--- Indexes for table `tb_produk`
+-- Indeks untuk tabel `tb_produk`
 --
 ALTER TABLE `tb_produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `cetak_spt`
+-- AUTO_INCREMENT untuk tabel `cetak_spt`
 --
 ALTER TABLE `cetak_spt`
   MODIFY `id_cetak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cetak_surat`
+-- AUTO_INCREMENT untuk tabel `cetak_surat`
 --
 ALTER TABLE `cetak_surat`
   MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `daftar_nama`
+-- AUTO_INCREMENT untuk tabel `daftar_nama`
 --
 ALTER TABLE `daftar_nama`
-  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT for table `form_spt`
+-- AUTO_INCREMENT untuk tabel `form_spt`
 --
 ALTER TABLE `form_spt`
   MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `tb_produk`
+-- AUTO_INCREMENT untuk tabel `tb_produk`
 --
 ALTER TABLE `tb_produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
