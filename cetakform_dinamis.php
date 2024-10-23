@@ -101,7 +101,6 @@ while ($row = $result_dasar->fetch_assoc()) {
 }
     
     
-    // $pdf->MultiCell(0, 10, $row['kode_produk'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
 
     $no = 6;
     
@@ -127,7 +126,6 @@ while ($row = $result_dasar->fetch_assoc()) {
     $pdf->Ln(0);
     $pdf->Cell(190, 9, "MEMERINTAHKAN:", 0, 1, 'C');
     $pdf->Ln(0);
-//$pdf->Cell(12, 9, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
     $query = "SELECT * FROM daftar_nama ";
     $result = $conn->query($query);
 
@@ -205,7 +203,6 @@ $pdf->AddPage();
     $pdf->MultiCell(55, 10, ' a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 10, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(85, 10, $row_isi['maksud_tujuan'] ."\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    // $pdf->MultiCell(120, 10, 'a. Maksud dan Tujuan      :' . $row['maksud_tujuan'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
     $pdf->Ln(3);
     //$pdf->SetFont('helvetica', '', 8);
@@ -225,7 +222,6 @@ $pdf->AddPage();
     $pdf->MultiCell(55, 0, ' b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(75, 0, $row_isi['lokasi'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    // $pdf->MultiCell(120, 10, 'a. Tempat yang dituju      :' . $row['lokasi'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
     function tgl_indo($tanggal)
     {
@@ -254,7 +250,7 @@ $pdf->AddPage();
 
     function angka_ke_kata($angka) {
         $angka = abs($angka);
-        $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+        $huruf = array ("", " satu ", " dua ", " tiga ", " empat ", " lima ", " enam ", " tujuh ", " delapan ", " sembilan ", " sepuluh ", " sebelas ");
         
         if ($angka < 12) {
             return $huruf[$angka];
@@ -292,23 +288,22 @@ $pdf->AddPage();
     }
 
     // Ubah angka ke kata
-$kata_hari = angka_ke_kata($jumlah_hari);
+$kata_hari = angka_ke_kata ($jumlah_hari);
 
 // Format  hari"
-$teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
-//$pdf->AddPage();
+$teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
+
     // Tampilkan tanggal dan hasil perhitungan selisih hari di PDF
     $pdf->Ln(8);
     $pdf->SetX(38);
     $pdf->MultiCell(55, 20, ' c. Untuk Selama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(10, 20, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(0, 0, '' .  $teks_hari . 'hari', 0, 1);
+    $pdf->MultiCell(0, 0, ''  .  $teks_hari . 'hari', 0, 1);
     $pdf->Ln(1);
     $pdf->SetX(42.5);
     $pdf->MultiCell(50.5, 0, ' Berangkat tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->MultiCell(85, 0, tgl_indo($row_isi['tgl_kegiatan']), 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(3); // Spasi
 
 
@@ -317,10 +312,9 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->MultiCell(50.5, 40, ' Pulang Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(85, 40, tgl_indo($row_isi['tgl_pulang']), 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    // $pdf->MultiCell(120, 10, 'a. berangkat tanggal      :' . $row['tgl_berangkat'], 0, 'L', 0, 1); // Justify untuk rata kiri-kanan ('J')
     $pdf->Ln(4); // Spasi
 
-    //$jumlah_orang = mysqli_num_rows($result);
+    
     if ($jumlah_orang < 3) {
 
         $no=2;
@@ -330,19 +324,19 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
         $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
         $pdf->Ln(10);
 
@@ -357,20 +351,20 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
         $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->Ln(20);
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
         $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
        
         $pdf->Ln(10);
@@ -385,7 +379,7 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->SetX(149);
     $pdf->MultiCell(97, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(5);
-    //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
+
     $pdf->SetX(108);
     $pdf->MultiCell(32, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -393,32 +387,110 @@ $teks_hari = $jumlah_hari . '(' . $kata_hari . ') ';
     $pdf->Ln(5);
 
     
-  // Example variable, this should be dynamically assigned in your script
-$selectedName = $row_isi['NIP_penandatangan']; // or use appropriate method to get the selected name
+ 
+$selectedName = $row_isi['NIP_penandatangan']; 
 
-// Check if the selected name is Dr. Sadimin
 if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
     // Without "plh"
     $pdf->Cell(260, 5, "", 0, 1, 'C');
- 
+    // Get current X and Y position for the line
+
+
+$x = $pdf->GetX();
+
+
+$y = $pdf->GetY();
+
+
+
+$line_length = 100; // Panjang garis dalam satuan TCPDF
+
+// Menggambar garis di bawah nama
+$pdf->Line($x + 104, $y + 48, $x + 56 + $line_length, $y + 48); // Garis sepanjang 100 unit
+
+   
+
    
 } else {
+    if (strpos($selectedName, 'Sri Sulistiyati, SE, M.Kom') !== false) {
+        // Without "plh"
+        $pdf->Cell(260, 5, "", 0, 1, 'C');
+        // Get current X and Y position for the line
+    
+    
+    $x = $pdf->GetX();
+    
+    
+    $y = $pdf->GetY();
+    
+    
+    
+    $line_length = 100; // Panjang garis dalam satuan TCPDF
+    
+    // Menggambar garis di bawah nama
+    $pdf->Line($x + 106, $y + 68, $x + 54 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
+    $pdf->Ln(5); 
+    // With "plh"
+    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+    }
+
+    if (strpos($selectedName, 'Sumarhendro, S.Sos') !== false) {
+        // Without "plh"
+        $pdf->Cell(260, 5, "", 0, 1, 'C');
+        // Get current X and Y position for the line
+    
+    
+    $x = $pdf->GetX();
+    
+    
+    $y = $pdf->GetY();
+    
+    
+    
+    $line_length = 100; // Panjang garis dalam satuan TCPDF
+    
+    // Menggambar garis di bawah nama
+    $pdf->Line($x + 110, $y + 68, $x + 50 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
     $pdf->Ln(5); 
     // With "plh"
     $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
     $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
     $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
 }
+if (strpos($selectedName, 'Dr. Anon Priyantoro, S.Pd., M.Pd') !== false) {
+    // Without "plh"
+    $pdf->Cell(260, 5, "", 0, 1, 'C');
+    // Get current X and Y position for the line
+
+
+$x = $pdf->GetX();
+
+
+$y = $pdf->GetY();
+
+
+
+$line_length = 100; // Panjang garis dalam satuan TCPDF
+
+// Menggambar garis di bawah nama
+$pdf->Line($x + 99, $y + 68, $x + 61 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
+$pdf->Ln(5); 
+// With "plh"
+$pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+$pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+$pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+}
+}
 
 // This part will be the same for both cases
 $pdf->MultiCell(260, 5, $selectedName, 0, 'C', 0, 1); // Display selected name
 $pdf->Ln(3); // Add space
-    //$xStart = $pdf->GetX() + 100; // Sesuaikan posisi mulai garis (adjust sesuai kebutuhan)
-    //$yStart = $pdf->GetY() -37;   // Posisikan garis sedikit di bawah teks
-    
-    // Menggambar garis dengan panjang yang diinginkan
-    //$pdf->Line($xStart, $yStart, $xStart + 60, $yStart); // Garis dengan panjang 60 (sesuaikan)
-    $pdf->Ln(10); // Spasi
+
     //$pdf->SetY(-30); // Set posisi Y ke 30 mm dari bawah
 //pdf->SetFont('helvetica', '', 8);
 //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
@@ -471,10 +543,6 @@ $pdf->Ln(3); // Add space
 
     $pdf->SetFont('Helvetica', '', 12);
     $no = 1;
-    // Header kolom
-    //$pdf->Cell(12, 6, 'No', 1, 0, 'C');
-    //$pdf->Cell(140, 6, 'Nama/NIP/Pangkat/Jabatan', 1, 0, 'C');
-    //$pdf->Cell(35, 6, 'Keterangan', 1, 0, 'C');
    
 
    
@@ -489,10 +557,6 @@ $pdf->Ln(3); // Add space
     while ($row = mysqli_fetch_assoc($result)) {
 
     
-    
-
-//$pdf->SetX(36);
-// No
 $pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true);
 
 // Nama
@@ -536,7 +600,7 @@ $pdf->Ln();
     $pdf->SetX(149);
     $pdf->MultiCell(97, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(5);
-    //$pdf->Cell(260,5,"Ditetapkan di : Semarang",0,1,'C');
+    
     $pdf->SetX(108);
     $pdf->MultiCell(32, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(9.5, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -545,26 +609,120 @@ $pdf->Ln();
     $pdf->Ln(5); 
 
     
-  // Example variable, this should be dynamically assigned in your script
-$selectedName = $row_isi['NIP_penandatangan']; // or use appropriate method to get the selected name
+  
+$selectedName = $row_isi['NIP_penandatangan']; 
 
-// Check if the selected name is Dr. Sadimin
+
 if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
     // Without "plh"
     $pdf->Cell(260, 5, "", 0, 1, 'C');
- 
+    // Get current X and Y position for the line
+
+
+$x = $pdf->GetX();
+
+
+$y = $pdf->GetY();
+
+
+
+$line_length = 100; // Panjang garis dalam satuan TCPDF
+
+// Menggambar garis di bawah nama
+$pdf->Line($x + 104, $y + 48, $x + 56 + $line_length, $y + 48); // Garis sepanjang 100 unit
+
+   
+
    
 } else {
+    if (strpos($selectedName, 'Sri Sulistiyati, SE, M.Kom') !== false) {
+        // Without "plh"
+        $pdf->Cell(260, 5, "", 0, 1, 'C');
+        // Get current X and Y position for the line
+    
+    
+    $x = $pdf->GetX();
+    
+    
+    $y = $pdf->GetY();
+    
+    
+    
+    $line_length = 100; // Panjang garis dalam satuan TCPDF
+    
+    // Menggambar garis di bawah nama
+    $pdf->Line($x + 106, $y + 68, $x + 54 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
+    $pdf->Ln(5); 
+    // With "plh"
+    $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+    $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+    $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+    }
+
+    if (strpos($selectedName, 'Sumarhendro, S.Sos') !== false) {
+        // Without "plh"
+        $pdf->Cell(260, 5, "", 0, 1, 'C');
+        // Get current X and Y position for the line
+    
+    
+    $x = $pdf->GetX();
+    
+    
+    $y = $pdf->GetY();
+    
+    
+    
+    $line_length = 100; // Panjang garis dalam satuan TCPDF
+    
+    // Menggambar garis di bawah nama
+    $pdf->Line($x + 110, $y + 68, $x + 50 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
     $pdf->Ln(5); 
     // With "plh"
     $pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
     $pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
     $pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
 }
+if (strpos($selectedName, 'Dr. Anon Priyantoro, S.Pd., M.Pd') !== false) {
+    // Without "plh"
+    $pdf->Cell(260, 5, "", 0, 1, 'C');
+    // Get current X and Y position for the line
+
+
+$x = $pdf->GetX();
+
+
+$y = $pdf->GetY();
+
+
+
+$line_length = 100; // Panjang garis dalam satuan TCPDF
+
+// Menggambar garis di bawah nama
+$pdf->Line($x + 99, $y + 68, $x + 61 + $line_length, $y + 68); // Garis sepanjang 100 unit
+
+$pdf->Ln(5); 
+// With "plh"
+$pdf->Cell(260, 5, "plh. KEPALA BADAN PENGEMBANGAN", 0, 1, 'C');
+$pdf->Cell(260, 5, "SUMBER DAYA MANUSIA DAERAH PROVINSI", 0, 1, 'C');
+$pdf->Cell(260, 5, "JAWA TENGAH", 0, 1, 'C');
+}
+}
 
 // This part will be the same for both cases
 $pdf->MultiCell(260, 5, $selectedName, 0, 'C', 0, 1); // Display selected name
 $pdf->Ln(3); // Add space
+
+
+
+
+//$xStart = $pdf->GetX() + 104; // Sesuaikan posisi mulai garis (adjust sesuai kebutuhan)
+    //$yStart = $pdf->GetY() -24;   // Posisikan garis sedikit di bawah teks
+    
+    // Menggambar garis dengan panjang yang diinginkan
+    //$pdf->Line($xStart, $yStart, $xStart + 54, $yStart); // Garis dengan panjang 60 (sesuaikan)
+    //$pdf->Ln(10); // Spasi
 
                 
 
