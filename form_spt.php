@@ -156,6 +156,9 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                         <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPT</button></a>
+                        <a target="_blank" href="cetak_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
+                            SPPD</button></a>
 
 
 
