@@ -313,7 +313,7 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 Dr. SADIMIN, S.Pd., M.Eng
 Pembina Utama Madya
 NIP. 197212061994121001
-IV/D
+
 
 ">
 KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
@@ -327,7 +327,7 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 Dr. SADIMIN, S.Pd., M.Eng
 Pembina Utama Madya
 NIP. 197212061994121001
-IV/D
+
 
  </option>
                                           <option
@@ -342,7 +342,7 @@ Dan Penjaminan Mutu
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
 NIP. 197001121992032006
-IV/B
+
 
 ">
 Kepala Bidang Sertifikasi Kompetensi 
@@ -355,7 +355,7 @@ Dan Penjaminan Mutu
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
 NIP. 197001121992032006
-IV/B
+
 
 /option>
                                           <option
@@ -370,7 +370,7 @@ IV/B
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B
+
 
 ">
 Kepala Bidang Pengembangan 
@@ -385,7 +385,7 @@ Kompetensi Teknis
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B
+
 
 </option>
                                           <option
@@ -400,7 +400,7 @@ Jabatan Fungsional
 Dr. Anon Priyantoro, S.Pd., M.Pd
 Pembina Tingkat I
 NIP. 197305011998011001
-IV/B
+
 
 ">
 Kabid Pengembangan Kompetensi 
@@ -414,7 +414,7 @@ Jabatan Fungsional
 Dr. Anon Priyantoro, S.Pd., M.Pd
 Pembina Tingkat I
 NIP. 197305011998011001
-IV/B
+
 
 </option>
 <option
@@ -429,7 +429,6 @@ Kompetensi Manajerial
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B
 
 
 
@@ -591,10 +590,10 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
-Dr. Sadimin, S.Pd., M.Eng
+Dr. Sadimin, S.Pd, M.Eng
 Pembina Utama Madya
 NIP. 197212061994121001
-IV/D">
+">
 KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
 MANUSIA DAERAH PROVINSI JAWA TENGAH
 
@@ -606,7 +605,7 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 Dr. Sadimin, S.Pd., M.Eng
 Pembina Utama Madya
 NIP. 197212061994121001
-IV/D </option>
+</option>
                           <option
                             value="Kepala Bidang Sertifikasi Kompetensi
 Dan Penjaminan Mutu
@@ -619,7 +618,7 @@ Dan Penjaminan Mutu
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
 NIP. 197001121992032006
-IV/B">
+">
 Kepala Bidang Sertifikasi Kompetensi 
 Dan Penjaminan Mutu
 
@@ -630,7 +629,7 @@ Dan Penjaminan Mutu
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
 NIP. 197001121992032006
-IV/B</option>
+</option>
                           <option
                             value="Kepala Bidang Pengembangan
 Kompetensi Teknis
@@ -643,7 +642,7 @@ Kompetensi Teknis
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B">
+">
 Kepala Bidang Pengembangan 
 Kompetensi Teknis
 
@@ -654,7 +653,7 @@ Kompetensi Teknis
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B</option>
+</option>
                           <option
                             value="Kabid Pengembangan Kompetensi 
 Jabatan Fungsional
@@ -667,7 +666,7 @@ Jabatan Fungsional
 Dr. Anon Priyantoro, S.Pd., M.Pd.
 Pembina Tingkat I
 NIP. 197305011998011001
-IV/B">
+">
 Kabid Pengembangan Kompetensi 
 Jabatan Fungsional
 
@@ -678,7 +677,7 @@ Jabatan Fungsional
 Dr. Anon Priyantoro, S.Pd., M.Pd.
 Pembina Tingkat I
 NIP. 197305011998011001
-IV/B</option>
+</option>
 <option
                             value="Plt. Kepala Bidang Pengembangan
 Kompetensi Manajerial
@@ -691,7 +690,7 @@ Kompetensi Manajerial
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B">
+">
 Plt. Kepala Bidang Pengembangan 
 Kompetensi Manajerial
 
@@ -703,7 +702,7 @@ Kompetensi Manajerial
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-IV/B</option>
+</option>
 
                           </select>
                         </div>
