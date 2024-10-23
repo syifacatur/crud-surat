@@ -134,7 +134,7 @@ while ($row = $result_dasar->fetch_assoc()) {
     $jumlah_orang = mysqli_num_rows($result);
     
     //Jika jumlah orang kurang dari 5, tampilkan teks
-    if ($jumlah_orang < 3) {
+    if ($jumlah_orang < 5) {
     //$pdf->Cell(12, 9, 'Kepada   :', 0, 1, 'L');
     //$no = 1;
     $pdf->Ln(7);
@@ -177,20 +177,20 @@ while ($row = $result_dasar->fetch_assoc()) {
         }
     } else {
         
-        if ($jumlah_orang > 2) {
+        if ($jumlah_orang > 4) {
             $pdf->Cell(12, 0, 'Kepada   :   Terlampir dengan 0 pengikut', 0, 1, 'L');
         }
     }
           
-                
-    if ($jumlah_orang < 3) {
+    //$pdf->AddPage();            
+    if ($jumlah_orang < 5) {
 $pdf->AddPage();
     $pdf->SetFont('helvetica', '', 12);
     $pdf->Cell(12, 0, 'Untuk      :     1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
     $pdf->Ln(5);
     } else {
 
-        if ($jumlah_orang >2) {
+        if ($jumlah_orang >4) {
             $pdf->SetFont('helvetica', '', 12);
             $pdf->Cell(12, 0, 'Untuk      :    1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
             $pdf->Ln(5);
@@ -315,7 +315,7 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
     $pdf->Ln(4); // Spasi
 
     
-    if ($jumlah_orang < 3) {
+    if ($jumlah_orang < 5) {
 
         $no=2;
         $pdf->Ln(2);
@@ -343,7 +343,7 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
 
 } else {
         
-    if ($jumlah_orang > 2) {
+    if ($jumlah_orang > 4) {
         $no=2;
         $pdf->Ln(2);
         $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -508,7 +508,7 @@ $pdf->Ln(3); // Add space
 
     
 
-    if ($jumlah_orang > 2) {
+    if ($jumlah_orang > 4) {
         
 
     $pdf->AddPage('P');
