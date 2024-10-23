@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Okt 2024 pada 08.44
+-- Waktu pembuatan: 23 Okt 2024 pada 05.20
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -94,7 +94,8 @@ CREATE TABLE `daftar_nama` (
 INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
 (1, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan'),
 (45, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Tenaga Administrasi dan IT'),
-(57, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Pengelola Layanan Kehumasan');
+(57, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat (III/A)', 'Pengelola Layanan Kehumasan'),
+(64, 'ADJI SURYA PRATAMA, SH', '198201102014061003', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan');
 
 -- --------------------------------------------------------
 
@@ -125,8 +126,8 @@ CREATE TABLE `form_spt` (
 --
 
 INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA \r\nMANUSIA DAERAH PROVINSI JAWA TENGAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng.\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\nIV/D\r\n\r\n', '', '', '', '', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', 'KEPALA BADAN PENGEMBANGAN \r\nSUMBER DAYA MANUSIA DAERAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng.\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\nIV/D\r\n\r\n', '', '', '', '', '');
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA \r\nMANUSIA DAERAH PROVINSI JAWA TENGAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\n\r\n\r\n', '', '', '', '', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA \r\nMANUSIA DAERAH PROVINSI JAWA TENGAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\n\r\n\r\n', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -233,7 +234,7 @@ ALTER TABLE `cetak_surat`
 -- AUTO_INCREMENT untuk tabel `daftar_nama`
 --
 ALTER TABLE `daftar_nama`
-  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT untuk tabel `form_spt`
