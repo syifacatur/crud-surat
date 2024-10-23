@@ -42,7 +42,7 @@ if ($result_dasar->num_rows > 0) {
 
 
     //logo
-    $pdf->Image('library/logo1.jpg', 10, 10, 20);
+    $pdf->Image('library/logo1.jpg', 15, 10, 20);
     //title
     $pdf->SetFont('Helvetica', 'B', 14);
     $pdf->Cell(190, 5, "PEMERINTAH PROVINSI JAWA TENGAH", 0, 1, 'C');
@@ -420,25 +420,25 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
 
         $no=2;
         $pdf->Ln(2);
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
-        $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 0, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
         $pdf->Ln(10);
 
 
@@ -447,26 +447,26 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
     if ($jumlah_orang > 4) {
         $no=2;
         $pdf->Ln(2);
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
-        $pdf->MultiCell(0, 3, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  // Kolom untuk nomor urut tanpa nol di depan
+        $pdf->MultiCell(0, 0, 'Tidak Menerima gratifikasi dalam bentuk apapun sesuai ketentuan. '."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, ' Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Melaporkan kepada Pejabat setempat guna pelaksanaan tugas tersebut. '."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, ' Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. '."\n", 0, 'J', 0, 1);
         $no++;
         $pdf->Ln(20);
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.'."\n", 0, 'J', 0, 1);
         $no++;
-        $pdf->MultiCell(25, 3, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->Cell(5, 3, $no . '. ', 0, 0, 'L');  
-        $pdf->MultiCell(0, 3, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
+        $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');  
+        $pdf->MultiCell(0, 0, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. '."\n", 0, 'J', 0, 1);
        
         $pdf->Ln(10);
 
