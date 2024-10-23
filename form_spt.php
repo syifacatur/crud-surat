@@ -186,7 +186,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                         </div><!-- modal delete -->
 
                         <!-- modal update user -->
-                        <div class="example-modal modal-lg">
+                        <div class="example-modal">
                           <div id="updateproduk<?php echo $no; ?>" class="modal fade" role="dialog" style="display:none;">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
