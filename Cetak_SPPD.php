@@ -103,15 +103,21 @@ $pdf->MultiCell(100, $tinggiMaks, 'Kepala Badan Pengembangan Sumber Daya Manusia
 //BARIS 2
 
 
-$tinggiNama = $pdf->getStringHeight(80, 'Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas');
+// Menghitung tinggi dinamis berdasarkan konten deskripsi panjang
+$tinggiNama = $pdf->getStringHeight(80, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas");
 $tinggiInstansi = $pdf->getStringHeight(100, $row['nama']."\n\nNIP. ".$row['NIP']);
 $tinggiMaks = max($tinggiNama, $tinggiInstansi);
 
+// Kolom nomor
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
-$pdf->MultiCell(80, $tinggiMaks, 'Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas', 1, 'L', 0, 0, '', '', true);
-// Gabungkan nama dan NIP dalam satu MultiCell
-$kontenNamaNIP =  $row['nama']."\n\nNIP. ".$row['NIP'];
+
+// Kolom deskripsi (pastikan newline pada teks)
+$pdf->MultiCell(80, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
+
+// Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
+$kontenNamaNIP = "\n".$row['nama']."\n\nNIP. ".$row['NIP'];
 $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
+
 
 
 //BARIS 3
