@@ -269,13 +269,22 @@ $pdf->MultiCell(100, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
 
 $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran'."\na. Instansi"."\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(100,"\n".'a. APBD Tahun 2023 Anggaran ' .$row_isi['anggaran']."\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)+ 2;
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+3;
+
+//$pdf->SetX(62);
+//$pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+//$pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
 
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
 $pdf->MultiCell(85, $tinggiMaks, 'Pembebanan anggaran'."\na. Instansi"."\n\n\nb. Mata Anggaran", 1, 'L', 0, 0, '', '', true);
-$kontenAnggaran = "\n".'a.'.' APBD Tahun 2023 Anggaran ' .$row_isi['anggaran']."\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1)";
-$pdf->MultiCell(100, $tinggiMaks, $kontenAnggaran, 1, 'L', 0, 1, '', '', true);
+$pdf->MultiCell(5, 38, "\n".'a. '."\nb.",1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+
+$kontenAnggaran = "\n".'APBD Tahun 2023 Anggaran ' .$row_isi['anggaran']."\n 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1";
+$pdf->MultiCell(95, $tinggiMaks, $kontenAnggaran, 1, 'L', 0, 1, '', '', true);
+
+
+
 
 //baris 10
 
