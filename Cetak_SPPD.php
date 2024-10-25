@@ -278,10 +278,10 @@ $tinggiMaks = max($tinggiNama, $tinggiInstansi)+3;
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
 $pdf->MultiCell(85, $tinggiMaks, 'Pembebanan anggaran'."\na. Instansi"."\n\n\nb. Mata Anggaran", 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(5, 38, "\n".'a. '."\nb.",1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(5, 38, "\na."."\n\nb.",0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
-$kontenAnggaran = "\n".'APBD Tahun 2023 Anggaran ' .$row_isi['anggaran']."\n 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1";
-$pdf->MultiCell(95, $tinggiMaks, $kontenAnggaran, 1, 'L', 0, 1, '', '', true);
+$kontenAnggaran = "\n".'APBD Tahun 2023 Anggaran Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawi Berdasarkan Tugas dan FUNGSI skpd Kode Rekening Perjalanan Dinas Dalam Daerah.'."\n 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1";
+$pdf->MultiCell(95, $tinggiMaks, $kontenAnggaran, 'R', 'L', 0, 1, '', '', true);
 
 
 
