@@ -85,6 +85,8 @@ if ($result_dasar->num_rows > 0) {
 
     if ($row = mysqli_fetch_assoc($result)) {
 
+        $pdf->SetLineWidth(0,9);
+
         $pdf->setCellPaddings(1, 1, 0, 0);
 //BARIS 1
         
@@ -125,14 +127,14 @@ $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
 //BARIS 3
 
 
-$tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan'.'b. Jabatan/Instansi');
+$tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan'.'b. Jabatan/Instansi');
 $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat']."\n ".$row['jabatan']);
 $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
 
 $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan'."\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-$kontenPangkatJabatan =  'a. '.$row['pangkat']."\nb. ".$row['jabatan'];
+$kontenPangkatJabatan =  '  a.  '.$row['pangkat']."\n  b.  ".$row['jabatan'];
 $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
 
 
@@ -162,13 +164,13 @@ $pdf->MultiCell(100, $tinggiMaks, 'Kendaraan Dinas', 1, 'L', 0, 1, '', '', true)
 //Baris 6
 
 $tinggiNama = $pdf->getStringHeight(85, 'a. Tempat Berangkat'.'b. Tempat Tujuan');
-$tinggiInstansi = $pdf->getStringHeight(100, 'Semarang'."\n ".$row_isi['lokasi']);
+$tinggiInstansi = $pdf->getStringHeight(100, '  Semarang'."\n ".$row_isi['lokasi']);
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)+ 4;
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
 
 $pdf->MultiCell(85, $tinggiMaks, 'a. Tempat Berangkat'."\nb. Tempat Tujuan", 1, 'L', 0, 0, '', '', true);
-$kontenBerangkatTujuan =  'a. Semarang'."\nb. ".$row_isi['lokasi'];
+$kontenBerangkatTujuan =  '  a.   Semarang'."\n  b.   ".$row_isi['lokasi'];
 $pdf->MultiCell(100, $tinggiMaks, $kontenBerangkatTujuan, 1, 'L', 0, 1, '', '', true);
 
 //baris 7
@@ -247,12 +249,12 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
 
 
 $tinggiNama = $pdf->getStringHeight(85, 'a. Lamanya Perjalanan Dinas'."\nb. Tanggal Berangkat"."\nc. Tanggal Harus Kembali/Tiba Di Tempat Baru");
-$tinggiInstansi = $pdf->getStringHeight(100,'a.' .$teks_hari. 'hari'."\nb. ".tgl_indo($row_isi['tgl_kegiatan'])."\nc. ".tgl_indo($row_isi['tgl_pulang']));
+$tinggiInstansi = $pdf->getStringHeight(100,'  a.  ' .$teks_hari. 'hari'."\n  b.   ".tgl_indo($row_isi['tgl_kegiatan'])."\n  c.   ".tgl_indo($row_isi['tgl_pulang']));
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)+1;
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
-$pdf->MultiCell(85, $tinggiMaks, 'a. Lamanya Perjalanan Dinas'."\nb. Tanggal Berangkat"."\nc. Tanggal Harus Kembali/Tiba Di Tempat Baru", 1, 'J', 0, 0, '', '', true);
-$kontentanggal = 'a. '. $teks_hari. 'hari'."\nb. ".tgl_indo($row_isi['tgl_kegiatan'])."\nc. ".tgl_indo($row_isi['tgl_pulang']);
+$pdf->MultiCell(85, $tinggiMaks, 'a. Lamanya Perjalanan Dinas'."\nb. Tanggal Berangkat"."\nc. Tanggal Harus Kembali/Tiba Di Tempat Baru", 1, 'L', 0, 0, '', '', true);
+$kontentanggal = '  a.   '. $teks_hari. 'hari'."\n  b.   ".tgl_indo($row_isi['tgl_kegiatan'])."\n  c.   ".tgl_indo($row_isi['tgl_pulang']);
 $pdf->MultiCell(100, $tinggiMaks, $kontentanggal, 1, 'L', 0, 1, '', '', true);
 
 //baris 8
@@ -269,19 +271,24 @@ $pdf->MultiCell(100, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
 
 $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran'."\na. Instansi"."\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(100,"\n".'a. APBD Tahun 2023 Anggaran ' .$row_isi['anggaran']."\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)+3;
-
-//$pdf->SetX(62);
-//$pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-//$pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
-
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+10;
 
 $pdf->MultiCell(11, $tinggiMaks, $no++ .'. ', 1, 'C', 0, 0, '', '', true);
-$pdf->MultiCell(85, $tinggiMaks, 'Pembebanan anggaran'."\na. Instansi"."\n\n\nb. Mata Anggaran", 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(5, 38, "\na."."\n\nb.",0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(85, $tinggiMaks, 'Pembebanan anggaran'."\na. Instansi"."\n\n\n\n\nb. Mata Anggaran", 1, 'L', 0, 0, '', '', true);
 
-$kontenAnggaran = "\n".'APBD Tahun 2023 Anggaran Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawi Berdasarkan Tugas dan FUNGSI skpd Kode Rekening Perjalanan Dinas Dalam Daerah.'."\n 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1";
-$pdf->MultiCell(95, $tinggiMaks, $kontenAnggaran, 'R', 'L', 0, 1, '', '', true);
+
+$pdf->SetX(108);
+// MultiCell untuk "a." di bagian atas
+$pdf->MultiCell(5, 19, "\na.", 0, 'C', 0, 0, '', '', true);
+
+// MultiCell untuk teks panjang setelah "a."
+$pdf->MultiCell(93, 19, "\nAPBD Tahun 2023 Anggaran Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan FUNGSI SKPD Kode Rekening Perjalanan Dinas Dalam Daerah.", 'R', 'L', 0, 1, '', '', true);
+$pdf->SetX(108);
+// MultiCell untuk "b." di sebelah kode anggaran
+$pdf->MultiCell(5, 19, 'b.', 0, 'C', 0, 0, '', '', true);
+
+// MultiCell untuk kode anggaran
+$pdf->MultiCell(93, 10, '5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1', 'R', 'L', 0, 1, '', '', true);
 
 
 
@@ -302,20 +309,42 @@ $x = $pdf->GetX();
 $y = $pdf->GetY();
 $line_length = 100; // Panjang garis dalam satuan TCPDF
 
-$pdf->Ln(3);
-$pdf->Cell(260,5,"Dikeluarkan di : Semarang",0,1,'C');
-$pdf->Cell(260,5,"       Pada Tanggal  :   Agustus 2024",0,1,'C');
-$pdf->Ln(1);
-$pdf->Cell(270,5,"Ditetapkan di : Semarang",0,1,'C');
-$pdf->Cell(270,5,"Tanggal  :   Agustus 2024",0,1,'C');
-$pdf->Ln(3);
-$pdf->Cell(260,5,"PENGGUNA ANGGARAN",0,1,'C');
-$pdf->Ln(20);
-$pdf->Cell(260,5,"Dr.SADIMIN,S.Pd, M.Eng",0,1,'C');
-// Menggambar garis di bawah nama
-$pdf->Line($x + 107, $y + 57, $x + 53 + $line_length, $y + 57); 
+$pdf->Ln(5);
 
-$pdf->Cell(260,5,"NIP. 197212061994121001",0,1,'C');
+$pdf->SetX(127);
+$pdf->MultiCell(27, 40, 'Dikeluarkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->MultiCell(3, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->SetX(157);
+$pdf->MultiCell(40, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->SetX(127);
+$pdf->MultiCell(27, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->MultiCell(3, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->SetX(159);
+$pdf->MultiCell(80, 40, '  Agustus 2024', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->SetX(134);
+$pdf->MultiCell(27, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->MultiCell(3, 40, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->SetX(164);
+$pdf->MultiCell(40, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(5);
+
+$pdf->SetX(134);
+$pdf->MultiCell(27, 40, 'Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->MultiCell(3, 40, '', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->SetX(162);
+$pdf->MultiCell(80, 40, '  Agustus 2024', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->Ln(10);
+$pdf->Cell(295,5,"PENGGUNA ANGGARAN",0,1,'C');
+$pdf->Ln(13);
+$pdf->Cell(295,5,"Dr.SADIMIN,S.Pd, M.Eng",0,1,'C');
+// Menggambar garis di bawah nama
+$pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54); 
+
+$pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
 
 
 
