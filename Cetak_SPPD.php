@@ -63,7 +63,7 @@ if ($result_dasar->num_rows > 0) {
 
 
     // ISI
-    $pdf->SetFont('Helvetica', 'B', 12);
+    $pdf->SetFont('Helvetica', 'B', 13);
     $pdf->Cell(190, 5, "SURAT PERINTAH PERJALANAN DINAS", 0, 1, 'C');
 
     $pdf->SetFont('helvetica', '', 12);
