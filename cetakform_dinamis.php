@@ -610,6 +610,9 @@ $pdf->Ln(3); // Add space
     
 
     if ($jumlah_orang > 4) {
+
+        $pdf->SetLineWidth(0.3);
+
         
 
     $pdf->AddPage('P');
