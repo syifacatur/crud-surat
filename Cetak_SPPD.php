@@ -412,10 +412,8 @@ $pdf->MultiCell(85, $tinggiMaks, 'Keterangan Lain-lain', 1, 'L', 0, 0, '', '', t
 $pdf->MultiCell(100, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
 
 $x = $pdf->GetX();
-
-
 $y = $pdf->GetY();
-$line_length = 100; // Panjang garis dalam satuan TCPDF
+$line_length = 100; // Panjang garis 
 
 $pdf->Ln(5);
 
@@ -448,11 +446,47 @@ $pdf->MultiCell(80, 40, '  Agustus 2024', 0, 'L', 0, 0, '', '', true, 0, false, 
 $pdf->Ln(10);
 $pdf->Cell(295,5,"PENGGUNA ANGGARAN",0,1,'C');
 $pdf->Ln(13);
+
+
+//NIP Penandatangan
+$selectedName = $row_isi['NIP_penandatangan'];
+
+// NIP Dr. Sadimin
+if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
 $pdf->Cell(295,5,"Dr.SADIMIN,S.Pd, M.Eng",0,1,'C');
 // Menggambar garis di bawah nama
 $pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54); 
-
 $pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
+
+//NIP Sri Sulistiyati
+} elseif (strpos($selectedName, 'Sri Sulistiyati, SE, M.Kom') !== false) {
+    $pdf->Cell(295,5,"Sri Sulistiyati, SE, M.Kom",0,1,'C');
+    $pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54); 
+    $pdf->Cell(295,5,"NIP. 197001121992032006",0,1,'C');
+
+    //NIP Sumarhendro
+} elseif (strpos($selectedName, 'Sumarhendro, S.Sos') !== false) {
+    $pdf->Cell(295,5,"Sumarhendro, S.Sos",0,1,'C');
+    $pdf->Line($x + 130, $y + 54, $x + 65.5 + $line_length, $y + 54); 
+    $pdf->Cell(295,5,"NIP. 196709221998031006",0,1,'C');
+
+    //NIP Dr. Anon 
+    } elseif (strpos($selectedName, 'Dr. Anon Priyantoro, S.Pd., M.Pd') !== false) {
+    $pdf->Cell(295,5,"Dr. Anon Priyantoro, S.Pd., M.Pd",0,1,'C');
+    $pdf->Line($x + 119, $y + 54, $x + 76 + $line_length, $y + 54); 
+    $pdf->Cell(295,5,"NIP. 197305011998011001",0,1,'C');
+
+
+} else {
+    // Jika nama tidak terpanggil
+    $pdf->Cell(260, 5, "Name Tidak Diketahui", 0, 1, 'C');
+}
+
+
+//$pdf->Cell(295,5,"Dr.SADIMIN,S.Pd, M.Eng",0,1,'C');
+// Menggambar garis di bawah nama
+//$pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54); 
+//$pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
 
 
 
@@ -466,6 +500,7 @@ $pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
             }
 
     
+            
     // Output PDF ke browser
     $pdf->Output('Surat Perintah Perjalanan Dinas.pdf', 'I');
 
