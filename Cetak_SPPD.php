@@ -290,6 +290,8 @@ if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub K
     
     // MultiCell untuk teks panjang setelah "a."
     $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 ".$row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+
+    if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD') !== false) {
     $pdf->SetX(105);
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(5, 19, "b.", 0, 'C', 0, 0, '', '', true);
@@ -299,7 +301,7 @@ if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub K
 
 
 
-} else {
+}} else {
 
 
     //anggaran 2
@@ -320,14 +322,18 @@ if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub K
         
         // MultiCell untuk teks panjang setelah "a."
         $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 ".$row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+
+        if (strpos($selectedanggaran, 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD') !== false) {   
+
         $pdf->SetX(105);
         // MultiCell untuk "b." di sebelah kode anggaran
         $pdf->MultiCell(5, 19, "b.", 0, 'C', 0, 0, '', '', true);
         
         // MultiCell untuk kode anggaran
-        $pdf->MultiCell(92, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1", 'R', 'L', 0, 1, '', '', true);    
+        $pdf->MultiCell(92, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.1.2", 'R', 'L', 0, 1, '', '', true);    
 
     }
+}
 
     //anggaran 3
 
@@ -347,13 +353,17 @@ if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub K
         
         // MultiCell untuk teks panjang setelah "a."
         $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 ".$row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+
+        if (strpos($selectedanggaran,'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian') !== false) {   
+
         $pdf->SetX(105);
         // MultiCell untuk "b." di sebelah kode anggaran
         $pdf->MultiCell(5, 19, "b.", 0, 'C', 0, 0, '', '', true);
         
         // MultiCell untuk kode anggaran
-        $pdf->MultiCell(92, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1", 'R', 'L', 0, 1, '', '', true);    
+        $pdf->MultiCell(92, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.1.2.3.4", 'R', 'L', 0, 1, '', '', true);    
 }
+    }
 
 //anggaran 4
 
@@ -373,13 +383,17 @@ if (strpos($selectedanggaran,'Kegiatan Administrasi Kepegawaian Perangkat Daerah
     
     // MultiCell untuk teks panjang setelah "a."
     $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 ".$row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+
+    if (strpos($selectedanggaran,'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi') !== false) {   
+
     $pdf->SetX(105);
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(5, 19, "b.", 0, 'C', 0, 0, '', '', true);
     
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(92, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1", 'R', 'L', 0, 1, '', '', true);    
+    $pdf->MultiCell(92, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.3.4.5", 'R', 'L', 0, 1, '', '', true);    
 
+}
 }
 }
 
