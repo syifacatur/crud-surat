@@ -160,6 +160,9 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPPD</button></a>
 
+                            <a target="_blank" href="Cetakbelakang_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak belakang SPPD</button></a>
+
 
 
                         <!-- modal delete -->
@@ -189,7 +192,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                         </div><!-- modal delete -->
 
                         <!-- modal update user -->
-                        <div class="example-modal">
+                        <div class="example-modal-lg">
                           <div id="updateproduk<?php echo $no; ?>" class="modal fade" role="dialog" style="display:none;">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
