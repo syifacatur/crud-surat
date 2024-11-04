@@ -175,8 +175,9 @@ $pdf->MultiCell(100, $tinggiMaks, $kontenBerangkatTujuan, 1, 'L', 0, 1, '', '', 
 
 //baris 7
 
-function tgl_indo($tanggal)
-{
+if (!function_exists('tgl_indo')) {
+    function tgl_indo($tanggal) {
+
     $bulan = array(
         1 => 'Januari',
         'Februari',
@@ -245,6 +246,7 @@ $kata_hari = angka_ke_kata ($jumlah_hari);
 // Format  hari"
 $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
 
+}
 
 
 
