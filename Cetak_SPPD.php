@@ -83,7 +83,9 @@ if ($result_dasar->num_rows > 0) {
     $pdf->SetFont('Helvetica', '', 11);
     $no = 1;
 
-    if ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        
 
         $pdf->SetLineWidth(0.3);
 
@@ -490,7 +492,42 @@ $pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
 //$pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54); 
 //$pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
 
+$pdf->AddPage();
 
+
+
+//logo
+$pdf->Image('library/logo1.jpg', 15, 10, 25);
+//title
+$pdf->SetFont('Helvetica', 'B', 14);
+$pdf->Cell(190, 5, "PEMERINTAH PROVINSI JAWA TENGAH", 0, 1, 'C');
+$pdf->SetFont('Helvetica', 'B', 14);
+$pdf->Cell(190, 5, "BADAN PENGEMBANGAN ", 0, 1, 'C');
+$pdf->Cell(190, 5, "SUMBER DAYA MANUSIA DAERAH", 0, 1, 'C');
+$pdf->SetFont('Helvetica', '', 10);
+$pdf->Cell(190, 0, "Jalan Setiabudi Nomor 201 A Semarang Kode Pos 50263", 0, 1, 'C');
+$pdf->Cell(190, 0, "Telp. 024-7473066 Faks. 024-7473701", 0, 1, 'C');
+$pdf->Cell(190, 0, "Website : www.bpsdmd.jatengprov.go.id Email : bpsdmd@jatengprov.go.id", 0, 1, 'C');
+
+// garis bawah double 
+$pdf->SetLineWidth(1);
+$pdf->Line(9, 48, 200, 48);
+$pdf->SetLineWidth(0);
+$pdf->Line(9, 48, 200, 48);
+$pdf->Ln(5);
+
+
+// ISI
+$pdf->SetFont('Helvetica', 'B', 13);
+$pdf->Cell(190, 5, "SURAT PERINTAH PERJALANAN DINAS", 0, 1, 'C');
+$pdf->SetFont('Helvetica', '', 11);
+
+$id = $_GET['id'];
+$query_isi = "SELECT * FROM form_spt where id_spt='$id'";
+$result_isi = $conn->query($query_isi);
+$row_isi = $result_isi->fetch_assoc();
+$pdf->MultiCell(190, 10, 'Nomor :' . $row_isi['no_spt'], 0, 'C', 0, 1); // Justify untuk rata kiri-kanan ('J')
+$pdf->Ln(1);
 
 
 
