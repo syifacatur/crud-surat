@@ -157,7 +157,7 @@ $pdf->SetX(102);
 $pdf->MultiCell(6, 3, "I.", 'LT', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(89, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 'L', 0, 1, '', '', true);
 
 
     $pdf->SetX(102);
@@ -165,38 +165,42 @@ $pdf->MultiCell(89, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
 
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "(Tempat Kedudukan)", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "(Tempat Kedudukan)", 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "Ke"."                                 :", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "Ke"."                                 :", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "Pada Tanggal"."               :  ". tgl_indo($row_isi['tgl_kegiatan']), 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ". tgl_indo($row_isi['tgl_kegiatan']), 'R', 'L', 0, 1, '', '', true);
 
      $pdf->SetX(102);
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(6, 5, "", 0, 'C', 0, 0, '', '', true);
 
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 5, "\nPENGGUNA ANGGARAN", 'R', 'C', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 5, "\nPENGGUNA ANGGARAN", 'R', 'C', 0, 1, '', '', true);
 
     $pdf->SetX(102);
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(6, 10, "", 0, 'C', 0, 0, '', '', true);
+    
 
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 0, "\n\nDr. SADIMIN, S.Pd, M.Eng", 'R', 'C', 0, 1, '', '', true);
-    $pdf->Line($x + 120, $y + 50, $x + 65 + $line_length, $y + 50);
+    $pdf->MultiCell(90, 0, "\n\nDr. SADIMIN, S.Pd, M.Eng", 'R', 'C', 0, 1, '', '', true);
+    $pdf->SetLineWidth(0.2);
+
+    $pdf->Line($x + 120, $y + 49, $x + 65 + $line_length, $y + 49);
+    $pdf->SetLineWidth(0.3);
 
     $pdf->SetX(102);
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
 
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 0, "NIP. 197212061994121001", 'R', 'C', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "NIP. 197212061994121001", 'R', 'C', 0, 1, '', '', true);
 
 
 //BARIS 2
@@ -214,23 +218,222 @@ $pdf->SetX(102);
 $pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(89, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
 
 
 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "Ke      " . "                           :  "."Semarang", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "Ke      " . "                           :  "."Semarang", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
     $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(89, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+
+    //BARIS 3
+
+
+$tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+
+
+$pdf->MultiCell(92, $tinggiMaks, "  III. Tiba di                   :"."\n"."       Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
+
+$pdf->SetX(102);
+// MultiCell untuk "a." di bagian atas
+$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+
+// MultiCell untuk teks panjang setelah "a."
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+
+
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+
+     //BARIS 4
+
+
+$tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+
+
+$pdf->MultiCell(92, $tinggiMaks, "  IV. Tiba di                   :"."\n"."        Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
+$pdf->SetX(102);
+// MultiCell untuk "a." di bagian atas
+$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+
+// MultiCell untuk teks panjang setelah "a."
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+
+
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+
+     //BARIS 5
+
+
+$tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+
+
+$pdf->MultiCell(92, $tinggiMaks, "  V. Tiba di                   :"."\n"."       Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
+
+$pdf->SetX(102);
+// MultiCell untuk "a." di bagian atas
+$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+
+// MultiCell untuk teks panjang setelah "a."
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+
+
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+
+    $pdf->SetX(102);
+    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    // MultiCell untuk kode anggaran
+    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+
+    //BARIS 6
+
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$line_length = 50; // Panjang garis 
+
+// Simpan posisi awal X dan Y untuk referensi
+$x_initial = $pdf->GetX();
+$y_initial = $pdf->GetY();
+
+// Mengatur lebar kolom kiri dan kanan
+$width_left = 92;
+$width_right = 89;
+
+// Mengatur tinggi standar baris
+$height_row = 5;
+
+// --------- Bagian Kolom Kiri ---------
+// Set posisi awal untuk kolom kiri
+$pdf->SetXY($x_initial, $y_initial);
+
+// Bagian Judul "VI."
+$pdf->MultiCell(8, $height_row, "  VI.", 'L', 'C', 0, 0, '', '', true);
+
+// Bagian Konten Kolom Kiri
+$pdf->MultiCell($width_left - 8, $height_row, "Tiba di"."                            :  "."Semarang", 'TR', 'L', 0, 1, '', '', true);
+$pdf->SetX($x_initial);
+$pdf->MultiCell(8, $height_row, "", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_left - 8, $height_row, "(Tempat Kedudukan)", 'R', 'L', 0, 1, '', '', true);
+$pdf->SetX($x_initial);
+$pdf->MultiCell(8, $height_row, "", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_left - 8, $height_row, "Pada Tanggal                :  " .tgl_indo($row_isi['tgl_kegiatan']), 'R', 'L', 0, 1, '', '', true);
+$pdf->SetX($x_initial);
+$pdf->MultiCell(8, $height_row * 2.1, "",'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_left - 8, $height_row * 2, "\nPENGGUNA ANGGARAN", 'R', 'C', 0, 1, '', '', true);
+$pdf->SetX($x_initial);
+$pdf->MultiCell(8, $height_row * 4.7, "", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_left - 8, $height_row * 4.7, "\n\nDr. SADIMIN, S.Pd, M.Eng\nNIP. 197212061994121001", 'BR', 'C', 0, 1, '', '', true);
+$pdf->SetLineWidth(0.2);
+$pdf->Line($x + 27, $y + 43.5, $x + 23 + $line_length, $y + 43.5);
+$pdf->SetLineWidth(0.3);
+
+
+
+
+// --------- Bagian Kolom Kanan ---------
+// Set posisi X dan Y ke kolom kanan
+$pdf->SetXY($x_initial + $width_left, $y_initial);
+
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$line_length = 50; // Panjang garis
+
+// Bagian Judul "I."
+$pdf->MultiCell(7, $height_row, "", 'LT', 'C', 0, 0, '', '', true);
+
+// Bagian Konten Kolom Kanan
+$pdf->MultiCell($width_right , $height_row, "Telah diperiksa dengan keterangan bahwa perjalanan tersebut atas perintah pejabat yang berwenang dan semata-mata untuk kepentingan jabatan dalam waktu yang sesingkat-singkatnya.", 'TR', 'J'."\n", 0, 1, '', '', true);
+$pdf->SetX($x_initial + $width_left);
+$pdf->MultiCell(7, $height_row * 2, "", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_right , $height_row * 2, "\nPENGGUNA ANGGARAN", 'R', 'C', 0, 1, '', '', true);
+$pdf->SetX($x_initial + $width_left);
+$pdf->MultiCell(7, $height_row * 4.1, "", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_right , $height_row * 3, "\n\nDr. SADIMIN, S.Pd, M.Eng\nNIP. 197212061994121001", 'RB', 'C', 0, 1, '', '', true);
+$pdf->SetLineWidth(0.2);
+$pdf->Line($x + 27, $y + 46, $x + 23 + $line_length, $y + 46);
+$pdf->SetLineWidth(0.3);
+
+//baris 7
+
+$tinggiNama = $pdf->getStringHeight(100, "VII.  Catatan Lain-lain");
+$tinggiInstansi = $pdf->getStringHeight(95, "VII.  Catatan Lain-lain");
+$tinggiMaks = max($tinggiNama, $tinggiInstansi);
+
+
+$pdf->MultiCell(188, $tinggiMaks, "VII.  Catatan Lain-lain", 1, 'L', 0, 0, '', '', true);
+
+//baris 8
+$pdf->SetMargins(10, 10, 10); // Margin kiri, atas, kanan
+$pdf->SetAutoPageBreak(true, 5); // Atur agar halaman otomatis berganti dengan jarak margin bawah kecil (misalnya 5)
+
+// Posisi awal kolom di bawah untuk "VII. Catatan Lain-lain"
+$pdf->SetXY($x_initial, $y_initial + 58); // Sesuaikan nilai 60 agar lebih ke bawah
+
+// Menambahkan Baris untuk "VII. Catatan Lain-lain"
+$pdf->MultiCell(9, $height_row, "VIII.", 'L', 'C', 0, 0, '', '', true);
+$pdf->MultiCell($width_left + $width_right - 2, $height_row, "PERHATIAN             :", 'R', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(9, 2, "\n\n\n\n\n", 'LB', 'L', 0, 0, '', '', true);
+
+$pdf->MultiCell($width_left + $width_right -2, $height_row, "Pengguna Anggaran/Kuasa Pengguna Anggaran yang menerbitkan SPPD, Gubernur/Wakil Gubernur,Pimpinan dan Anggota DPRD,Peagawai ASN,CPNS,dan Pegawain Non PNS yang melakukan perjalanan dinas, para pejabat yang mengesahkan tanggal berangkat/tiba serta bendahara pengeluaran bertanggung jawab berdasarkan peraturan-peraturan Keuangan Daerah apabila daerah menderita rugi akibat kesalahan,kelalaian dan kealpaanya.", 'RB', 'L', 0, 1, '', '', true);
+
+
+
+    
+    
+
+
+    
+
+
 
 
 
