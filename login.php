@@ -38,7 +38,8 @@
 <div align="center">
     <div align="center" style="width:450px; margin-top:8%;">
         <form name="login_form" method="post" class="well well-lg" action="" style="background-color: rgba(255, 255, 255, 0.8); -webkit-box-shadow: 0px 0px 5px #888888; padding: 20px; border-radius: 20px;">
-            <h4 style="margin-bottom: 25px;">BPSDMD PROV JATENG</h4>
+        <h4 style="margin-bottom: 25px;"><b>BPSDMD PROV JATENG</b></h4>
+
             <?php if (isset($error)) { ?>
                 <p style="font-style: italic; color: red; margin-top: 15px">Username / Password anda salah</p>
             <?php } ?>
@@ -54,16 +55,15 @@
             </div>
             <br />
             <div class="checkboxcss" style="color:#000000; float:right;">
-                <input type="checkbox" onchange="document.getElementById('form-password').type = this.checked ? 'text' : 'password'"> Lihat Kata Sandi
+                <input type="checkbox" onchange="document.getElementById('form-password').type = this.checked ? 'text' : 'password'"> Show Password
             </div>
             <span class="text-danger msg-error"><?php if (isset($error)) ?></span>
             
             <div class="form-group" class="checkboxcss" style="color:#000000; text-align: left;">
-                <input type="checkbox" name="remember" value="on"> Ingat Saya
+                <input type="checkbox" name="remember" value="on"> Remember Me
             </div>
             
-            <input name="submit" type="submit" value="Login" class="btn btn-primary btn-block" style="margin-bottom: 15px;">            <p class="text-center new-account">Sudahkah Anda mendaftar belum? <a href="signup.php">Buat akun baru</a></p>
-            <p class="text-center new-account"><a href="?resetuser">Reset Kata Sandi</a></p>
+            <input name="submit" type="submit" value="Login" class="btn btn-primary btn-block" style="margin-bottom: 15px;">       
         </form>
     </div>
 </div>
