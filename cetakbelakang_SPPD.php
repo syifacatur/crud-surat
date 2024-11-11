@@ -365,7 +365,7 @@ $pdf->MultiCell(8, $height_row, "", 'L', 'C', 0, 0, '', '', true);
 $pdf->MultiCell($width_left - 8, $height_row, "(Tempat Kedudukan)", 'R', 'L', 0, 1, '', '', true);
 $pdf->SetX($x_initial);
 $pdf->MultiCell(8, $height_row, "", 'L', 'C', 0, 0, '', '', true);
-$pdf->MultiCell($width_left - 8, $height_row, "Pada Tanggal                :  " .tgl_indo($row_isi['tgl_kegiatan']), 'R', 'L', 0, 1, '', '', true);
+$pdf->MultiCell($width_left - 8, $height_row, "Pada Tanggal                :  " .tgl_indo($row_isi['tgl_pulang']), 'R', 'L', 0, 1, '', '', true);
 $pdf->SetX($x_initial);
 $pdf->MultiCell(8, $height_row * 2.1, "",'L', 'C', 0, 0, '', '', true);
 $pdf->MultiCell($width_left - 8, $height_row * 2, "\nPENGGUNA ANGGARAN", 'R', 'C', 0, 1, '', '', true);
