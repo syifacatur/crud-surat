@@ -146,7 +146,7 @@ $y = $pdf->GetY();
 $line_length = 100; // Panjang garis 
         
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)+20.5;
 
 $pdf->MultiCell(92, $tinggiMaks, "", 1, 'L', 0, 0, '', '', true);
@@ -207,18 +207,18 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
 
 
-$pdf->MultiCell(92, $tinggiMaks, "  II.  Tiba di                   :"."\n"."       Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(92, $tinggiMaks, "  II.  Tiba di                   :   ".$row_isi['kab_kota']."\n"."       Pada Tanggal"."       :   ". tgl_indo($row_isi['tgl_kegiatan']), 1, 'L', 0, 0, '', '', true);
 
 $pdf->SetX(102);
 // MultiCell untuk "a." di bagian atas
 $pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ".$row_isi['kab_kota'], 'TR', 'L', 0, 1, '', '', true);
 
 
 
@@ -229,7 +229,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ". tgl_indo($row_isi['tgl_pulang']), 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
@@ -240,7 +240,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, 
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
 
 
@@ -273,7 +273,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, 
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
 
 
@@ -305,7 +305,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, 
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+$tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
 
 
