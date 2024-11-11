@@ -5,6 +5,7 @@ if($_GET['act']== 'tambahproduk'){
     $no_spt = $_POST['no_spt'];
     $dasar_undangan = $_POST['dasar_undangan'];
     $lokasi = $_POST['lokasi'];
+    $kab_kota = $_POST['kab_kota'];
     $tgl_kegiatan = $_POST['tgl_kegiatan'];
     $tgl_pulang = $_POST['tgl_pulang'];
     $tgl_spt = $_POST['tgl_spt'];
@@ -12,7 +13,7 @@ if($_GET['act']== 'tambahproduk'){
     $maksud_tujuan = $_POST['maksud_tujuan'];
     $NIP_penandatangan = $_POST['NIP_penandatangan'];
     //query
-    $querytambah =  mysqli_query($koneksi, "INSERT INTO form_spt (no_spt, dasar_undangan , lokasi, tgl_kegiatan, tgl_pulang , tgl_spt, anggaran, maksud_tujuan,  NIP_penandatangan) VALUES('$no_spt', '$dasar_undangan', '$lokasi', '$tgl_kegiatan', '$tgl_pulang', '$tgl_spt', '$anggaran', '$maksud_tujuan', '$NIP_penandatangan')");
+    $querytambah =  mysqli_query($koneksi, "INSERT INTO form_spt (no_spt, dasar_undangan , lokasi, kab_kota, tgl_kegiatan, tgl_pulang , tgl_spt, anggaran, maksud_tujuan,  NIP_penandatangan) VALUES('$no_spt', '$dasar_undangan', '$lokasi', '$kab_kota', '$tgl_kegiatan', '$tgl_pulang', '$tgl_spt', '$anggaran', '$maksud_tujuan', '$NIP_penandatangan')");
 
     if ($querytambah) {
         # code redicet setelah insert ke index
@@ -27,6 +28,7 @@ elseif($_GET['act']=='updateproduk'){
     $no_spt = $_POST['no_spt'];
     $dasar_undangan = $_POST['dasar_undangan'];
     $lokasi = $_POST['lokasi'];
+    $kab_kota = $_POST['kab_kota'];
     $tgl_kegiatan = $_POST['tgl_kegiatan'];
     $tgl_pulang = $_POST['tgl_pulang'];
     $tgl_spt = $_POST['tgl_spt'];
@@ -35,7 +37,7 @@ elseif($_GET['act']=='updateproduk'){
     $NIP_penandatangan = $_POST['NIP_penandatangan'];
 
     //query update
-    $queryupdate = mysqli_query($koneksi, "UPDATE form_spt SET no_spt='$no_spt', dasar_undangan='$dasar_undangan', lokasi='$lokasi', tgl_kegiatan='$tgl_kegiatan',  tgl_pulang='$tgl_pulang', tgl_spt='$tgl_spt', anggaran='$anggaran', maksud_tujuan='$maksud_tujuan', NIP_penandatangan='$NIP_penandatangan' WHERE id_spt='$id_spt' ");
+    $queryupdate = mysqli_query($koneksi, "UPDATE form_spt SET no_spt='$no_spt', dasar_undangan='$dasar_undangan', lokasi='$lokasi', kab_kota='$kab_kota', tgl_kegiatan='$tgl_kegiatan',  tgl_pulang='$tgl_pulang', tgl_spt='$tgl_spt', anggaran='$anggaran', maksud_tujuan='$maksud_tujuan', NIP_penandatangan='$NIP_penandatangan' WHERE id_spt='$id_spt' ");
 
     if ($queryupdate) {
         header("location:form_spt.php");    
