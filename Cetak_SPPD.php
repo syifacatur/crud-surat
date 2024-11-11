@@ -264,7 +264,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD') !== false) {
 
         $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-        $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+        $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.06.0009.5.1.2.4.1.1 ");
         $tinggiMaks = max($tinggiNama, $tinggiInstansi);
 
         $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
@@ -284,7 +284,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
             // MultiCell untuk kode anggaran
-            $pdf->MultiCell(92, 14.5, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1", 'R', 'L', 0, 1, '', '', true);
+            $pdf->MultiCell(92, 14.5, "5.04.0.00.0.00.01.X.XX.01.1.06.0009.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
 
 
 
@@ -297,7 +297,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         if (strpos($selectedanggaran, 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD') !== false) {
 
             $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb.5.04.0.00.0.00.01.X.XX.01.1.06.0011.5.1.2.4.1.1.01  ");
             $tinggiMaks = max($tinggiNama, $tinggiInstansi);
 
             $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
@@ -318,7 +318,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.1.2", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(92, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.06.0011.5.1.2.4.1.1.01", 'R', 'L', 0, 1, '', '', true);
 
             }
         }
@@ -328,7 +328,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         if (strpos($selectedanggaran, 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian') !== false) {
 
             $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0003.5.1.2.4.1.1 ");
             $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 4;
 
             $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
@@ -349,7 +349,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.1.2.3.4", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(92, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0003.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
             }
         }
 
@@ -358,7 +358,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         if (strpos($selectedanggaran, 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi') !== false) {
 
             $tinggiNama = $pdf->getStringHeight(85, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
-            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
+            $tinggiInstansi = $pdf->getStringHeight(100, "\n" . 'a. APBD Tahun 2023 Anggaran ' . $row_isi['anggaran'] . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.2.12.1 ");
             $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 4;
 
             $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
@@ -379,7 +379,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.3.4.5", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(92, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.2.12.1", 'R', 'L', 0, 1, '', '', true);
 
             }
         }
