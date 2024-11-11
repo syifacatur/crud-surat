@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Okt 2024 pada 10.05
+-- Waktu pembuatan: 11 Nov 2024 pada 02.02
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -92,11 +92,8 @@ CREATE TABLE `daftar_nama` (
 --
 
 INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
-(1, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan'),
 (71, 'ILHAM HABIBULLAH AKBAR, S.KOM', '29372937293', 'Penata Muda Tingkat I(III/B', 'Pranata Komputer Ahli Pertama'),
-(72, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan'),
-(73, 'ILHAM HABIBULLAH AKBAR, S.KOM', '198201102014061003', 'Penata Muda Tingkat (III/A)', 'Pengelola Layanan Kehumasan'),
-(74, 'BAGAS ARUNA YUDHATAMA, S.Kom', '198201102014061003', 'Penata Muda Tingkat I(III/B', 'Pranata Komputer Ahli Pertama');
+(72, 'ADJI SURYA PRATAMA, SH', '199607192022031008', 'Penata Muda Tingkat I(III/B', 'Pengelola Layanan Kehumasan');
 
 -- --------------------------------------------------------
 
@@ -109,16 +106,13 @@ CREATE TABLE `form_spt` (
   `no_spt` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `dasar_undangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `lokasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `kab_kota` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tgl_kegiatan` date NOT NULL,
   `tgl_pulang` date NOT NULL,
   `tgl_spt` date NOT NULL,
   `anggaran` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `maksud_tujuan` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `NIP_penandatangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `NIP` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `pangkat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `opsi` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -126,9 +120,9 @@ CREATE TABLE `form_spt` (
 -- Dumping data untuk tabel `form_spt`
 --
 
-INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `nama`, `NIP`, `pangkat`, `jabatan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-24', '2024-04-26', '2024-04-24', 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'Kepala Bidang Sertifikasi Kompetensi \r\nDan Penjaminan Mutu\r\n\r\n\r\n\r\n\r\n\r\n\r\nSri Sulistiyati, SE, M.Kom\r\nPembina Tingkat I\r\nNIP. 197001121992032006\r\n\r\n\r\n', '', '', '', '', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran, Kab.Semarang', '2024-04-28', '2024-04-29', '2024-10-02', 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA \r\nMANUSIA DAERAH PROVINSI JAWA TENGAH\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. SADIMIN, S.Pd., M.Eng\r\nPembina Utama Madya\r\nNIP. 197212061994121001\r\n\r\n\r\n', '', '', '', '', '');
+INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `kab_kota`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `opsi`) VALUES
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto,Ungaran', 'kota semarang', '2024-04-24', '2024-04-26', '2024-04-24', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah ', '', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran', '', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '', '');
 
 -- --------------------------------------------------------
 
@@ -235,13 +229,13 @@ ALTER TABLE `cetak_surat`
 -- AUTO_INCREMENT untuk tabel `daftar_nama`
 --
 ALTER TABLE `daftar_nama`
-  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_nama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT untuk tabel `form_spt`
 --
 ALTER TABLE `form_spt`
-  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_produk`
