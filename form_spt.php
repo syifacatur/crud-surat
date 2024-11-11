@@ -92,6 +92,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                     <th>No SPT</th>
                     <th>Dasar Undangan</th>
                     <th>Lokasi</th>
+                    <th>Kab/Kota</th>
                     <th>Berangkat</th>
                     <th>Pulang</th>
                     <th>Tanggal SPT</th>
@@ -139,6 +140,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                       <td><?php echo $row['no_spt']; ?></td>
                       <td><?php echo $row['dasar_undangan']; ?></td>
                       <td><?php echo $row['lokasi']; ?></td>
+                      <td><?php echo $row['kab_kota']; ?></td>
                       <td><?php echo tgl_indo($row['tgl_kegiatan']); ?></td>
                       <td><?php echo tgl_indo($row['tgl_pulang']); ?></td>
                       <td><?php echo tgl_indo($row['tgl_spt']); ?></td>
@@ -151,17 +153,22 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                         <!--<a href="form_edituser.php?id=<?php echo $row['id_user'] ?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
                         <a href="#" class="btn btn-success btn-flat btn-xs" data-toggle="modal"
                           data-target="#updateproduk<?php echo $no; ?>"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
+                        
+                          <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
                           data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
-                        <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                        
+                          <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPT</button></a>
-                        <a target="_blank" href="cetak_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+
+                            <a target="_blank" href="Cetak_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPPD</button></a>
 
                             <a target="_blank" href="Cetakbelakang_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak belakang SPPD</button></a>
+
+
 
 
 
@@ -238,6 +245,14 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                             <span class="text-red">*</span></label>
                                           <div class="col-sm-8"><input type="text" class="form-control" name="lokasi"
                                               placeholder="lokasi" value="<?php echo $row['lokasi']; ?>"></div>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <label class="col-sm-3 control-label text-right">Kab/Kota
+                                            <span class="text-red">*</span></label>
+                                          <div class="col-sm-8"><input type="text" class="form-control" name="kab_kota"
+                                              placeholder="" value="<?php echo $row['kab_kota']; ?>"></div>
                                         </div>
                                       </div>
                                       <div class="form-group">
@@ -518,6 +533,13 @@ IV/B
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Lokasi<span class="text-red">*</span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="lokasi" placeholder=""
+                              value=""></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">Kab/Kota<span class="text-red">*</span></label>
+                          <div class="col-sm-8"><input type="text" class="form-control" name="kab_kota" placeholder=""
                               value=""></div>
                         </div>
                       </div>
