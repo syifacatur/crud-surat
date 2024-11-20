@@ -126,7 +126,7 @@ while ($row = $result_dasar->fetch_assoc()) {
     $pdf->Ln(0);
     $pdf->Cell(190, 9, "MEMERINTAHKAN:", 0, 1, 'C');
     $pdf->Ln(0);
-    $query = "SELECT * FROM daftar_nama ";
+    $query = "SELECT * FROM cetak_laporan ";
     $result = $conn->query($query);
 
     
@@ -148,28 +148,28 @@ while ($row = $result_dasar->fetch_assoc()) {
             $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(62);
             $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+            $pdf->MultiCell(150, 0, $row['nama_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(6);
             
             $pdf->SetX(41);
             $pdf->MultiCell(58, 20,'  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(70);
             $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(75, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+            $pdf->MultiCell(75, 0, $row['nip_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(6);
             
             $pdf->SetX(41);
             $pdf->MultiCell(55, 20,'  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(65,5);
             $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(75, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+            $pdf->MultiCell(75, 0, $row['pangkat_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(6);
             
             $pdf->SetX(41);
             $pdf->MultiCell(55, 20,'  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
             $pdf->SetX(65,5);
             $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(75, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+            $pdf->MultiCell(75, 0, $row['jabatan_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
             $pdf->Ln(6);
 
             $no = 2;
@@ -181,28 +181,28 @@ while ($row = $result_dasar->fetch_assoc()) {
                 $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(62);
                 $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(150, 0, $row['nama_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(58, 20,'  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(70);
                 $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['nip_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(55, 20,'  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(65,5);
                 $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['pangkat_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(55, 20,'  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(65,5);
                 $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['jabatan_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
             }
             $no = 3;
@@ -214,28 +214,28 @@ while ($row = $result_dasar->fetch_assoc()) {
                 $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(62);
                 $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(150, 0, $row['nama_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(58, 20,'  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(70);
                 $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['nip_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(55, 20,'  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(65,5);
                 $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['pangkat_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
                 
                 $pdf->SetX(41);
                 $pdf->MultiCell(55, 20,'  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
                 $pdf->SetX(65,5);
                 $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-                $pdf->MultiCell(75, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                $pdf->MultiCell(75, 0, $row['jabatan_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                 $pdf->Ln(6);
             }
 
@@ -262,28 +262,28 @@ if ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(55, 20, $no++.'. '.'  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(62);
     $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(150, 0, $row['nama_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(6);
     
     $pdf->SetX(41);
     $pdf->MultiCell(58, 20,'  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(70);
     $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(75, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(75, 0, $row['nip_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(6);
     
     $pdf->SetX(41);
     $pdf->MultiCell(55, 20,'  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(65,5);
     $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(75, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(75, 0, $row['pangkat_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(6);
     
     $pdf->SetX(41);
     $pdf->MultiCell(55, 20,'  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
     $pdf->SetX(65,5);
     $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-    $pdf->MultiCell(75, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+    $pdf->MultiCell(75, 0, $row['jabatan_spt'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
     $pdf->Ln(9);
 }
     $pdf->SetFont('helvetica', '', 12);
@@ -666,7 +666,7 @@ $pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true);
 // Nama
 $pdf->MultiCell(50, 0, 'Nama', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(96, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['nama_spt'], 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 
 $pdf->Ln();
@@ -675,7 +675,7 @@ $pdf->Ln();
 $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(50, 0, 'NIP', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(96, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['nip_spt'], 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 
 $pdf->Ln();
@@ -684,7 +684,7 @@ $pdf->Ln();
 $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(50, 0, 'Pangkat/Gol', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(96, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['pangkat_spt'], 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 $pdf->Ln();
 
@@ -692,7 +692,7 @@ $pdf->Ln();
 $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(50, 0, 'Jabatan', 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-$pdf->MultiCell(96, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(96, 0, $row['jabatan_spt'], 1, 'L', 0, 0, '', '', true);
 $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 $pdf->Ln();
     }
