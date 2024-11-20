@@ -2,13 +2,13 @@
 include 'koneksidb.php';
 
 if($_GET['act']== 'tambahproduk'){
-    $nama_spt = $_POST['nama_spt'];
-    $nip_spt = $_POST['nip_spt'];
-    $pangkat_spt = $_POST['pangkat_spt'];
-    $jabatan_spt = $_POST['jabatan_spt'];
+    $id_spt = $_POST['id_spt'];
+    $id_nama = $_POST['id_nama'];
+
+    //cek id apakah sudah exist
 
     //query
-    $querytambah =  mysqli_query($koneksi, "INSERT INTO cetak_laporan(nama_spt, nip_spt, pangkat_spt, jabatan_spt) VALUES('$nama_spt', '$nip_spt', '$pangkat_spt', '$jabatan_spt')");
+    $querytambah =  mysqli_query($koneksi, "INSERT INTO cetak_laporan(id_spt, id_nama) VALUES('$id_spt', '$id_nama')");
 
     if ($querytambah) {
         # code redicet setelah insert ke index
