@@ -27,7 +27,7 @@ $pdf->setPrintFooter(false);
 // Menambahkan halaman
 $pdf->AddPage();
 
-$query = "SELECT * FROM daftar_nama ";
+$query = "SELECT * FROM cetak_laporan ";
 $result = $conn->query($query);
 $jml = $result->num_rows + 1;
 
@@ -92,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     // Menghitung tinggi dinamis berdasarkan konten deskripsi panjang
     $tinggiNama = $pdf->getStringHeight(80, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas");
     // Reset padding setelah selesai jika ingin kembali ke default
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['nama'] . "\n\n\nNIP. " . $row['NIP']);
+    $tinggiInstansi = $pdf->getStringHeight(100, $row['nama_spt'] . "\n\n\nNIP. " . $row['nip_spt']);
     $tinggiMaks = max($tinggiNama, $tinggiInstansi) - 3;
 
     // Kolom nomor
@@ -102,7 +102,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(85, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
 
     // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
-    $kontenNamaNIP = $row['nama'] . "\n\n\nNIP. " . $row['NIP'];
+    $kontenNamaNIP = $row['nama_spt'] . "\n\n\nNIP. " . $row['nip_spt'];
     $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
 
 
@@ -111,13 +111,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
     $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
+    $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat_spt'] . "\n " . $row['jabatan_spt']);
     $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
 
     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-    $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
+    $kontenPangkatJabatan = '  a.  ' . $row['pangkat_spt'] . "\n  b.  " . $row['jabatan_spt'];
     $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
 
 
