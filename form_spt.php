@@ -168,6 +168,8 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                             <a target="_blank" href="Cetakbelakang_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak belakang SPPD</button></a>
 
+                            <a target="_blank" href="cetak_laporan.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> TAMBAH NAMA</button></a>
 
 
 
@@ -280,11 +282,13 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                         </div>
                                       </div>
                                       <div class="form-group">
-                                        <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Anggaran
-                                            <span class="text-red">*</span></label>
-                                            <div class="col-sm-8"><select id="anggaran" class="form-control select2" name="anggaran" placeholder="Search.."value="<?php echo $row['anggaran']; ?>"></div>
-                                          <option value="">--PILIH--</option>
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">
+      Anggaran<span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="anggaran" class="form-control select2" name="anggaran" placeholder="Search..." value="<?php echo $row['anggaran']; ?>">
+        <option value="">--PILIH--</option>
                                           <option
                                             value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
                                             Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
@@ -318,10 +322,14 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                     
                                   <div class="form-group">
                                         <div class="row">
-                                          <label class="col-sm-3 control-label text-right">NIP Penandatangan
-                                            <span class="text-red">*</span></label>
-                                            <div class="col-sm-8"><select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>"></div>
+                                          <label class="col-sm-3 control-label text-right">NIP Penandatangan 
+                                            <span class="text-red">*</span>
+                                          </label>
+                                            <div class="col-sm-8">
+                                              <select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>">
                                           <option value="">--PILIH--</option>
+
+                                          
                                           <option
                                             value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
 MANUSIA DAERAH PROVINSI JAWA TENGAH
@@ -575,40 +583,39 @@ IV/B
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">Anggaran<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><select id="anggaran2" class="form-control select2" name="anggaran" placeholder=""
-                              value=""></div>
-                          <option value="">-pilih anggaran-</option>
-                          <option
-                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi
-                            dan Konsultasi SKPD </option>
-                          <option
-                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem
-                            Pemerintahan Berbasis Elektronik pada SKPD</option>
-                          <option
-                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan
-                            Administrasi Kepegawaian</option>
-                          <option
-                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan
-                            Pegawai Berdasarkan Tugas dan Fungsi</option>
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">
+      Anggaran<span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="anggaran2" class="form-control select2" name="anggaran" placeholder="">
+        <option value="">-pilih anggaran-</option>
+        <option value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
+          Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD
+        </option>
+        <option value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
+          kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD
+        </option>
+        <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
+          Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian
+        </option>
+        <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
+          Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
 
-                          </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <label class="col-sm-3 control-label text-right">NIP Penandatangan<span
-                              class="text-red">*</span></label>
-                          <div class="col-sm-8"><select id="NIP2" class="form-control select2" name="NIP_penandatangan" placeholder=""
-                              value=""></div>
-                          <option value=""></option>
-                          <option value="">-pilih NIP-</option>
+                     <div class="form-group">
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">
+      NIP Penandatangan<span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="NIP2" class="form-control select2" name="NIP_penandatangan" placeholder="">
+        <option value=""></option>
+        <option value="">-pilih NIP-</option>
                           <option
                             value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
 MANUSIA DAERAH PROVINSI JAWA TENGAH
