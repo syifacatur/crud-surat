@@ -156,6 +156,10 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                         
                           <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
                           data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
+
+                          <a target="_blank" href="cetak_laporan.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-user"></i> TAMBAH NAMA</button></a>
+
                         
                           <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
@@ -168,9 +172,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                             <a target="_blank" href="Cetakbelakang_SPPD.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak belakang SPPD</button></a>
 
-                            <a target="_blank" href="cetak_laporan.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
-                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> TAMBAH NAMA</button></a>
-
+                            
 
 
 
