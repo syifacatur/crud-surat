@@ -88,11 +88,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     //BARIS 2
 
+    if ($row = mysqli_fetch_assoc($result)) {
+        $id_nama = $row['id_nama'];
+        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+        while ($row = mysqli_fetch_assoc($querynama)) {
+
 
     // Menghitung tinggi dinamis berdasarkan konten deskripsi panjang
     $tinggiNama = $pdf->getStringHeight(80, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas");
     // Reset padding setelah selesai jika ingin kembali ke default
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['nama_spt'] . "\n\n\nNIP. " . $row['nip_spt']);
+    $tinggiInstansi = $pdf->getStringHeight(100, $row['nama'] . "\n\n\nNIP. " . $row['NIP']);
     $tinggiMaks = max($tinggiNama, $tinggiInstansi) - 3;
 
     // Kolom nomor
@@ -102,25 +107,30 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(85, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
 
     // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
-    $kontenNamaNIP = $row['nama_spt'] . "\n\n\nNIP. " . $row['nip_spt'];
+    $kontenNamaNIP = $row['nama'] . "\n\n\nNIP. " . $row['NIP'];
     $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
 
-
+        }}
 
     //BARIS 3
 
 
+    if ($row = mysqli_fetch_assoc($result)) {
+        $id_nama = $row['id_nama'];
+        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+        while ($row = mysqli_fetch_assoc($querynama)) {
+
     $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat_spt'] . "\n " . $row['jabatan_spt']);
+    $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
     $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
 
     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-    $kontenPangkatJabatan = '  a.  ' . $row['pangkat_spt'] . "\n  b.  " . $row['jabatan_spt'];
+    $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
     $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
 
-
+        }}
     //BARIS 4
 
     $tinggiNama = $pdf->getStringHeight(85, 'Maksud Mengadakan Perjalanan');
