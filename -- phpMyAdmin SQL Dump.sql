@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Nov 2024 pada 05.02
+-- Waktu pembuatan: 21 Nov 2024 pada 03.16
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -29,11 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cetak_laporan` (
   `id_laporan` int(11) NOT NULL,
-  `nama_spt` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nip_spt` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `pangkat_spt` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `jabatan_spt` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+  `id_spt` int(11) NOT NULL,
+  `id_nama` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `cetak_laporan`
+--
+
+INSERT INTO `cetak_laporan` (`id_laporan`, `id_spt`, `id_nama`) VALUES
+(16, 6, 87),
+(17, 6, 88),
+(18, 6, 92),
+(23, 7, 87),
+(24, 7, 110),
+(25, 7, 114),
+(26, 7, 118);
 
 -- --------------------------------------------------------
 
@@ -106,11 +117,11 @@ CREATE TABLE `daftar_nama` (
 --
 
 INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUES
-(87, 'Ir. YATNO ISWORO, MP', '196410101999031002', 'Pembina Utama (IV/E)', '  WIDYAISWARA AHLI UTAMA   '),
-(88, 'Dr.Ir. KRISTIYO SUMARWONO, M.Sc.', '196001111986031010', 'Pembina Utama Madya (IV/D)', '  WIDYAISWARA AHLI UTAMA   '),
-(89, 'Ir. WARDI ASTUTI, M.Pd.', '196608181992032015', 'Pembina Utama (IV/E)', '  WIDYAISWARA AHLI UTAMA   '),
-(91, 'Drs. SISWANTA JAKA PURNAMA, Apt.,M.Kes.', '196310281989111001', 'Pembina Utama (IV/E)', '  WIDYAISWARA AHLI UTAMA   '),
-(92, 'Dr. Ir. SUPRIYANTO, M.Si.', '196205171991031004', 'Pembina Utama Madya (IV/D)', '  WIDYAISWARA AHLI UTAMA   '),
+(87, 'Ir. YATNO ISWORO, MP', '196410101999031002', 'Pembina Utama (IV/E)', 'WIDYAISWARA AHLI UTAMA   '),
+(88, 'Dr.Ir. KRISTIYO SUMARWONO, M.Sc.', '196001111986031010', 'Pembina Utama Madya (IV/D)', 'WIDYAISWARA AHLI UTAMA   '),
+(89, 'Ir. WARDI ASTUTI, M.Pd.', '196608181992032015', 'Pembina Utama (IV/E)', 'WIDYAISWARA AHLI UTAMA   '),
+(91, 'Drs. SISWANTA JAKA PURNAMA, Apt.,M.Kes.', '196310281989111001', 'Pembina Utama (IV/E)', 'WIDYAISWARA AHLI UTAMA   '),
+(92, 'Dr. Ir. SUPRIYANTO', '196205171991031004', 'Pembina Utama Muda (IV/C)', 'WIDYAISWARA AHLI UTAMA'),
 (93, 'GIGUS NURYATNO, A.Pi.,M.A.P.', '196708221991031011', 'Pembina Utama Muda (IV/C)', 'WIDYAISWARA AHLI MADYA'),
 (94, 'WAHJU WIDIARSIH, ST.,M.Pi.', '196706071998032001', 'Pembina(IV/A)', 'WIDYAISWARA AHLI MUDA'),
 (95, 'DWI TITI SUNDARI, SKM.,M.Kes.', '196512131988032004', 'Pembina(IV/A)', 'WIDYAISWARA AHLI MADYA'),
@@ -170,11 +181,11 @@ INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUE
 (153, 'EKA YUNITA DESARI, S.S., M.Si', '197104191995032002', 'Pembina(IV/A)', 'Analis Program Diklat '),
 (154, 'SARTONO', '196804102009011006', 'Pengatur Tingkat I (II/D)', 'Pengadministrasi Pelatihan '),
 (155, 'HENDRIYANI MUKHTAR, SE, M.Si', '196901311996012001', 'Pembina(IV/A)', 'Analisis Pengembangan Kompetensi'),
-(156, 'ATTHATHUR MASSALENA AM, SE, MM', '197607162010011003', 'Penata Tingkat I (III/D)', ' Kepala Sub Bagian Umum dan Kepegawaian    '),
+(156, 'ATTHATHUR MASSALENA AM, SE, MM', '197607162010011003', 'Penata Tingkat I (III/D)', 'Kepala Sub Bagian Umum dan Kepegawaian    '),
 (157, 'JAKA MUJIHANA, S.Pd., M.M.', '197305192002121002', 'Penata (III/C)', 'Analis Jabatan '),
 (158, 'DINAR KURNIAWAN , S.STP', '198603112004121001', 'Penata (III/C)', 'Pengadministrasi Pelatihan '),
 (159, 'Dra. HERAWATI WIDYARINI, MM', '196908171996032004', 'Pembina(IV/A)', 'Analisis Pengembangan Kompetensi ASN Ahli Muda '),
-(160, 'SUDIBYO BUDI SETYAWAN, S.E.', '197901062010011005', 'Penata Muda Tingkat I (III/B)', '  Pengelola Barang Milik Negara   '),
+(160, 'SUDIBYO BUDI SETYAWAN, S.E.', '197901062010011005', 'Penata Muda Tingkat I (III/B)', 'Pengelola Barang Milik Negara   '),
 (161, 'V. WINARTI AGUSTININGTYAS, SH, M.Si', '197008171995032006', 'Pembina(IV/A)', 'Analisis Pengembangan Kompetensi ASN Ahli Muda '),
 (162, 'GIGIH HARYONO, SH', '197306011994031010', 'Penata Tingkat I (III/D)', 'Analis Kompetensi '),
 (163, 'HARI WIDADA', '197003272008011004', 'Penata Muda (III/A)', 'Pengadministrasi Pelatihan '),
@@ -184,60 +195,60 @@ INSERT INTO `daftar_nama` (`id_nama`, `nama`, `NIP`, `pangkat`, `jabatan`) VALUE
 (167, 'SUKARDI', '197103272007011007', 'Pengatur (II/C)', 'Penjaga Asrama '),
 (168, 'ROHMY IRMA ASTUTI, SE', '197504202006042018', 'Penata Tingkat I (III/D)', 'Pengolah Data Anggaran dan Perbendaharaan  '),
 (169, 'Dr. ENDANG RIAGUSTRIANINGSIH N, S.IP, M.Pd', '198208162010012020', 'Pembina(IV/A)', 'WIDYAISWARA AHLI MADYA'),
-(170, 'ANDI SURYANTO, S.STP., M.Si.', '197804101997031005', 'Pembina Tingkat I (IV/B)', '  Sekretaris   '),
-(171, 'ANDI SETIAWAN, SH, MH.', '197205091991031005', 'Pembina(IV/A)', '  Penyusun Program Anggaran dan Pelaporan    '),
+(170, 'ANDI SURYANTO, S.STP., M.Si.', '197804101997031005', 'Pembina Tingkat I (IV/B)', 'Sekretaris   '),
+(171, 'ANDI SETIAWAN, SH, MH.', '197205091991031005', 'Pembina(IV/A)', 'Penyusun Program Anggaran dan Pelaporan    '),
 (172, 'AMANDA SORAYA, S.Psi', '198007262010012010', 'Penata Tingkat I (III/D)', 'Bendahara '),
 (173, 'ARI DHAMAYANTI, M.Psi', '197811192010012008', 'Pembina(IV/A)', 'Analisis Pengembangan Kompetensi ASN Ahli Muda '),
 (174, 'HASTIN ARFIANI, SH', '196910011994012001', 'Penata Tingkat I (III/D)', 'Pengelola Penyelenggaraan Diklat '),
 (175, 'SUHARTO, SE, M.Si', '196806101998031006', 'Pembina(IV/A)', 'Analisis Pengembangan Kompetensi ASN Ahli Muda '),
 (176, 'JUMADI', '196808182007011023', 'Pengatur Tingkat I (II/D)', 'Pengadministrasi Pelatihan '),
-(177, 'ANDIKA HIDAYAT ADI, S.Kom.', '199406172019021008', 'Penata Muda (III/A)', '  Pengelola Barang Milik Negara   '),
+(177, 'ANDIKA HIDAYAT ADI, S.Kom.', '199406172019021008', 'Penata Muda (III/A)', 'Pengelola Barang Milik Negara   '),
 (178, 'RIDWAN NUGRAHA PASA, S.STP.', '199203192014061002', 'Penata Muda (III/A)', 'Pengadministrasi Umum '),
 (179, 'ARIS GUNAWAN', '196912171992121001', 'Penata Muda Tingkat I (III/B)', 'Pengadministrasi Pelatihan '),
-(180, 'SUDIRMAN MUSTAFA, S.H., M.Hum.', '196209161995011001', 'Pembina Utama (IV/E)', '  WIDYAISWARA AHLI UTAMA   '),
-(181, 'SUTARDI, A.Pi., M.M.A.', '196005311985031005', 'Pembina Utama (IV/E)', '  WIDYAISWARA AHLI UTAMA   '),
-(182, 'ARIF RACHMAN, SP, MPP,M.Ec.Dev', '197506252000031002', 'Pembina(IV/A)', '  Pengembang Teknologi Pembelajaran Ahli Muda    '),
+(180, 'SUDIRMAN MUSTAFA, S.H., M.Hum.', '196209161995011001', 'Pembina Utama (IV/E)', 'WIDYAISWARA AHLI UTAMA   '),
+(181, 'SUTARDI, A.Pi., M.M.A.', '196005311985031005', 'Pembina Utama (IV/E)', 'WIDYAISWARA AHLI UTAMA   '),
+(182, 'ARIF RACHMAN, SP, MPP,M.Ec.Dev', '197506252000031002', 'Pembina(IV/A)', 'Pengembang Teknologi Pembelajaran Ahli Muda    '),
 (183, 'NUNUNG NURJANAH, SE,M.Si', '197410161994032002', 'Pembina(IV/A)', 'Analis Program Diklat '),
 (184, 'SRI MARYUNI, S.Pd, MM', '197306081993032003', 'Penata Tingkat I (III/D)', 'Analisis Pengembangan Kompetensi ASN Ahli Muda '),
-(185, 'SAGUNG ISTIONO, SE.Ak,M.Si', '198006212010011022', 'Penata Tingkat I (III/D)', '  KASUBBAG KEUANGAN    '),
-(186, 'Drs. SUDARYANTO, M.Si.', '196005121989031012', 'Pembina Utama Madya (IV/D)', '  WIDYAISWARA AHLI UTAMA   '),
+(185, 'SAGUNG ISTIONO, SE.Ak,M.Si', '198006212010011022', 'Penata Tingkat I (III/D)', 'KASUBBAG KEUANGAN    '),
+(186, 'Drs. SUDARYANTO, M.Si.', '196005121989031012', 'Pembina Utama Madya (IV/D)', 'WIDYAISWARA AHLI UTAMA   '),
 (187, 'MARIA SUSIAWATI, S.Sos.,MPA', '196505221986032013', 'Pembina Utama Muda (IV/C)', 'WIDYAISWARA AHLI MADYA'),
 (188, 'H. SANTOSA, S.KEP,MM', '197212101992031004', 'Pembina Tingkat I (IV/B)', 'WIDYAISWARA AHLI MADYA'),
-(189, 'SENNA VIRGIAWAN, S.STP', '199306202016091001', 'Penata (III/C)', '  Penyusun Program Anggaran dan Pelaporan    '),
+(189, 'SENNA VIRGIAWAN, S.STP', '199306202016091001', 'Penata (III/C)', 'Penyusun Program Anggaran dan Pelaporan    '),
 (190, 'ANI YULIYATI, A.Md.', '198707132020122004', 'Pengatur (II/C)', 'Pengelola Kepegawaian '),
 (191, 'PRIMA MAHARDIKA PUTRA, S.A.P', '199608162020121002', 'Penata Muda (III/A)', 'Analis Program Diklat '),
-(192, 'ZAROH LAILATUL CHANIFAH, S.Pd.', '199312092020122013', 'Penata Muda (III/A)', '  Analisis Kurikulum dan Pembelajaran    '),
-(193, 'CHINTIA PRAHESTI YUGATPUTRI, A.Md.', '199804282020122002', 'Pengatur (II/C)', '  Verifaktor Data Laporan Keuangan   '),
-(194, 'FERZI EDI WARDOYO, A.Md', '199307172020121004', 'Pengatur (II/C)', '   Pengelola Sarana dan Prasarana Kantor   '),
+(192, 'ZAROH LAILATUL CHANIFAH, S.Pd.', '199312092020122013', 'Penata Muda (III/A)', 'Analisis Kurikulum dan Pembelajaran    '),
+(193, 'CHINTIA PRAHESTI YUGATPUTRI, A.Md.', '199804282020122002', 'Pengatur (II/C)', 'Verifaktor Data Laporan Keuangan   '),
+(194, 'FERZI EDI WARDOYO, A.Md', '199307172020121004', 'Pengatur (II/C)', 'Pengelola Sarana dan Prasarana Kantor   '),
 (195, 'ERMIN KARTI ANDARI, A.Md', '198509042020122003', 'Pengatur (II/C)', 'Pengelola Penyelenggaraan Diklat '),
-(196, 'EKA WIDIYANI, S.Pd.', '199507232020122005', 'Penata Muda (III/A)', '  Analis Mutu Pendidikan   '),
+(196, 'EKA WIDIYANI, S.Pd.', '199507232020122005', 'Penata Muda (III/A)', 'Analis Mutu Pendidikan   '),
 (197, 'DIAN AL RIZKY AGUSTIN, A.Md.', '199608222020121007', 'Pengatur (II/C)', 'Pengelola Penyelenggaraan Diklat '),
-(198, 'RUDI SANTOSO ADI, S.IP.', '198712092020121006', 'Penata Muda (III/A)', '   Analis Kerjasama Diklat   '),
-(199, 'Dra. MUKAROMAH SYAKOER, M.M', '196102171985032008', 'Pembina Utama Madya (IV/D)', '  WIDYAISWARA AHLI UTAMA   '),
+(198, 'RUDI SANTOSO ADI, S.IP.', '198712092020121006', 'Penata Muda (III/A)', 'Analis Kerjasama Diklat   '),
+(199, 'Dra. MUKAROMAH SYAKOER, M.M', '196102171985032008', 'Pembina Utama Madya (IV/D)', 'WIDYAISWARA AHLI UTAMA   '),
 (200, 'Dr. SUDALMA, S.Si., M.Si.', '197003021998031009', 'Pembina Tingkat I (IV/B)', 'WIDYAISWARA AHLI MADYA'),
 (201, 'AGUS SUPRIYANTO, S.E., M.M.', '197608052005011008', 'Penata (III/C)', 'Analis Program Diklat '),
 (202, 'Ir. H. YOYON INDRAYANA, MT', '196607221993011001', 'Pembina Utama Muda (IV/C)', 'WIDYAISWARA AHLI MADYA'),
 (203, 'MELATI KRISTANTI, A.Md.', '199211222020122009', 'Pengatur (II/C)', 'Pengelola Penyelenggaraan Diklat '),
-(204, 'SUMARHENDRO, S.Sos', '196709221998031006', 'Pembina Tingkat I (IV/B)', '  KEPALA BIDANG PENGEMBANGAN KOMPETENSI TEKNIS   '),
-(205, 'ADITYA IIP WISUDAWAN NUGROHO, S.STP, M.Si', '198710052006021003', 'Penata Tingkat I (III/D)', '   KEPALA SUB BAGIAN PROGRAM    '),
-(206, 'HENDRI SANTOSA, SE, Ak, M.Si. CA', '196112261983031001', 'Pembina Utama Madya (IV/D)', '  WIDYAISWARA AHLI UTAMA   '),
-(207, 'SRI SULISTIYATI, SE, M.Kom', '197001121992032006', 'Pembina Tingkat I (IV/B)', '  KEPALA BIDANG SERTIFIKASI KOMPETENSI DAN PENJAMINAN MUTU   '),
-(208, 'RINI KUSWARDANI, S.E', '198908192022032003', 'Penata Muda (III/A)', '  Penyusun Program Anggaran dan Pelaporan    '),
+(204, 'SUMARHENDRO, S.Sos', '196709221998031006', 'Pembina Tingkat I (IV/B)', 'KEPALA BIDANG PENGEMBANGAN KOMPETENSI TEKNIS   '),
+(205, 'ADITYA IIP WISUDAWAN NUGROHO, S.STP, M.Si', '198710052006021003', 'Penata Tingkat I (III/D)', 'KEPALA SUB BAGIAN PROGRAM    '),
+(206, 'HENDRI SANTOSA, SE, Ak, M.Si. CA', '196112261983031001', 'Pembina Utama Madya (IV/D)', 'WIDYAISWARA AHLI UTAMA   '),
+(207, 'SRI SULISTIYATI, SE, M.Kom', '197001121992032006', 'Pembina Tingkat I (IV/B)', 'KEPALA BIDANG SERTIFIKASI KOMPETENSI DAN PENJAMINAN MUTU   '),
+(208, 'RINI KUSWARDANI, S.E', '198908192022032003', 'Penata Muda (III/A)', 'Penyusun Program Anggaran dan Pelaporan    '),
 (209, 'ASA BANI CHITARA, A.Md.Kb.N.', '199901222022012001', 'Pengatur (II/C)', 'Pengelola Penyelenggaraan Diklat '),
-(210, 'AZKY ILAHI RATU CONSINA, A.Md.Ak.', '200002252022012002', 'Pengatur (II/C)', '  Pengelola Barang Milik Negara   '),
-(211, 'NOPRI PRIANTO, S.Pd.', '199811052022031003', 'Penata Muda (III/A)', '  Analis Mutu Pendidikan   '),
-(212, 'NUR SAFIRAH ADLINA, S.Hum', '199703252022032009', 'Penata Muda (III/A)', '  Ahli Pertama - Arsiparis   '),
-(213, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda (III/A)', '  Ahli Pertama - Pranata Komputer    '),
-(214, 'Drs. HARI KUNTJORO, S.Sos, M.Si', '197012141991011001', 'Pembina Utama Muda (IV/C)', '  Analis Mutu Pendidikan   '),
+(210, 'AZKY ILAHI RATU CONSINA, A.Md.Ak.', '200002252022012002', 'Pengatur (II/C)', 'Pengelola Barang Milik Negara   '),
+(211, 'NOPRI PRIANTO, S.Pd.', '199811052022031003', 'Penata Muda (III/A)', 'Analis Mutu Pendidikan   '),
+(212, 'NUR SAFIRAH ADLINA, S.Hum', '199703252022032009', 'Penata Muda (III/A)', 'Ahli Pertama - Arsiparis   '),
+(213, 'ILHAM HABIBULLAH AKBAR, S.KOM', '199607192022031008', 'Penata Muda (III/A)', 'Ahli Pertama - Pranata Komputer    '),
+(214, 'Drs. HARI KUNTJORO, S.Sos, M.Si', '197012141991011001', 'Pembina Utama Muda (IV/C)', 'Analis Mutu Pendidikan   '),
 (215, 'Drs. EKO SUPRAYITNO, MM', '196709251993031004', 'Pembina Tingkat I (IV/B)', 'WIDYAISWARA AHLI MADYA'),
 (216, 'INDRA ADI NUGROHO, S.ST.', '198704192008121001', 'Penata (III/C)', 'Pengelola Penyelenggaraan Diklat '),
-(217, 'Dr. SADIMIN, S.Pd., M.Eng.', '197212061994121001', 'Pembina Utama Madya (IV/D)', '  KEPALA BADAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH   '),
-(218, 'Dr. ANON PRIYANTORO, S.Pd., M.Pd.', '197305011998011001', 'Pembina Tingkat I (IV/B)', '  KABID PENGEMBANGAN KOMPETENSI JABATAN FUNGSIONAL    '),
-(220, 'FREIDA TRIASTUTI RATNA JATI, S.E.', '199008232024212004', 'Golongan IX', '  ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
-(221, 'VITA DWI IRMAWATI, S.Sos.', '199505202024212010', 'Golongan IX', '  ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
-(222, 'SYLVI PANAMASARI, S.Psi', '198901272024212005', 'Golongan IX', '  ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
-(223, 'HENDRA SUGIARTO, S.E.', '198405252024211003', 'Golongan IX', '  ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
-(224, 'DHARU PUNJUNG WIJAYA, SAP, M.Si', '198605082009121003', 'Penata (III/C)', '  Analisis Kurikulum dan Pembelajaran    ');
+(217, 'Dr. SADIMIN, S.Pd., M.Eng.', '197212061994121001', 'Pembina Utama Madya (IV/D)', 'KEPALA BADAN PENGEMBANGAN SUMBER DAYA MANUSIA DAERAH   '),
+(218, 'Dr. ANON PRIYANTORO, S.Pd., M.Pd.', '197305011998011001', 'Pembina Tingkat I (IV/B)', 'KABID PENGEMBANGAN KOMPETENSI JABATAN FUNGSIONAL    '),
+(220, 'FREIDA TRIASTUTI RATNA JATI, S.E.', '199008232024212004', 'Golongan IX', 'ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
+(221, 'VITA DWI IRMAWATI, S.Sos.', '199505202024212010', 'Golongan IX', 'ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
+(222, 'SYLVI PANAMASARI, S.Psi', '198901272024212005', 'Golongan IX', 'ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
+(223, 'HENDRA SUGIARTO, S.E.', '198405252024211003', 'Golongan IX', 'ANALISIS PENGEMBANGAN KOMPETENSI ASN   '),
+(224, 'DHARU PUNJUNG WIJAYA, SAP, M.Si', '198605082009121003', 'Penata (III/C)', 'Analisis Kurikulum dan Pembelajaran    ');
 
 -- --------------------------------------------------------
 
@@ -388,7 +399,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `cetak_laporan`
 --
 ALTER TABLE `cetak_laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `cetak_spt`
