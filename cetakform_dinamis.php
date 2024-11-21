@@ -666,6 +666,9 @@ if ($result_dasar->num_rows > 0) {
 
 
         while ($row = mysqli_fetch_assoc($result)) {
+                $id_nama = $row['id_nama'];
+                $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+                while ($row = mysqli_fetch_assoc($querynama)) {
 
 
             $pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true);
@@ -703,6 +706,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->Ln();
         }
+    }
 
         $pdf->Ln(10);
         $pdf->SetX(108);
