@@ -27,7 +27,8 @@ $pdf->setPrintFooter(false);
 // Menambahkan halaman
 $pdf->AddPage();
 
-$query = "SELECT * FROM cetak_laporan ";
+$id = $_GET['id'];
+$query = "SELECT * FROM cetak_laporan WHERE id_spt = $id ";
 $result = $conn->query($query);
 $jml = $result->num_rows + 1;
 
@@ -38,7 +39,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->SetFont('Helvetica', 'B', 14);
     $pdf->Cell(195, 5, "PEMERINTAH PROVINSI JAWA TENGAH", 0, 1, 'C');
     $pdf->SetFont('Helvetica', 'B', 14);
-    $pdf->Cell(195, 5, "BADAN PENGEMBANGAN ", 0, 1, 'C');
+    $pdf->Cell(195, 5, 'BADAN PENGEMBANGAN', 0, 1, 'C');
     $pdf->Cell(195, 5, "SUMBER DAYA MANUSIA DAERAH", 0, 1, 'C');
     $pdf->SetFont('Helvetica', '', 10);
     $pdf->Cell(195, 3, "Jalan Setiabudi Nomor 201 A Semarang Kode Pos 50263", 0, 1, 'C');
@@ -52,14 +53,12 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->Line(9, 43, 200, 43);
     $pdf->Ln(5);
 
-
     // ISI
     $pdf->SetFont('Helvetica', 'B', 13);
     $pdf->Cell(195, 5, "SURAT PERINTAH PERJALANAN DINAS", 0, 1, 'C');
 
     $pdf->SetFont('helvetica', '', 12);
 
-    $id = $_GET['id'];
     $query_isi = "SELECT * FROM form_spt where id_spt='$id'";
     $result_isi = $conn->query($query_isi);
     $row_isi = $result_isi->fetch_assoc();
@@ -69,9 +68,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $no = 1;
 
     $pdf->SetLineWidth(0.3);
-    $query = "SELECT * FROM cetak_laporan WHERE id_spt = $id";
-    $result = $conn->query($query);
-
     // $pdf->setCellPaddings(1, 1, 0, 0); 
     //BARIS 1
 
@@ -90,50 +86,39 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     //BARIS 2
 
-    if ($row = mysqli_fetch_assoc($result)) {
-        $id_nama = $row['id_nama'];
-        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
-        while ($row = mysqli_fetch_assoc($querynama)) {
+    $id_nama = $row['id_nama'];
+    $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+    while ($row = mysqli_fetch_assoc($querynama)) {
+        // Menghitung tinggi dinamis berdasarkan konten deskripsi panjang
+        $tinggiNama = $pdf->getStringHeight(80, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas");
+        // Reset padding setelah selesai jika ingin kembali ke default
+        $tinggiInstansi = $pdf->getStringHeight(100, $row['nama'] . "\n\n\nNIP. " . $row['NIP']);
+        $tinggiMaks = max($tinggiNama, $tinggiInstansi) - 3;
+
+        // Kolom nomor
+        $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+
+        // Kolom deskripsi (pastikan newline pada teks)
+        $pdf->MultiCell(85, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
+
+        // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
+        $kontenNamaNIP = "\n" . $row['nama'] . "\n\nNIP. " . $row['NIP'];
+        $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
+
+        //BARIS 3
+        $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
+        $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
+        $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
+
+        $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+
+        $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+        $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
+        $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
+
+    }
 
 
-    // Menghitung tinggi dinamis berdasarkan konten deskripsi panjang
-    $tinggiNama = $pdf->getStringHeight(80, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas");
-    // Reset padding setelah selesai jika ingin kembali ke default
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['nama'] . "\n\n\nNIP. " . $row['NIP']);
-    $tinggiMaks = max($tinggiNama, $tinggiInstansi) - 3;
-
-    // Kolom nomor
-    $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-
-    // Kolom deskripsi (pastikan newline pada teks)
-    $pdf->MultiCell(85, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
-
-   // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
-   $kontenNamaNIP ="\n".$row['nama']."\n\nNIP. " . $row['NIP'];
-   $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
-
-
-        }}
-
-    //BARIS 3
-
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        $id_nama = $row['id_nama'];
-        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
-        while ($row = mysqli_fetch_assoc($querynama)) {
-
-    $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
-    $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
-    $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
-
-    $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-
-    $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-    $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
-    $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
-
-        }}
     //BARIS 4
 
     $tinggiNama = $pdf->getStringHeight(85, 'Maksud Mengadakan Perjalanan');
@@ -454,41 +439,42 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     // NIP Dr. Sadimin
     //if (strpos($selectedName, 'Dr. SADIMIN') !== false) {
-        //$pdf->Cell(295, 5, "Dr.SADIMIN,S.Pd, M.Eng", 0, 1, 'C');
-        // Menggambar garis di bawah nama
-        //$pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54);
-        //$pdf->Cell(295, 5, "NIP. 197212061994121001", 0, 1, 'C');
+    //$pdf->Cell(295, 5, "Dr.SADIMIN,S.Pd, M.Eng", 0, 1, 'C');
+    // Menggambar garis di bawah nama
+    //$pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54);
+    //$pdf->Cell(295, 5, "NIP. 197212061994121001", 0, 1, 'C');
 
-        //NIP Sri Sulistiyati
+    //NIP Sri Sulistiyati
     //} elseif (strpos($selectedName, 'Sri Sulistiyati, SE, M.Kom') !== false) {
-        //$pdf->Cell(295, 5, "Sri Sulistiyati, SE, M.Kom", 0, 1, 'C');
-       // $pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54);
-       // $pdf->Cell(295, 5, "NIP. 197001121992032006", 0, 1, 'C');
+    //$pdf->Cell(295, 5, "Sri Sulistiyati, SE, M.Kom", 0, 1, 'C');
+    // $pdf->Line($x + 126, $y + 54, $x + 69 + $line_length, $y + 54);
+    // $pdf->Cell(295, 5, "NIP. 197001121992032006", 0, 1, 'C');
 
-        //NIP Sumarhendro
+    //NIP Sumarhendro
     //} elseif (strpos($selectedName, 'Sumarhendro, S.Sos') !== false) {
-       // $pdf->Cell(295, 5, "Sumarhendro, S.Sos", 0, 1, 'C');
-        //$pdf->Line($x + 130, $y + 54, $x + 65.5 + $line_length, $y + 54);
-       // $pdf->Cell(295, 5, "NIP. 196709221998031006", 0, 1, 'C');
+    // $pdf->Cell(295, 5, "Sumarhendro, S.Sos", 0, 1, 'C');
+    //$pdf->Line($x + 130, $y + 54, $x + 65.5 + $line_length, $y + 54);
+    // $pdf->Cell(295, 5, "NIP. 196709221998031006", 0, 1, 'C');
 
-        //NIP Dr. Anon 
+    //NIP Dr. Anon 
     //} elseif (strpos($selectedName, 'Dr. Anon Priyantoro, S.Pd., M.Pd') !== false) {
-        //$pdf->Cell(295, 5, "Dr. Anon Priyantoro, S.Pd., M.Pd", 0, 1, 'C');
-       // $pdf->Line($x + 119, $y + 54, $x + 76 + $line_length, $y + 54);
-       // $pdf->Cell(295, 5, "NIP. 197305011998011001", 0, 1, 'C');
+    //$pdf->Cell(295, 5, "Dr. Anon Priyantoro, S.Pd., M.Pd", 0, 1, 'C');
+    // $pdf->Line($x + 119, $y + 54, $x + 76 + $line_length, $y + 54);
+    // $pdf->Cell(295, 5, "NIP. 197305011998011001", 0, 1, 'C');
 
 
-   // } else {
-        // Jika nama tidak terpanggil
-       // $pdf->Cell(260, 5, "Name Tidak Diketahui", 0, 1, 'C');
+    // } else {
+    // Jika nama tidak terpanggil
+    // $pdf->Cell(260, 5, "Name Tidak Diketahui", 0, 1, 'C');
     //}
 
 
-    $pdf->Cell(295,5,"Dr.SADIMIN,S.Pd, M.Eng",0,1,'C');
-// Menggambar garis di bawah nama
-$pdf->Line($x + 126, $y + 53, $x + 69 + $line_length, $y + 53); 
-$pdf->Cell(295,5,"NIP. 197212061994121001",0,1,'C');
+    $pdf->Cell(295, 5, "Dr.SADIMIN,S.Pd, M.Eng", 0, 1, 'C');
+    // Menggambar garis di bawah nama
+    $pdf->Line($x + 126, $y + 53, $x + 69 + $line_length, $y + 53);
+    $pdf->Cell(295, 5, "NIP. 197212061994121001", 0, 1, 'C');
     $no = 1;
+
     $pdf->AddPage();
 }
 // Delete page 6
