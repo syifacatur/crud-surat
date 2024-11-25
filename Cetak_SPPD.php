@@ -106,9 +106,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     // Kolom deskripsi (pastikan newline pada teks)
     $pdf->MultiCell(85, $tinggiMaks, "Nama Gubernur/Wakil Gubernur/Pimpinan dan Anggota DPRD/Pegawai ASN dan NIP/CPNS dan NIP/ Pegawai Non ASN/Bukan Pegawai yang melaksanakan perjalanan Dinas", 1, 'L', 0, 0, '', '', true);
 
-    // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
-    $kontenNamaNIP = $row['nama'] . "\n\n\nNIP. " . $row['NIP'];
-    $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
+   // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
+   $kontenNamaNIP ="\n".$row['nama']."\n\nNIP. " . $row['NIP'];
+   $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
+
 
         }}
 
