@@ -24,7 +24,7 @@
         }
         ?>
         body {
-            background-image: url('aset/img/website.jpg'); /* Update with your image path */
+            background-image: url('aset/img/logo3.jpg'); /* Update with your image path */
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -36,9 +36,9 @@
 <body>
 
 <div align="center">
-    <div align="center" style="width:450px; margin-top:8%;">
-        <form name="login_form" method="post" class="well well-lg" action="" style="background-color: rgba(255, 255, 255, 0.8); -webkit-box-shadow: 0px 0px 5px #888888; padding: 20px; border-radius: 20px;">
-        <h4 style="margin-bottom: 25px;"><b>BPSDMD PROV JATENG</b></h4>
+    <div align="center" style="width:450px; margin-top:9%;">
+        <form name="login_form" method="post" class="well well-lg" action="" style="background-color: rgba(255, 255, 255, 0.8); -webkit-box-shadow: 0px 0px 5px #888888; padding: 20px; border-radius: 5px;">
+        <h4 style="margin-bottom: 25px;"><b></b></h4>
 
             <?php if (isset($error)) { ?>
                 <p style="font-style: italic; color: red; margin-top: 15px">Username / Password anda salah</p>
