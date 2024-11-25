@@ -117,8 +117,7 @@ $id_spt = $_GET['id'];
                         <td><?php echo $row['jabatan']; ?></td>
                         <td>
                           <!--<a href="form_edituser.php?id=<?php echo $row['id_user'] ?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
-                          <a href="#" class="btn btn-success btn-flat btn-xs" data-toggle="modal"
-                            data-target="#updateproduk<?php echo $no; ?>"><i class="fa fa-pencil"></i> Edit</a>
+                        
                           <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
                             data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
 
