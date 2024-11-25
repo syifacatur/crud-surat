@@ -36,14 +36,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->Image('library/logo1.jpg', 15, 10, 25);
     //title
     $pdf->SetFont('Helvetica', 'B', 14);
-    $pdf->Cell(190, 5, "PEMERINTAH PROVINSI JAWA TENGAH", 0, 1, 'C');
+    $pdf->Cell(195, 5, "PEMERINTAH PROVINSI JAWA TENGAH", 0, 1, 'C');
     $pdf->SetFont('Helvetica', 'B', 14);
-    $pdf->Cell(190, 5, "BADAN PENGEMBANGAN ", 0, 1, 'C');
-    $pdf->Cell(190, 5, "SUMBER DAYA MANUSIA DAERAH", 0, 1, 'C');
+    $pdf->Cell(195, 5, "BADAN PENGEMBANGAN ", 0, 1, 'C');
+    $pdf->Cell(195, 5, "SUMBER DAYA MANUSIA DAERAH", 0, 1, 'C');
     $pdf->SetFont('Helvetica', '', 10);
-    $pdf->Cell(190, 3, "Jalan Setiabudi Nomor 201 A Semarang Kode Pos 50263", 0, 1, 'C');
-    $pdf->Cell(190, 3, "Telp. 024-7473066 Faks. 024-7473701", 0, 1, 'C');
-    $pdf->Cell(190, 3, "Website : www.bpsdmd.jatengprov.go.id Email : bpsdmd@jatengprov.go.id", 0, 1, 'C');
+    $pdf->Cell(195, 3, "Jalan Setiabudi Nomor 201 A Semarang Kode Pos 50263", 0, 1, 'C');
+    $pdf->Cell(195, 3, "Telp. 024-7473066 Faks. 024-7473701", 0, 1, 'C');
+    $pdf->Cell(195, 3, "Website : www.bpsdmd.jatengprov.go.id Email : bpsdmd@jatengprov.go.id", 0, 1, 'C');
 
     // garis bawah double 
     $pdf->SetLineWidth(1);
@@ -55,7 +55,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     // ISI
     $pdf->SetFont('Helvetica', 'B', 13);
-    $pdf->Cell(190, 5, "SURAT PERINTAH PERJALANAN DINAS", 0, 1, 'C');
+    $pdf->Cell(195, 5, "SURAT PERINTAH PERJALANAN DINAS", 0, 1, 'C');
 
     $pdf->SetFont('helvetica', '', 12);
 
