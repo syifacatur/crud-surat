@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     // Menyesuaikan tinggi sel "Nama"
     $pdf->MultiCell(85, $tinggiMaks, 'Pejabat yang memberi perintah', 'RT', 'L', 0, 0, '', '', true);
     // Menyesuaikan tinggi sel "Instansi"
-    $pdf->MultiCell(100, $tinggiMaks, 'Kepala Badan Pengembangan Sumber Daya Manusia Daerah Provinsi Jawa Tengah', 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, 'Kepala Badan Pengembangan Sumber Daya Manusia Daerah Provinsi Jawa Tengah', 1, 'L', 0, 1, '', '', true);
 
     //BARIS 2
 
@@ -103,7 +103,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         // Gabungkan nama dan NIP dalam satu MultiCell (dengan penambahan jarak vertikal sebelum nama)
         $kontenNamaNIP = "\n" . $row['nama'] . "\n\nNIP. " . $row['NIP'];
-        $pdf->MultiCell(100, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
+        $pdf->MultiCell(102, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
 
         //BARIS 3
         $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
@@ -114,7 +114,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
         $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
-        $pdf->MultiCell(100, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
+        $pdf->MultiCell(102, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
 
     }
 
@@ -128,7 +128,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
     $pdf->MultiCell(85, $tinggiMaks, 'Maksud Mengadakan Perjalanan', 1, 'L', 0, 0, '', '', true);
     $kontenmaksudtujuan = $row_isi['maksud_tujuan'];
-    $pdf->MultiCell(100, $tinggiMaks, $kontenmaksudtujuan, 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, $kontenmaksudtujuan, 1, 'L', 0, 1, '', '', true);
 
     //BARIS 5
 
@@ -140,7 +140,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
 
     $pdf->MultiCell(85, $tinggiMaks, 'Alat Angkut yang Dipergunakan', 1, 'L', 0, 0, '', '', true);
-    $pdf->MultiCell(100, $tinggiMaks, 'Kendaraan Dinas', 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, 'Kendaraan Dinas', 1, 'L', 0, 1, '', '', true);
 
     //Baris 6
 
@@ -152,7 +152,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $pdf->MultiCell(85, $tinggiMaks, 'a. Tempat Berangkat' . "\nb. Tempat Tujuan", 1, 'L', 0, 0, '', '', true);
     $kontenBerangkatTujuan = '  a.   Semarang' . "\n  b.   " . $row_isi['lokasi'];
-    $pdf->MultiCell(100, $tinggiMaks, $kontenBerangkatTujuan, 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, $kontenBerangkatTujuan, 1, 'L', 0, 1, '', '', true);
 
     //baris 7
 
@@ -240,7 +240,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
     $pdf->MultiCell(85, $tinggiMaks, 'a. Lamanya Perjalanan Dinas' . "\nb. Tanggal Berangkat" . "\nc. Tanggal Harus Kembali/Tiba Di Tempat Baru", 1, 'L', 0, 0, '', '', true);
     $kontentanggal = '  a.   ' . $teks_hari . 'hari' . "\n  b.   " . tgl_indo($row_isi['tgl_kegiatan']) . "\n  c.   " . tgl_indo($row_isi['tgl_pulang']);
-    $pdf->MultiCell(100, $tinggiMaks, $kontentanggal, 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, $kontentanggal, 1, 'L', 0, 1, '', '', true);
 
     //baris 8
 
@@ -250,7 +250,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
     $pdf->MultiCell(85, $tinggiMaks, 'pengikut', 1, 'L', 0, 0, '', '', true);
-    $pdf->MultiCell(100, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
 
     //baris 9
 //menggunakan if else 
@@ -274,7 +274,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         $pdf->MultiCell(6, 19, "\na.", 0, 'C', 0, 0, '', '', true);
 
         // MultiCell untuk teks panjang setelah "a."
-        $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+        $pdf->MultiCell(94, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
 
         if (strpos($selectedanggaran, 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD') !== false) {
             $pdf->SetX(105);
@@ -282,7 +282,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
             // MultiCell untuk kode anggaran
-            $pdf->MultiCell(92, 14.5, "5.04.0.00.0.00.01.X.XX.01.1.06.0009.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
+            $pdf->MultiCell(94, 14.5, "5.04.0.00.0.00.01.X.XX.01.1.06.0009.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
 
 
 
@@ -307,7 +307,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $pdf->MultiCell(6, 19, "\na.", 0, 'C', 0, 0, '', '', true);
 
             // MultiCell untuk teks panjang setelah "a."
-            $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+            $pdf->MultiCell(94, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
 
             if (strpos($selectedanggaran, 'kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD') !== false) {
 
@@ -316,7 +316,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.06.0011.5.1.2.4.1.1.01", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(94, 9.7, "5.04.0.00.0.00.01.X.XX.01.1.06.0011.5.1.2.4.1.1.01", 'R', 'L', 0, 1, '', '', true);
 
             }
         }
@@ -338,7 +338,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $pdf->MultiCell(6, 19, "\na.", 0, 'C', 0, 0, '', '', true);
 
             // MultiCell untuk teks panjang setelah "a."
-            $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+            $pdf->MultiCell(94, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
 
             if (strpos($selectedanggaran, 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian') !== false) {
 
@@ -347,7 +347,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0003.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(94, 8.9, "5.04.0.00.0.00.01.X.XX.01.1.05.0003.5.1.2.4.1.1", 'R', 'L', 0, 1, '', '', true);
             }
         }
 
@@ -368,7 +368,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $pdf->MultiCell(6, 19, "\na.", 0, 'C', 0, 0, '', '', true);
 
             // MultiCell untuk teks panjang setelah "a."
-            $pdf->MultiCell(92, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
+            $pdf->MultiCell(94, 15, "\nAPBD Tahun 2023 " . $row_isi['anggaran'], 'R', 'L', 0, 1, '', '', true);
 
             if (strpos($selectedanggaran, 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi') !== false) {
 
@@ -377,7 +377,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
 
                 // MultiCell untuk kode anggaran
-                $pdf->MultiCell(92, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.2.12.1", 'R', 'L', 0, 1, '', '', true);
+                $pdf->MultiCell(94, 13.7, "5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.2.12.1", 'R', 'L', 0, 1, '', '', true);
 
             }
         }
@@ -395,7 +395,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
     $pdf->MultiCell(85, $tinggiMaks, 'Keterangan Lain-lain', 1, 'L', 0, 0, '', '', true);
-    $pdf->MultiCell(100, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(102, $tinggiMaks, '', 1, 'L', 0, 1, '', '', true);
 
     $x = $pdf->GetX();
     $y = $pdf->GetY();
