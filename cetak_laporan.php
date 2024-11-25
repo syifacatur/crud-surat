@@ -122,6 +122,9 @@ $id_spt = $_GET['id'];
                           <a href="#" class="btn btn-danger btn-flat btn-xs" data-toggle="modal"
                             data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
 
+                            
+
+
                           <!-- modal delete -->
                           <div class="example-modal">
                             <div id="deleteproduk<?php echo $no; ?>" class="modal fade" role="dialog" style="display:none;">
@@ -134,13 +137,13 @@ $id_spt = $_GET['id'];
                                   </div>
                                   <div class="modal-body">
                                     <h4 align="center">Apakah anda yakin ingin menghapus
-                                      <?php echo $row['nama_spt']; ?><strong><span class="grt"></span></strong> ?
+                                      <?php echo $row['nama']; ?><strong><span class="grt"></span></strong> ?
                                     </h4>
                                   </div>
                                   <div class="modal-footer">
                                     <button id="nodelete" type="button" class="btn btn-danger pull-left"
                                       data-dismiss="modal">Cancel</button>
-                                    <a href="function_cetak.php?act=deleteproduk&id_laporan=<?php echo $row['id_laporan']; ?>"
+                                    <a href="function_cetak.php?act=deleteproduk&id_nama=<?php echo $row['id_nama']; ?>"
                                       class="btn btn-success">Hapus</a>
                                   </div>
                                 </div>
@@ -162,93 +165,25 @@ $id_spt = $_GET['id'];
                                   </div>
                                   <div class="modal-body">
                                     <form action="function_cetak.php?act=updateproduk" method="post" role="form">
-                                      <?php
-                                      $id_laporan = $row['id_laporan'];
-                                      $query = "SELECT * FROM cetak_laporan WHERE id_laporan='$id_laporan'";
-                                      $result = mysqli_query($koneksi, $query);
-                                      while ($row = mysqli_fetch_assoc($result)) {
-                                        ?>
 
-                                        <div class="form-group">
-                                          <div class="row">
-                                            <div class="col-sm-8"><input type="hidden" class="form-control select2"
-                                                name="id_laporan" placeholder="ID laporan"
-                                                value="<?php echo $row['id_laporan']; ?>"></div>
-                                          </div>
-                                        </div>
+                         <div class="form-group">
+                        <div class="row">
+                          <label class="col-sm-3 control-label text-right">NAMA
+                            <span class="text-red">*</span></label>
+                          <div class="col-sm-8"><select id="id_nama" class="form-control select2" name="id_nama"
+                              placeholder="Search.." value="<?php echo $row['id_nama']; ?>">
+                              <option value="">--PILIH--"</option>
 
-                                        <div class="form-group">
-                                          <div class="row">
-                                            <label class="col-sm-3 control-label text-right">NAMA
-                                              <span class="text-red">*</span></label>
-                                            <div class="col-sm-8"><select id="id_nama" class="form-control select2"
-                                                name="nama" placeholder="Search.." value="<?php echo $row['nama_spt']; ?>">
-                                                <option value="">--PILIH--</option>
+                              <?php
+                              $query = mysqli_query($koneksi, "SELECT * FROM daftar_nama");
+                              while ($row = mysqli_fetch_assoc($query)) {
+                                echo "<option value='" . $row['id_nama'] . "'>" . $row['nama'] . "</option>";
+                              }
+                              ?>
 
-                                                <?php
-                                                $query = mysqli_query($koneksi, "SELECT * FROM daftar_nama");
-                                                while ($row = mysqli_fetch_assoc($query)) {
-                                                  echo "<option value='" . $row['id_nama'] . "'>" . $row['nama'] . "</option>";
-                                                }
-                                                ?>
-                                              </select>
-                                            </div>
-                                          </div>
-                                          <div class="form-group ">
-                                            <div class="row">
-                                              <label class="col-sm-3 control-label text-right">NIP
-                                                <span class="text-red">*</span></label>
-                                              <div class="col-sm-8"><select id="NIP" class="form-control select2" name="NIP"
-                                                  placeholder="Search.." value="<?php echo $row['nama']; ?>">
-                                                  <option value="">--PILIH--</option>
-
-                                                  <?php
-                                                  $query = mysqli_query($koneksi, "SELECT * FROM daftar_nama");
-                                                  while ($row = mysqli_fetch_assoc($query)) {
-                                                    echo "<option value='" . $row['id_nama'] . "'>" . $row['NIP'] . "</option>";
-                                                  }
-                                                  ?>
-                                                </select>
-                                              </div>
-                                            </div>
-                                            <div class="form-group">
-                                              <div class="row">
-                                                <label class="col-sm-3 control-label text-right">PANGKAT
-                                                  <span class="text-red">*</span></label>
-                                                <div class="col-sm-8"><select id="pangkat" class="form-control select2"
-                                                    name="pangkat" placeholder="Search.." value="<?php echo $row['nama']; ?>">
-                                                    <option value="">--PILIH--</option>
-
-                                                    <?php
-                                                    $query = mysqli_query($koneksi, "SELECT * FROM daftar_nama");
-                                                    while ($row = mysqli_fetch_assoc($query)) {
-                                                      echo "<option value='" . $row['id_nama'] . "'>" . $row['pangkat'] . "</option>";
-                                                    }
-                                                    ?>
-                                                  </select>
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <div class="row">
-                                                  <label class="col-sm-3 control-label text-right">JABATAN
-                                                    <span class="text-red">*</span></label>
-                                                  <div class="col-sm-8"><select id="jabatan" class="form-control select2"
-                                                      name="jabatan" placeholder="Search.."
-                                                      value="<?php echo $row['nama']; ?>">
-                                                      <option value="">--PILIH--</option>
-
-                                                      <?php
-                                                      $query = mysqli_query($koneksi, "SELECT * FROM daftar_nama");
-                                                      while ($row = mysqli_fetch_assoc($query)) {
-                                                        echo "<option value='" . $row['id_nama'] . "'>" . $row['jabatan'] . "</option>";
-                                                      }
-                                                      ?>
-
-                                                    </select>
-                                                  </div>
-                                                </div>
-
-
+                            </select>
+                          </div>
+                        </div>                                        
                                                 <div class="modal-footer">
                                                   <button id="noedit" type="button" class="btn btn-danger pull-left"
                                                     data-dismiss="modal">Batal</button>
@@ -267,7 +202,7 @@ $id_spt = $_GET['id'];
                       </tr>
                       <?php
                     }
-                  }
+                  
                   ?>
                 </tbody>
               </table>
