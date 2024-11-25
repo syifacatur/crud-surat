@@ -514,7 +514,7 @@ if ($result_dasar->num_rows > 0) {
         $line_length = 100; // Panjang garis dalam satuan TCPDF
 
         // Menggambar garis di bawah nama
-        $pdf->Line($x + 104, $y + 48, $x + 56 + $line_length, $y + 48); // Garis sepanjang 100 unit
+        $pdf->Line($x + 104, $y + 47, $x + 56 + $line_length, $y + 47); // Garis sepanjang 100 unit
 
 
 
@@ -673,38 +673,38 @@ if ($result_dasar->num_rows > 0) {
 
             $pdf->MultiCell(11, 0, $no++, 1, 'L', 0, 0, '', '', true);
 
-              // Nama
-              $pdf->MultiCell(30, 0, 'Nama', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(116, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
-  
-              $pdf->Ln();
-  
-              // NIP
-              $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(30, 0, 'NIP', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(116, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
-  
-              $pdf->Ln();
-  
-              // Pangkat/Gol
-              $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(30, 0, 'Pangkat/Gol', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(116, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
-              $pdf->Ln();
-  
-              // Jabatan
-              $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(30, 0, 'Jabatan', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(116, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
-              $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
-              $pdf->Ln();
+            // Nama
+            $pdf->MultiCell(30, 0, 'Nama', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(116, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+
+            $pdf->Ln();
+
+            // NIP
+            $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(30, 0, 'NIP', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(116, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+
+            $pdf->Ln();
+
+            // Pangkat/Gol
+            $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(30, 0, 'Pangkat/Gol', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(116, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+            $pdf->Ln();
+
+            // Jabatan
+            $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(30, 0, 'Jabatan', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(116, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
+            $pdf->Ln();
         }
     }
 
@@ -744,7 +744,7 @@ if ($result_dasar->num_rows > 0) {
             $line_length = 100; // Panjang garis dalam satuan TCPDF
 
             // Menggambar garis di bawah nama
-            $pdf->Line($x + 104, $y + 48, $x + 56 + $line_length, $y + 48); // Garis sepanjang 100 unit
+            $pdf->Line($x + 104, $y + 47, $x + 56 + $line_length, $y + 47); // Garis sepanjang 100 unit
 
 
 
