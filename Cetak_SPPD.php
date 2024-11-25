@@ -69,6 +69,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $no = 1;
 
     $pdf->SetLineWidth(0.3);
+    $query = "SELECT * FROM cetak_laporan WHERE id_spt = $id";
+    $result = $conn->query($query);
 
     // $pdf->setCellPaddings(1, 1, 0, 0); 
     //BARIS 1
