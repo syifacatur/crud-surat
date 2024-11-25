@@ -123,7 +123,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $tinggiNama = $pdf->getStringHeight(85, 'Maksud Mengadakan Perjalanan');
     $tinggiInstansi = $pdf->getStringHeight(100, $row_isi['maksud_tujuan']);
-    $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
+    $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 6;
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
     $pdf->MultiCell(85, $tinggiMaks, 'Maksud Mengadakan Perjalanan', 1, 'L', 0, 0, '', '', true);
@@ -146,7 +146,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $tinggiNama = $pdf->getStringHeight(85, 'a. Tempat Berangkat' . 'b. Tempat Tujuan');
     $tinggiInstansi = $pdf->getStringHeight(100, '  Semarang' . "\n " . $row_isi['lokasi']);
-    $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 4;
+    $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 6;
 
     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
 
