@@ -226,7 +226,7 @@ $id_spt = $_GET['id'];
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">NAMA
                             <span class="text-red">*</span></label>
-                          <div class="col-sm-8"><select id="id_nama" class="form-control select2" name="id_nama"
+                          <div class="col-sm-8"><select id="nama2" class="form-control select2" name="id_nama"
                               placeholder="Search.." value="<?php echo $row['id_nama']; ?>">
                               <option value="">--PILIH--"</option>
 
