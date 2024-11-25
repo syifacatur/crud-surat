@@ -106,6 +106,116 @@ while ($row = mysqli_fetch_assoc($result)) {
         $pdf->MultiCell(102, $tinggiMaks, $kontenNamaNIP, 1, 'L', 0, 1, '', '', true);
 
         //BARIS 3
+
+        //menggunakan if else 
+
+$selectedanggaran = $row['nama'];
+
+//anggaran 1
+
+if (strpos($selectedanggaran, 'Dr. SADIMIN, S.Pd., M.Eng.') !== false) {
+
+$tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
+ $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
+ $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
+
+ $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+ $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+
+
+ $pdf->SetX(105);
+ // MultiCell untuk "a." di bagian atas
+ $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
+
+ // MultiCell untuk teks panjang setelah "a."
+ $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
+
+ $pdf->SetX(105);
+ // MultiCell untuk "b." di sebelah kode anggaran
+ $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
+
+ // MultiCell untuk kode anggaran
+ $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
+
+} else 
+
+if (strpos($selectedanggaran, 'SRI SULISTIYATI, SE, M.Kom') !== false) {
+
+    $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
+     $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
+     $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
+    
+     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+    
+    
+     $pdf->SetX(105);
+     // MultiCell untuk "a." di bagian atas
+     $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
+    
+     // MultiCell untuk teks panjang setelah "a."
+     $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
+    
+     $pdf->SetX(105);
+     // MultiCell untuk "b." di sebelah kode anggaran
+     $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
+    
+     // MultiCell untuk kode anggaran
+     $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
+
+}else
+if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
+
+    $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
+     $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
+     $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
+    
+     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+    
+    
+     $pdf->SetX(105);
+     // MultiCell untuk "a." di bagian atas
+     $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
+    
+     // MultiCell untuk teks panjang setelah "a."
+     $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
+    
+     $pdf->SetX(105);
+     // MultiCell untuk "b." di sebelah kode anggaran
+     $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
+    
+     // MultiCell untuk kode anggaran
+     $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
+
+    }else
+    if (strpos($selectedanggaran, 'Dr. ANON PRIYANTORO, S.Pd., M.Pd.') !== false) {
+    
+        $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
+         $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
+         $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
+        
+         $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+         $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+        
+        
+         $pdf->SetX(105);
+         // MultiCell untuk "a." di bagian atas
+         $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
+        
+         // MultiCell untuk teks panjang setelah "a."
+         $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
+        
+         $pdf->SetX(105);
+         // MultiCell untuk "b." di sebelah kode anggaran
+         $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
+        
+         // MultiCell untuk kode anggaran
+         $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
+
+    }else{
+
+
         $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
         $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
         $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
@@ -115,6 +225,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
         $kontenPangkatJabatan = '  a.  ' . $row['pangkat'] . "\n  b.  " . $row['jabatan'];
         $pdf->MultiCell(102, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
+
+}
+
+
+
 
     }
 
@@ -477,6 +592,29 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $pdf->AddPage();
 }
+ //BARIS 3
+ //$tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
+ //$tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
+ //$tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
+
+ //$pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
+ //$pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
+
+
+ //$pdf->SetX(105);
+ // MultiCell untuk "a." di bagian atas
+ //$pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
+
+ // MultiCell untuk teks panjang setelah "a."
+ //$pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
+
+ //$pdf->SetX(105);
+ // MultiCell untuk "b." di sebelah kode anggaran
+ //$pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
+
+ // MultiCell untuk kode anggaran
+ //$pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
+
 // Delete page 6
 $pdf->deletePage($jml);
 
@@ -487,3 +625,5 @@ $pdf->Output('Surat Perintah Perjalanan Dinas.pdf', 'I');
 // Menutup koneksi
 $conn->close();
 ?>
+
+
