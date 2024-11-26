@@ -659,9 +659,9 @@ if ($result_dasar->num_rows > 0) {
 
         $pdf->MultiCell(11, 0, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
         $pdf->SetX(21);
-        $pdf->MultiCell(154, 0, ' Nama/NIP/Pangkat/Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(156, 0, ' Nama/NIP/Pangkat/Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
         $pdf->SetX(20);
-        $pdf->MultiCell(28, 0, '   Keterangan', 'RTB', 'L', 0, 0, '172', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(30, 0, '    Keterangan', 'RTB', 'L', 0, 0, '172', '', true, 0, false, true, 40, 'T');
         $pdf->Ln();
 
 
@@ -676,7 +676,7 @@ if ($result_dasar->num_rows > 0) {
             // Nama
             $pdf->MultiCell(30, 0, 'Nama', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-            $pdf->MultiCell(119, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(121, 0, $row['nama'], 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 
             $pdf->Ln();
@@ -685,7 +685,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(30, 0, 'NIP', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-            $pdf->MultiCell(119, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(121, 0, $row['NIP'], 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
 
             $pdf->Ln();
@@ -694,7 +694,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(30, 0, 'Pangkat/Gol', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-            $pdf->MultiCell(119, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(121, 0, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->Ln();
 
@@ -702,7 +702,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(11, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(30, 0, 'Jabatan', 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(5, 0, ':', 1, 'L', 0, 0, '', '', true);
-            $pdf->MultiCell(119, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
+            $pdf->MultiCell(121, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->Ln();
         }
