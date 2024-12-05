@@ -235,16 +235,11 @@ body {
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" placeholder="masukkan username" required>
-                        <?php if (isset($error)) { ?>
-                <p style="font-style: italic; color: red; margin-top: 15px">Username / Password anda salah</p>
-            <?php } ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="text" id="password" placeholder="masukkan password" required>
-                    </div>
-                    <span class="text-danger msg-error"><?php if (isset($error)) ?></span>
-                  
+                    </div>                  
                     <button type="submit" class="btn-submit">Masuk</button>
                     </form>
                
