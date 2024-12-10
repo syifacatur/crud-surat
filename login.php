@@ -8,11 +8,10 @@ if (isset($_POST['submit'])) {
 <html>
 
 <head>
-    <script type="text/javascript" src="aset/bootstrap/js/jquery.js"></script>
-    <script type="text/javascript" src="aset/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="aset/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="aset/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="aset/bootstrap/css/style.css?v=1.0">
+<script type="text/javascript" src="aset/bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="aset/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="aset/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="aset/font-awesome/css/font-awesome.min.css">
 
 
     <style>
@@ -40,22 +39,20 @@ if (isset($_POST['submit'])) {
             height: 100vh;
         }
 
-        /* Left Section */
         .left-section {
-            flex: 1;
-            background-image: url('aset/img/data.jpg');
-            /* Path gambar */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
+    flex: 1;
+    background-image: url('aset/img/hijau9.png'); /* Path gambar */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -100px center; /* Geser ke kiri */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+}
 
-        }
 
 
         .left-section .header {
@@ -228,19 +225,23 @@ if (isset($_POST['submit'])) {
 
         .btn-submit {
             /*submit*/
-            width: 70%;
-            padding: 10px;
-            background-color: #d32f2f;
+            width: 45%;
+            padding: 11px;
+            background-color: #1c7371;
             border: none;
             color: white;
-            font-size: 1em;
-            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
 
         }
 
         .btn-submit:hover {
-            background-color: #b71c1c;
+            background-color: #1c7371;
         }
     </style>
 
@@ -251,7 +252,6 @@ if (isset($_POST['submit'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Login</title>
-        <link rel="stylesheet" href="style.css">
     </head>
 
 <body>
@@ -259,7 +259,7 @@ if (isset($_POST['submit'])) {
         <!-- Left Section -->
         <div class="left-section">
             <div class="header">
-                <img src="aset/img/logomerah.png" alt="Logo" class="logo">
+                <img src="aset/img/logo2.png" alt="Logo" class="logo">
                 <h3 class="title">Pemerintah Provinsi Jawa Tengah</h3>
                 <p>E- letter</p>
             </div>
@@ -288,7 +288,7 @@ if (isset($_POST['submit'])) {
                         <input require name="password" id="form-password"  type="password"
                             placeholder="Password" autocomplete="off" />
                     </div>
-                    <input name="submit" type="submit" value="Login" class="btn-submit">
+                    <input name="submit" type="submit" value="Masuk" class="btn-submit">
                 </form>
 
             </div>
