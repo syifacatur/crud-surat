@@ -144,7 +144,7 @@ if (isset($_POST['submit'])) {
         }
 
         .form-container h2 {
-            position: absolute;
+            position: static;
             /* Membuat elemen dapat diposisikan secara absolut */
             top: 130px;
             /* Jarak dari atas */
@@ -163,7 +163,7 @@ if (isset($_POST['submit'])) {
         }
 
         .form-container p {
-            position: absolute;
+            position: static;
             /* Membuat elemen dapat diposisikan secara absolut */
             top: 180px;
             /* Jarak dari atas */
@@ -273,8 +273,7 @@ if (isset($_POST['submit'])) {
                 <h2>Selamat Datang</h2>
                 <p>Sistem Pembuatan Surat Elektronik<br>BPSDMD Provinsi Jawa Tengah</p>
                 <form name="login_form" method="post" action="">
-                    <div class="spasi-besar"></div>
-                    <div class="geser-kiri"></div>
+                    
                     <?php if (isset($error)) { ?>
                         <p style="font-style: italic; color: red; margin-top: 15px">Username / Password anda salah</p>
                     <?php } ?>
