@@ -21,13 +21,10 @@ if($_GET['act']== 'tambahproduk'){
 }
 elseif($_GET['act']=='updateproduk'){
     $id_laporan = $_POST['id_laporan'];
-    $nama_spt = $_POST['nama_spt'];
-    $nip_spt = $_POST['nip_spt'];
-    $pangkat_spt = $_POST['pangkat_spt'];
-    $jabatan_spt = $_POST['jabatan_spt'];
-
+    $id_spt = $_POST['id_spt'];
+    $id_nama = $_POST['id_nama'];
     //query update
-    $queryupdate = mysqli_query($koneksi, "UPDATE cetak_laporan SET nama_spt='$nama_spt', nip_spt='$nip_spt', pangkat_spt='$pangkat_spt', jabatan_spt='$jabatan_spt' WHERE id_laporan='$id_laporan' ");
+    $queryupdate = mysqli_query($koneksi, "UPDATE cetak_laporan SET id_spt='$id_spt', id_nama='$id_nama' WHERE id_laporan='$id_laporan' ");
 
     if ($queryupdate) {
         header("location:cetak_laporan.php");    
@@ -37,10 +34,10 @@ elseif($_GET['act']=='updateproduk'){
     }
 }
 elseif ($_GET['act'] == 'deleteproduk'){
-    $id_laporan = $_GET['id_laporan'];
+    $id_nama = $_GET['id_nama'];
 
     //query hapus
-    $querydelete = mysqli_query($koneksi, "DELETE FROM cetak_laporan WHERE id_laporan = '$id_laporan'");
+    $querydelete = mysqli_query($koneksi, "DELETE FROM cetak_laporan WHERE id_nama = '$id_nama'");
 
     if ($querydelete) {
         header("location:cetak_laporan.php");
