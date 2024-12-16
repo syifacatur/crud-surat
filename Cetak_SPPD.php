@@ -1,6 +1,7 @@
 <?php
 //include library
 include('library/TCPDF-main/tcpdf.php');
+include('aset/java/function_tgl.php');
 
 // Definisikan variabel koneksi ke database
 $servername = "localhost";
@@ -277,80 +278,7 @@ if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
 
     //baris 7
 
-    if (!function_exists('tgl_indo')) {
-        function tgl_indo($tanggal)
-        {
-
-            $bulan = array(
-                1 => 'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember'
-            );
-            $pecahkan = explode('-', $tanggal);
-
-            // variabel pecahkan 0 = tanggal
-            // variabel pecahkan 1 = bulan
-            // variabel pecahkan 2 = tahun
-
-            return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
-        }
-
-        function angka_ke_kata($angka)
-        {
-            $angka = abs($angka);
-            $huruf = array("", " satu ", " dua ", " tiga ", " empat ", " lima ", " enam ", " tujuh ", " delapan ", " sembilan ", " sepuluh ", " sebelas ");
-
-            if ($angka < 12) {
-                return $huruf[$angka];
-            } elseif ($angka < 20) {
-                return angka_ke_kata($angka - 10) . " belas";
-            } elseif ($angka < 100) {
-                return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
-            } elseif ($angka < 200) {
-                return "seratus " . angka_ke_kata($angka - 100);
-            } elseif ($angka < 1000) {
-                return angka_ke_kata(floor($angka / 100)) . " ratus " . angka_ke_kata($angka % 100);
-            } elseif ($angka < 2000) {
-                return "seribu " . angka_ke_kata($angka - 1000);
-            } elseif ($angka < 1000000) {
-                return angka_ke_kata(floor($angka / 1000)) . " ribu " . angka_ke_kata($angka % 1000);
-            } elseif ($angka < 1000000000) {
-                return angka_ke_kata(floor($angka / 1000000)) . " juta " . angka_ke_kata($angka % 1000000);
-            }
-        }
-
-        $date_awal = new DateTime($row_isi['tgl_kegiatan']);
-        $date_akhir = new DateTime($row_isi['tgl_pulang']);
-
-
-        $selisih = $date_awal->diff($date_akhir);
-
-        // Ambil jumlah hari dari hasil perhitungan
-        $jumlah_hari = $selisih->days;
-
-
-        if ($jumlah_hari == 0) {
-            $jumlah_hari = 1;
-        } else {
-            $jumlah_hari = $jumlah_hari + 1;
-        }
-
-        // Ubah angka ke kata
-        $kata_hari = angka_ke_kata($jumlah_hari);
-
-        // Format  hari"
-        $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
-
-    }
+   
 
 
 
@@ -656,11 +584,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 
         //menggunakan if else 
 
-$selectedanggaran = $row['nama'];
 
-//anggaran 1
-
-if (strpos($selectedanggaran, 'Dr. SADIMIN, S.Pd., M.Eng.') !== false) {
 
 $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
  $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
@@ -675,7 +599,7 @@ $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabata
  $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
 
  // MultiCell untuk teks panjang setelah "a."
- $pdf->MultiCell(94, 5,  " Terlampir", 'R', 'L', 0, 1, '', '', true);
+ $pdf->MultiCell(94, 5,  "Terlampir", 'R', 'L', 0, 1, '', '', true);
 
  $pdf->SetX(105);
  // MultiCell untuk "b." di sebelah kode anggaran
@@ -683,99 +607,6 @@ $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabata
 
  // MultiCell untuk kode anggaran
  $pdf->MultiCell(94, 10, "Terlampir", 'R', 'L', 0, 1, '', '', true);
-
-} else 
-
-if (strpos($selectedanggaran, 'SRI SULISTIYATI, SE, M.Kom') !== false) {
-
-    $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
-     $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
-     $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
-    
-     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-    
-    
-     $pdf->SetX(105);
-     // MultiCell untuk "a." di bagian atas
-     $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
-    
-     // MultiCell untuk teks panjang setelah "a."
-     $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
-    
-     $pdf->SetX(105);
-     // MultiCell untuk "b." di sebelah kode anggaran
-     $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
-    
-     // MultiCell untuk kode anggaran
-     $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
-
-}else
-if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
-
-    $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
-     $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
-     $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
-    
-     $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-     $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-    
-    
-     $pdf->SetX(105);
-     // MultiCell untuk "a." di bagian atas
-     $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
-    
-     // MultiCell untuk teks panjang setelah "a."
-     $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
-    
-     $pdf->SetX(105);
-     // MultiCell untuk "b." di sebelah kode anggaran
-     $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
-    
-     // MultiCell untuk kode anggaran
-     $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
-
-    }else
-    if (strpos($selectedanggaran, 'Dr. ANON PRIYANTORO, S.Pd., M.Pd.') !== false) {
-    
-        $tinggiNama = $pdf->getStringHeight(85, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi");
-         $tinggiInstansi = $pdf->getStringHeight(100, "\n" . "a. ".$row['pangkat'] . "b. ". $row['jabatan']);
-         $tinggiMaks = max($tinggiNama, $tinggiInstansi)+0.5;
-        
-         $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-         $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-        
-        
-         $pdf->SetX(105);
-         // MultiCell untuk "a." di bagian atas
-         $pdf->MultiCell(6, 19, "a.", 0, 'C', 0, 0, '', '', true);
-        
-         // MultiCell untuk teks panjang setelah "a."
-         $pdf->MultiCell(94, 5,  $row['pangkat'], 'R', 'L', 0, 1, '', '', true);
-        
-         $pdf->SetX(105);
-         // MultiCell untuk "b." di sebelah kode anggaran
-         $pdf->MultiCell(6, 19, "b.", 0, 'C', 0, 0, '', '', true);
-        
-         // MultiCell untuk kode anggaran
-         $pdf->MultiCell(94, 10, $row['jabatan'], 'R', 'L', 0, 1, '', '', true);
-
-    }else{
-
-
-        $tinggiNama = $pdf->getStringHeight(85, ' a. Pangkat dan Golongan' . 'b. Jabatan/Instansi');
-        $tinggiInstansi = $pdf->getStringHeight(100, $row['pangkat'] . "\n " . $row['jabatan']);
-        $tinggiMaks = max($tinggiNama, $tinggiInstansi) + 3;
-
-        $pdf->MultiCell(8, $tinggiMaks, $no++ . '. ', 1, 'C', 0, 0, '', '', true);
-
-        $pdf->MultiCell(85, $tinggiMaks, 'a. Pangkat dan Golongan' . "\nb. Jabatan/Instansi", 1, 'L', 0, 0, '', '', true);
-        $kontenPangkatJabatan = '  a.  ' . "Terlampir" . "\n  b.  Terlampir";
-        $pdf->MultiCell(102, $tinggiMaks, $kontenPangkatJabatan, 1, 'L', 0, 1, '', '', true);
-
-}
-
-
 
 
     }
@@ -818,81 +649,7 @@ if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
 
     //baris 7
 
-    if (!function_exists('tgl_indo')) {
-        function tgl_indo($tanggal)
-        {
-
-            $bulan = array(
-                1 => 'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember'
-            );
-            $pecahkan = explode('-', $tanggal);
-
-            // variabel pecahkan 0 = tanggal
-            // variabel pecahkan 1 = bulan
-            // variabel pecahkan 2 = tahun
-
-            return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
-        }
-
-        function angka_ke_kata($angka)
-        {
-            $angka = abs($angka);
-            $huruf = array("", " satu ", " dua ", " tiga ", " empat ", " lima ", " enam ", " tujuh ", " delapan ", " sembilan ", " sepuluh ", " sebelas ");
-
-            if ($angka < 12) {
-                return $huruf[$angka];
-            } elseif ($angka < 20) {
-                return angka_ke_kata($angka - 10) . " belas";
-            } elseif ($angka < 100) {
-                return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
-            } elseif ($angka < 200) {
-                return "seratus " . angka_ke_kata($angka - 100);
-            } elseif ($angka < 1000) {
-                return angka_ke_kata(floor($angka / 100)) . " ratus " . angka_ke_kata($angka % 100);
-            } elseif ($angka < 2000) {
-                return "seribu " . angka_ke_kata($angka - 1000);
-            } elseif ($angka < 1000000) {
-                return angka_ke_kata(floor($angka / 1000)) . " ribu " . angka_ke_kata($angka % 1000);
-            } elseif ($angka < 1000000000) {
-                return angka_ke_kata(floor($angka / 1000000)) . " juta " . angka_ke_kata($angka % 1000000);
-            }
-        }
-
-        $date_awal = new DateTime($row_isi['tgl_kegiatan']);
-        $date_akhir = new DateTime($row_isi['tgl_pulang']);
-
-
-        $selisih = $date_awal->diff($date_akhir);
-
-        // Ambil jumlah hari dari hasil perhitungan
-        $jumlah_hari = $selisih->days;
-
-
-        if ($jumlah_hari == 0) {
-            $jumlah_hari = 1;
-        } else {
-            $jumlah_hari = $jumlah_hari + 1;
-        }
-
-        // Ubah angka ke kata
-        $kata_hari = angka_ke_kata($jumlah_hari);
-
-        // Format  hari"
-        $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
-
-    }
-
+    
 
 
     $tinggiNama = $pdf->getStringHeight(85, 'a. Lamanya Perjalanan Dinas' . "\nb. Tanggal Berangkat" . "\nc. Tanggal Harus Kembali/Tiba Di Tempat Baru");
@@ -1103,7 +860,9 @@ if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
     $pdf->Cell(295, 5, "NIP. 197212061994121001", 0, 1, 'C');
     $no = 1;
     
-    $pdf->AddPage('L');
+    $custom_f4 = array(210, 330); // Ukuran F4 dalam milimeter
+$pdf->AddPage('L', $custom_f4);
+    
 }
 }
 
@@ -1118,96 +877,10 @@ if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
         $result_isi = $conn->query($query_isi);
         $row_isi = $result_isi->fetch_assoc();
 
-        if (!function_exists('tgl_indo')) {
-            function tgl_indo($tanggal)
-            {
-    
-                $bulan = array(
-                    1 => 'Januari',
-                    'Februari',
-                    'Maret',
-                    'April',
-                    'Mei',
-                    'Juni',
-                    'Juli',
-                    'Agustus',
-                    'September',
-                    'Oktober',
-                    'November',
-                    'Desember'
-                );
-                $pecahkan = explode('-', $tanggal);
-    
-                // variabel pecahkan 0 = tanggal
-                // variabel pecahkan 1 = bulan
-                // variabel pecahkan 2 = tahun
-    
-                return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
-            }
-    
-            function angka_ke_kata($angka)
-            {
-                $angka = abs($angka);
-                $huruf = array("", " satu ", " dua ", " tiga ", " empat ", " lima ", " enam ", " tujuh ", " delapan ", " sembilan ", " sepuluh ", " sebelas ");
-    
-                if ($angka < 12) {
-                    return $huruf[$angka];
-                } elseif ($angka < 20) {
-                    return angka_ke_kata($angka - 10) . " belas";
-                } elseif ($angka < 100) {
-                    return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
-                } elseif ($angka < 200) {
-                    return "seratus " . angka_ke_kata($angka - 100);
-                } elseif ($angka < 1000) {
-                    return angka_ke_kata(floor($angka / 100)) . " ratus " . angka_ke_kata($angka % 100);
-                } elseif ($angka < 2000) {
-                    return "seribu " . angka_ke_kata($angka - 1000);
-                } elseif ($angka < 1000000) {
-                    return angka_ke_kata(floor($angka / 1000)) . " ribu " . angka_ke_kata($angka % 1000);
-                } elseif ($angka < 1000000000) {
-                    return angka_ke_kata(floor($angka / 1000000)) . " juta " . angka_ke_kata($angka % 1000000);
-                }
-            }
-    
-            $date_awal = new DateTime($row_isi['tgl_kegiatan']);
-            $date_akhir = new DateTime($row_isi['tgl_pulang']);
-    
-    
-            $selisih = $date_awal->diff($date_akhir);
-    
-            // Ambil jumlah hari dari hasil perhitungan
-            $jumlah_hari = $selisih->days;
-    
-    
-            if ($jumlah_hari == 0) {
-                $jumlah_hari = 1;
-            } else {
-                $jumlah_hari = $jumlah_hari + 1;
-            }
-    
-            // Ubah angka ke kata
-            $kata_hari = angka_ke_kata($jumlah_hari);
-    
-            // Format  hari"
-            $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
-    
-        }
+       
 
-        if (!function_exists('angka_ke_kata')) {
-            function angka_ke_kata($angka)
-            {
-                $angka = abs($angka);
-                $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+      
         
-                if ($angka < 12) {
-                    return $huruf[$angka];
-                } elseif ($angka < 20) {
-                    return angka_ke_kata($angka - 10) . " belas";
-                } elseif ($angka < 100) {
-                    return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
-                } 
-            }
-        }
         
            
             // Query untuk menghitung jumlah peserta per id_spt
@@ -1219,27 +892,27 @@ if (strpos($selectedanggaran, 'SUMARHENDRO, S.Sos') !== false) {
     
      //title
      $pdf->SetFont('Helvetica', '', 8);
-        $pdf->SetX(200);
+        $pdf->SetX(250);
         $pdf->Cell(0, 5, "Lampiran ", 0, 1, 'L');
-        $pdf->SetX(200);
+        $pdf->SetX(250);
         $pdf->Cell(0, 5, "SPPD", 0, 1, 'L');
-        $pdf->SetX(200);
+        $pdf->SetX(250);
         $pdf->Cell(0, 5, "Kepala BPSDMD Prov. Jateng", 0, 1, 'L');
-        $pdf->SetX(x: 200);
+        $pdf->SetX(250);
         $pdf->Cell(0, 5, "Nomor"."            :  ".$row_isi['no_spt'], 0, 1, 'L');
-        $pdf->SetX(x: 200);
+        $pdf->SetX(250);
         $pdf->Cell(0, 5, "Tanggal"."          :  ".tgl_indo($row_isi['tgl_spt']), 0, 1, 'L');
         $pdf->Ln(h: 5);
      $pdf->SetFont('Helvetica', 'B', size: 10);
-     $pdf->Cell(250, 5, "Rekapitulasi Pelaksana Yang Melaksanakan Perjalanan Dinas", 0, 1, 'C');
+     $pdf->Cell(300, 5, "Rekapitulasi Pelaksana Yang Melaksanakan Perjalanan Dinas", 0, 1, 'C');
      $pdf->Ln(h: 5);
 
-     $pdf->SetFont('Helvetica', '', 10);
+     $pdf->SetFont('Helvetica', '', 9);
 //daftar peserta
 //nama kegiatan
 $pdf->MultiCell(68.2, 0, 'Daftar Peserta', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
 $pdf->MultiCell(7, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(220, 0, $row['id_spt'].angka_ke_kata($row['id_spt'])."orang", 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+$pdf->MultiCell(220, 0, $jumlah_orang. angka_ke_kata($jumlah_orang)." orang", 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
 
     
      $pdf->Ln(5);
@@ -1265,35 +938,64 @@ $pdf->MultiCell(220, 0, $row['id_spt'].angka_ke_kata($row['id_spt'])."orang", 0,
     
      $pdf->Ln(h: 5);
 
-     $pdf->SetFont('Helvetica', '', 10);
 //bidang
      $pdf->MultiCell(70, 0, 'Bidang/UPT/Balai/Cabang Dinas', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
      $pdf->MultiCell(5, 0, ':', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 0, 'Sekretariat', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(30, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
      $pdf->Ln(h: 10);
 
      //tabel
-     $pdf->MultiCell(10, 20, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(50, 20, 'Nama Pelaksana Perjalanan Dinas/NIP', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(35, 20, 'Pangkat/Golongan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 20, 'Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 20, 'Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 20, 'Transportasi Yang Digunakan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(60, 10, 'Surat Tugas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-     // Subkolom untuk "Surat Tugas"
-     $pdf->MultiCell(30, 10, 'Nomor', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-     $pdf->MultiCell(30, 10, 'Tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-         
-     $pdf->MultiCell(30, 5, 'Surat Tugas', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(8, 17.3, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(50, 17.3, ".Nama Pelaksana Perjalanan Dinas/NIP", 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(30, 17.3, 'Pangkat/Golongan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(35, 17.3, 'Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(25, 17.3, 'Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(25, 17.3, 'Transportasi Yang Digunakan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->MultiCell(50,5, 'Surat Tugas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->MultiCell(54, 5, 'tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->MultiCell(20, 17.3, 'Lama Perjalanan Dinas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->MultiCell(20,5, 'Keterangan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
 
-     $pdf->MultiCell(30, 5, 'Tanggal', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 5, 'Lama Perjalanan DInas ', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-     $pdf->MultiCell(30, 5, 'Keterangan', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+     $pdf->Ln(); // Pindah ke baris berikutnya
+     $pdf->SetX(183);
+     $pdf->MultiCell(25, 12.3, 'Nomor', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->MultiCell(25, 12.3, 'Tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->SetX(233);
+     $pdf->MultiCell(27, 10, 'Keberangkatan Dari Tempat  kedudukan asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+     $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');   
+     
+     $pdf->Ln(); // Pindah ke baris berikutnya
 
-     $pdf->Ln();
+     $query = "SELECT * FROM cetak_laporan WHERE id_spt = $id";
+     $result = $conn->query($query);
 
-    }
+     while ($row = mysqli_fetch_assoc($result)) {
+        $id_nama = $row['id_nama'];
+        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+        while ($row = mysqli_fetch_assoc($querynama)) {
+
+
+
+   // ISI
+$pdf->MultiCell(8, 10, $no++, 1, 'C', 0, 0, '', '', true); // NoMOR
+$pdf->MultiCell(50, 10, $row['nama'] . "\n" . $row['NIP'], 1, 'L', 0, 0, '', '', true); // Nama Dan NIP
+$pdf->MultiCell(30, 10,   $row['pangkat'], 1, 'L', 0, 0, '', '', true); // Pangkat/Gol
+$pdf->MultiCell(35, 10,  $row['jabatan'], 1, 'L', 0, 0, '', '', true); // Jabatan
+$pdf->MultiCell(25, 10,  'Semarang', 1, 'L', 0, 0, '', '', true); // Tempat Kedudukan Asal
+$pdf->MultiCell(25, 10,  'Kendaraan Dinas', 1, 'L', 0, 0, '', '', true); // Transportasi Yang Digunakan
+$pdf->MultiCell(25, 10,  $row_isi['no_spt'], 1, 'L', 0, 0, '', '', true); // nomor spt
+$pdf->MultiCell(25, 10, tgl_indo($row_isi['tgl_spt']), 1, 'L', 0, 0, '', '', true); // tanggal spt
+$pdf->MultiCell(27, 10,  tgl_indo($row_isi['tgl_kegiatan']), 1, 'L', 0, 0, '', '', true); // tanggal berangkat
+$pdf->MultiCell(27, 10,  tgl_indo($row_isi['tgl_pulang']), 1, 'L', 0, 0, '', '', true); // tanggal pulang
+$pdf->MultiCell(20, 10,  $teks_hari . 'hari', 1, 'L', 0, 0, '', '', true); //Lama Perjalanan Dinas
+$pdf->MultiCell(20, 10,  '', 1, 'L', 0, 0, '', '', true); // Keterangan\
+
+$pdf->Ln();
+
+} }
+
+}
 }
 
 
