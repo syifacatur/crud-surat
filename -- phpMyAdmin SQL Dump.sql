@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Nov 2024 pada 09.23
+-- Waktu pembuatan: 17 Des 2024 pada 07.09
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -38,16 +38,16 @@ CREATE TABLE `cetak_laporan` (
 --
 
 INSERT INTO `cetak_laporan` (`id_laporan`, `id_spt`, `id_nama`) VALUES
-(77, 6, 87),
-(78, 6, 109),
 (79, 6, 126),
 (80, 6, 152),
-(81, 6, 176),
-(82, 7, 217),
-(87, 7, 149),
-(88, 7, 207),
-(89, 7, 204),
-(90, 7, 218);
+(92, 7, 148),
+(111, 7, 217),
+(118, 7, 89),
+(119, 7, 131),
+(122, 7, 217),
+(123, 6, 144),
+(124, 6, 154),
+(125, 6, 141);
 
 -- --------------------------------------------------------
 
@@ -285,6 +285,7 @@ CREATE TABLE `form_spt` (
   `anggaran` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `maksud_tujuan` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `NIP_penandatangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `bidang` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `opsi` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -292,9 +293,9 @@ CREATE TABLE `form_spt` (
 -- Dumping data untuk tabel `form_spt`
 --
 
-INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `kab_kota`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `opsi`) VALUES
-(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto,Ungaran', 'Bandung', '2024-04-24', '2024-04-26', '2024-04-24', 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah ', 'Kepala Bidang Sertifikasi Kompetensi \r\nDan Penjaminan Mutu\r\n\r\n\r\n\r\n\r\n\r\n\r\nSri Sulistiyati, SE, M.Kom\r\nPembina Tingkat I\r\nNIP. 197001121992032006\r\n\r\n\r\n', ''),
-(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran', 'Bandung', '2024-04-28', '2024-04-29', '2024-10-02', 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', 'Kabid Pengembangan Kompetensi \r\nJabatan Fungsional\r\n\r\n\r\n\r\n\r\n\r\n\r\nDr. Anon Priyantoro, S.Pd., M.Pd\r\nPembina Tingkat I\r\nNIP. 197305011998011001\r\n\r\n\r\n', '');
+INSERT INTO `form_spt` (`id_spt`, `no_spt`, `dasar_undangan`, `lokasi`, `kab_kota`, `tgl_kegiatan`, `tgl_pulang`, `tgl_spt`, `anggaran`, `maksud_tujuan`, `NIP_penandatangan`, `bidang`, `opsi`) VALUES
+(6, '000.1.2.3/355', 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ', 'JL. Letjend Suprapto,Ungaran', 'Bandung', '2024-04-24', '2024-04-26', '2024-04-24', 'Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah ', 'Kepala Bidang Sertifikasi Kompetensi \r\nDan Penjaminan Mutu\r\n\r\n\r\n\r\n\r\n\r\n\r\nSri Sulistiyati, SE, M.Kom\r\nPembina Tingkat I\r\nNIP. 197001121992032006\r\n\r\n\r\n', 'Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)', ''),
+(7, '000.1.2.3/355', 'Surat Kepala Dinas Komunikasi dan Informatika Provinsi Jawa Tengah Nomor 005/201 Tanggal 19 April 2024 Hal Undangan Desk Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah', 'JL. Letjend Suprapto, Ungaran', 'Bandung', '2024-04-28', '2024-04-29', '2024-10-02', '', 'Menghadiri Desk Revidu Penyusunan Arsitektur SPBE Pemerintah Provinsi Jawa Tengah	1', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -401,7 +402,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `cetak_laporan`
 --
 ALTER TABLE `cetak_laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT untuk tabel `cetak_spt`
@@ -431,7 +432,7 @@ ALTER TABLE `form_nama`
 -- AUTO_INCREMENT untuk tabel `form_spt`
 --
 ALTER TABLE `form_spt`
-  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_spt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_produk`
