@@ -13,7 +13,7 @@ if(empty($sess)){
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BPSDMD</title>
+    <title>BPSDMD Prov Jateng</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -30,12 +30,16 @@ if(empty($sess)){
     <link rel="stylesheet" href="aset/dist/css/skins/_all-skins.min.css">
     <!-- jQuery 2.1.4 -->
     <script src="aset/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="aset/plugins/jQuery/jquery-1.11.2.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="icon" href="aset/img/logo2.png" type="image/png">
+<link rel="icon" href="aset/img/logo2.png" type="image/png+xml">
+
     <style type="text/css" media="print">
     @page { 
         size: landscape;
@@ -123,8 +127,9 @@ if(empty($sess)){
                   echo "<li><a href='form_spt.php'><i class='fa fa-archive'></i> Form_SPT </a></li>";
                   echo "<li><a href='daftar_nama.php'><i class='fa fa-archive'></i> daftar_nama </a></li>";
                   echo "</ul>";
-                  echo "<li class='treeview'>";
-                  echo "<a href='#'>";
+              
+
+              
                 }
                 ?>
             </li>
