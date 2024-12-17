@@ -12,7 +12,7 @@ if($_GET['act']== 'tambahproduk'){
 
     if ($querytambah) {
         # code redicet setelah insert ke index
-        header("location:cetak_laporan.php?id=".$id_spt);
+        header("location:cetak_laporan.php");
     }
     else{
         echo "ERROR, tidak berhasil". mysqli_error($koneksi);
