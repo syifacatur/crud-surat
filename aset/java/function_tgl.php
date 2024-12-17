@@ -105,6 +105,7 @@ $teks_hari = $jumlah_hari . ' (' . $kata_hari . ') ';
 
 //konversi angka ke kata jumlah peserta 
 
+// Periksa apakah fungsi sudah ada sebelumnya
 if (!function_exists('angka_ke_kata')) {
     function angka_ke_kata($angka)
     {
@@ -112,14 +113,25 @@ if (!function_exists('angka_ke_kata')) {
         $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
 
         if ($angka < 12) {
-            return '(' . $huruf[$angka] . ')';
+            return $huruf[$angka];
         } elseif ($angka < 20) {
-            return '(' . angka_ke_kata($angka - 10) . " belas" . ')';
+            return angka_ke_kata($angka - 10) . " belas";
         } elseif ($angka < 100) {
-            return '(' . angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10) . ')';
-        } 
+            return angka_ke_kata(floor($angka / 10)) . " puluh " . angka_ke_kata($angka % 10);
+        }
     }
 }
+
+// Fungsi tambahan: Menggabungkan angka dan kata dalam format "angka (kata)"
+if (!function_exists('format_angka_dengan_kata')) {
+    function format_angka_dengan_kata($angka)
+    {
+        $kata = angka_ke_kata($angka); // Konversi angka menjadi kata
+        return $angka . " (" . $kata . ")"; // Format akhir: angka (kata)
+    }
+}
+
+
 
 // Output hasil (contoh)
 
