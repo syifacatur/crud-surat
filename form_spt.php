@@ -54,6 +54,18 @@ placeholder: "--PILIH--", // Placeholder untuk dropdown
 allowClear: true          // Menambahkan tombol untuk menghapus pilihan
       
 });
+$('#bidang').select2({
+
+placeholder: "--PILIH--", // Placeholder untuk dropdown
+allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      
+});
+$('#bidang2').select2({
+
+placeholder: "--PILIH--", // Placeholder untuk dropdown
+allowClear: true          // Menambahkan tombol untuk menghapus pilihan
+      
+});
   });
 
     </script>
@@ -99,6 +111,9 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                     <th>Anggaran</th>
                     <th>Maksud dan Tujuan</th>
                     <th>NIP Penandatangan</th>
+                    <th>Bidang</th>
+
+                    </th>
                     
                     <th>Opsi</th>
                   </tr>
@@ -147,7 +162,8 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                       <td><?php echo $row['anggaran']; ?></td>
                       <td><?php echo $row['maksud_tujuan']; ?></td>
                       <td><?php echo $row['NIP_penandatangan']; ?></td>
-        
+                      <td><?php echo $row['bidang']; ?></td>
+
 
                       <td>
                         <!--<a href="form_edituser.php?id=<?php echo $row['id_user'] ?>" class="btn btn-success btn-flat btn-xs"><i class="fa fa-pencil"></i> Edit</a>-->
@@ -331,6 +347,8 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                               <select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>">
                                           <option value="">--PILIH--</option>
 
+                                         
+
                                           
                                           <option
                                             value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
@@ -485,9 +503,25 @@ IV/B
 
 
 
+
+
                                           </select>
                                         </div>
                                       </div>
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <label class="col-sm-3 control-label text-right">Bidang
+                                            <span class="text-red">*</span>
+                                          </label>
+                                            <div class="col-sm-8">
+                                              <select id="bidang" class="form-control select2" name="bidang" placeholder="Search.."value="<?php echo $row['bidang']; ?>">
+                                          <option value="">--PILIH--</option>
+                                          <option value="Sekretariat">Sekretariat</option>
+  <option value="Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)">Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)</option>
+  <option value="Bidang II (Pengembangan Kompetensi Teknis)">Bidang II (Pengembangan Kompetensi Teknis)</option>
+  <option value="Bidang III (Pengembangan Kompetensi Jabatan Fungsional)">Bidang III (Pengembangan Kompetensi Jabatan Fungsional)</option>
+  <option value="Bidang IV (Pengembangan Kompetensi Manajerial)">Bidang IV (Pengembangan Kompetensi Manajerial)</option>
+</select>
                                       <div class="modal-footer">
                                         <button id="noedit" type="button" class="btn btn-danger pull-left"
                                           data-dismiss="modal">Batal</button>
@@ -744,6 +778,31 @@ NIP. 196709221998031006
                           </select>
                         </div>
                       </div>
+                      <div class="form-group">
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">
+      Bidang<span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="bidang2" class="form-control select2" name="bidang" placeholder="">
+        <option value="">--PILIH--</option>
+        <option value="Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)">
+          Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)
+        </option>
+        <option value="Bidang II (Pengembangan Kompetensi Teknis)">
+          Bidang II (Pengembangan Kompetensi Teknis)
+        </option>
+        <option value="Bidang III (Pengembangan Kompetensi Jabatan Fungsional)">
+          Bidang III (Pengembangan Kompetensi Jabatan Fungsional)
+        </option>
+        <option value="Bidang IV (Pengembangan Kompetensi Manajerial)">
+          Bidang IV (Pengembangan Kompetensi Manajerial)
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
                       <div class="modal-footer">
                         <button id="nosave" type="button" class="btn btn-danger pull-left"
                           data-dismiss="modal">Batal</button>
