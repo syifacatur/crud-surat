@@ -890,7 +890,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 
 
         //title
-        $pdf->SetFont('Helvetica', '', 8);
+        $pdf->SetFont('Helvetica', '', 7);
         $pdf->SetX(250);
         $pdf->Cell(0, 5, "Lampiran ", 0, 1, 'L');
         $pdf->SetX(250);
@@ -906,7 +906,7 @@ if ($row = mysqli_fetch_assoc($result)) {
         $pdf->Cell(300, 5, "Rekapitulasi Pelaksana Yang Melaksanakan Perjalanan Dinas", 0, 1, 'C');
         $pdf->Ln(5);
 
-        $pdf->SetFont('Helvetica', '', 9);
+        $pdf->SetFont('Helvetica', '', 7);
         //daftar peserta
 //nama kegiatan
         $pdf->MultiCell(68.2, 0, 'Daftar Peserta', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
@@ -940,7 +940,7 @@ if ($row = mysqli_fetch_assoc($result)) {
         //bidang
         $pdf->MultiCell(70, 0, 'Bidang/UPT/Balai/Cabang Dinas', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->MultiCell(5, 0, ':', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(30, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(220, 0, $row_isi['bidang'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->Ln(10);
 
        // Baris Pertama: Header Utama
@@ -965,7 +965,7 @@ $pdf->MultiCell(25, 12.3, 'Tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true,
 
 // Baris Baru untuk Data Tanggal
 $pdf->SetX(233); // Mulai dari kolom tanggal
-$pdf->MultiCell(27, 10, 'Keberangkatan Dari Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+$pdf->MultiCell(27, 12.1, 'Keberangkatan Dari Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
 
@@ -983,12 +983,14 @@ $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', t
             $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
         
             while ($row = mysqli_fetch_assoc($querynama)) {
-                $rowheight = 18;
+                $rowheight = 10;
         
-                // Logika jika nama panjang
-                if (strlen($row['nama']) > 20) { 
-                    $rowheight = 18; 
-                }
+              // Logika jika nama, jabatan, atau pangkat panjang
+if (strlen($row['nama']) > 80 || strlen($row['jabatan']) > 60 || strlen($row['pangkat']) > 90) {
+    $rowheight = 18;
+}
+
+                
         
                 // ISI DATA
                 $pdf->MultiCell(8, $rowheight, $no++, 1, 'C', 0, 0, '', '', true); // Nomor
@@ -1019,34 +1021,6 @@ $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', t
         $y = $pdf->GetY();
         $line_length = 100; // Panjang garis 
 
-        $pdf->Ln(10);
-    $pdf->SetX(230);
-    $pdf->MultiCell(27, 40, 'Dikeluarkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(3, 40, '', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->SetX(258);
-    $pdf->MultiCell(40, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(5);
-
-    $pdf->SetX(230);
-    $pdf->MultiCell(27, 40, 'Pada Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(3, 40, '', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->SetX(261);
-    $pdf->MultiCell(80, 40, '  Agustus 2024', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(5);
-
-    $pdf->SetX(235);
-    $pdf->MultiCell(27, 40, 'Ditetapkan di', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(3, 40, '', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->SetX(266);
-    $pdf->MultiCell(40, 40, 'Semarang', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(5);
-
-    $pdf->SetX(235);
-    $pdf->MultiCell(27, 40, 'Tanggal', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(3, 40, '', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->SetX(265);
-    $pdf->MultiCell(80, 40, '  Agustus 2024', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(10);
     $pdf->Cell(500, 5, "PENGGUNA ANGGARAN", 0, 1, 'C');
     $pdf->Ln(13);
 
