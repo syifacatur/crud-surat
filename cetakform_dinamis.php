@@ -28,7 +28,7 @@ if ($result_dasar->num_rows > 0) {
 
 
     // Membuat objek PDF
-    $pdf = new TCPDF('P', 'mm', 'Legal');
+    $pdf = new TCPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
 
 
 
@@ -243,6 +243,42 @@ if ($result_dasar->num_rows > 0) {
                     $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
                     $pdf->MultiCell(150, 0, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
                     $pdf->Ln(6);
+
+                    $no = 4;
+
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $id_nama = $row['id_nama'];
+                        $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
+                        while ($row = mysqli_fetch_assoc($querynama)) {
+            
+                        $pdf->SetX(36);
+                        $pdf->MultiCell(55, 20, $no++ . '. ' . '  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->SetX(61.3);
+                        $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                        $pdf->Ln(6);
+            
+                        $pdf->SetX(41);
+                        $pdf->MultiCell(58, 20, '  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->SetX(69.5);
+                        $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->MultiCell(150, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                        $pdf->Ln(6);
+            
+                        $pdf->SetX(41);
+                        $pdf->MultiCell(55, 20, '  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->SetX(65, 5);
+                        $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->MultiCell(150, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                        $pdf->Ln(6);
+            
+                        $pdf->SetX(41);
+                        $pdf->MultiCell(55, 20, '  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->SetX(65, 5);
+                        $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+                        $pdf->MultiCell(130, 10, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
+                        $pdf->Ln(10);
+                    }}
                 }
             }
         }
@@ -257,41 +293,7 @@ if ($result_dasar->num_rows > 0) {
     //$pdf->AddPage();            
     if ($jumlah_orang < 5) {
         $pdf->AddPage();
-        $no = 4;
-
-        if ($row = mysqli_fetch_assoc($result)) {
-            $id_nama = $row['id_nama'];
-            $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
-            while ($row = mysqli_fetch_assoc($querynama)) {
-
-            $pdf->SetX(36);
-            $pdf->MultiCell(55, 20, $no++ . '. ' . '  Nama', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->SetX(61.3);
-            $pdf->MultiCell(21, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(150, 0, $row['nama'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
-            $pdf->Ln(6);
-
-            $pdf->SetX(41);
-            $pdf->MultiCell(58, 20, '  NIP', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->SetX(69.5);
-            $pdf->MultiCell(0, 20, ': ', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(150, 0, $row['NIP'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
-            $pdf->Ln(6);
-
-            $pdf->SetX(41);
-            $pdf->MultiCell(55, 20, '  Pangkat/Gol', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->SetX(65, 5);
-            $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(150, 0, $row['pangkat'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
-            $pdf->Ln(6);
-
-            $pdf->SetX(41);
-            $pdf->MultiCell(55, 20, '  Jabatan', 0, 'L', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->SetX(65, 5);
-            $pdf->MultiCell(13, 20, ': ', 0, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-            $pdf->MultiCell(130, 10, $row['jabatan'], 0, 'L', 0, 0, '73', '', true, 0, false, true, 40, 'T');
-            $pdf->Ln(10);
-        }}
+      
         $pdf->SetFont('helvetica', '', 12);
         $pdf->Cell(12, 0, 'Untuk      :     1. Melaksanakan tugas perjalanan dinas dengan ketentuan sebagai berikut:');
         $pdf->Ln(5);
@@ -466,7 +468,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');
             $pdf->MultiCell(0, 0, 'Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. ' . "\n", 0, 'J', 0, 1);
             $no++;
-            $pdf->Ln(20);
+            $pdf->Ln(45);
             $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
             $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');
             $pdf->MultiCell(0, 0, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.' . "\n", 0, 'J', 0, 1);
@@ -476,6 +478,7 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(0, 0, 'Apabila terdapat kekeliruan dalam surat perintah ini akan diadakan perbaikan kembali sebagiamana mestinya. ' . "\n", 0, 'J', 0, 1);
 
             $pdf->Ln(10);
+            
 
         }
     }
