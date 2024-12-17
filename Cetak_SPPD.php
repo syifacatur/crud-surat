@@ -16,8 +16,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
-$pdf = new TCPDF('P', 'mm', 'Legal');
-
+$pdf = new TCPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
 
 
 //remove default header and footer
@@ -494,7 +493,7 @@ if ($jumlah_orang < 5) {
 
 } else {
 
-    $pdf = new TCPDF('P', 'mm', 'Legal');
+    $pdf = new TCPDF('P', 'mm', array(215.9, 330), true, 'UTF-8', false);
 
     //remove default header and footer
     $pdf->setPrintHeader(false);
@@ -892,15 +891,15 @@ if ($row = mysqli_fetch_assoc($result)) {
         //title
         $pdf->SetFont('Helvetica', '', 7);
         $pdf->SetX(250);
-        $pdf->Cell(0, 5, "Lampiran ", 0, 1, 'L');
+        $pdf->Cell(0, 3, "Lampiran ", 0, 1, 'L');
         $pdf->SetX(250);
-        $pdf->Cell(0, 5, "SPPD", 0, 1, 'L');
+        $pdf->Cell(0, 3, "SPPD", 0, 1, 'L');
         $pdf->SetX(250);
-        $pdf->Cell(0, 5, "Kepala BPSDMD Prov. Jateng", 0, 1, 'L');
+        $pdf->Cell(0, 3, "Kepala BPSDMD Prov. Jateng", 0, 1, 'L');
         $pdf->SetX(250);
-        $pdf->Cell(0, 5, "Nomor" . "            :  " . $row_isi['no_spt'], 0, 1, 'L');
+        $pdf->Cell(0, 3, "Nomor" . "            :  " . $row_isi['no_spt'], 0, 1, 'L');
         $pdf->SetX(250);
-        $pdf->Cell(0, 5, "Tanggal" . "          :  " . tgl_indo($row_isi['tgl_spt']), 0, 1, 'L');
+        $pdf->Cell(0, 3, "Tanggal" . "          :  " . tgl_indo($row_isi['tgl_spt']), 0, 1, 'L');
         $pdf->Ln(5);
         $pdf->SetFont('Helvetica', 'B', 10);
         $pdf->Cell(300, 5, "Rekapitulasi Pelaksana Yang Melaksanakan Perjalanan Dinas", 0, 1, 'C');
@@ -911,7 +910,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 //nama kegiatan
         $pdf->MultiCell(68.2, 0, 'Daftar Peserta', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->MultiCell(7, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-        $pdf->MultiCell(220, 0,  format_angka_dengan_kata($jumlah_orang) . " orang", 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(220, 0, format_angka_dengan_kata($jumlah_orang) . " orang", 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
 
 
         $pdf->Ln(5);
@@ -943,30 +942,31 @@ if ($row = mysqli_fetch_assoc($result)) {
         $pdf->MultiCell(220, 0, $row_isi['bidang'], 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
         $pdf->Ln(10);
 
-       // Baris Pertama: Header Utama
-$pdf->MultiCell(8, 17.3, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(50, 17.3, "Nama Pelaksana Perjalanan Dinas/NIP", 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(30, 17.3, 'Pangkat/Golongan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(35, 17.3, 'Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(25, 17.3, 'Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(25, 17.3, 'Transportasi Yang Digunakan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-$pdf->MultiCell(50, 5, 'Surat Tugas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(54, 5, 'tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(20, 17.3, 'Lama Perjalanan Dinas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(20, 5, 'Keterangan', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        // Baris Pertama: Header Utama
+        $pdf->MultiCell(8, 17.3, 'No.', 1, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(40, 17.3, "Nama Pelaksana Perjalanan Dinas/NIP", 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(30, 17.3, 'Pangkat/Golongan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(35, 17.3, 'Jabatan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(25, 17.3, 'Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(25, 17.3, 'Transportasi Yang Digunakan', 1, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
+        $pdf->MultiCell(50, 5, 'Surat Tugas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(54, 5, 'tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(20, 17.3, 'Lama Perjalanan Dinas', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(20, 5, 'Keterangan', 'RT', 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
-// Pindah ke Baris Berikutnya (di bawah header Surat Tugas dan tanggal)
-$pdf->Ln(); // Pindah ke baris baru
+        // Pindah ke Baris Berikutnya (di bawah header Surat Tugas dan tanggal)
+        $pdf->Ln(); // Pindah ke baris baru
 
-// Set Posisi Kursor Tepat di Bawah
-$pdf->SetX(183); // Atur posisi X untuk surat tugas dan tanggal
-$pdf->MultiCell(25, 12.3, 'Nomor', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(25, 12.3, 'Tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        // Set Posisi Kursor Tepat di Bawah
+        $pdf->SetX(173); // Atur posisi X untuk surat tugas dan tanggal
+        $pdf->MultiCell(25, 12.3, 'Nomor', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(25, 12.3, 'Tanggal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
-// Baris Baru untuk Data Tanggal
-$pdf->SetX(233); // Mulai dari kolom tanggal
-$pdf->MultiCell(27, 12.1, 'Keberangkatan Dari Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
-$pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        // Baris Baru untuk Data Tanggal
+        $pdf->SetX(223); // Mulai dari kolom tanggal
+        $pdf->MultiCell(27, 12.1, 'Keberangkatan Dari Tempat Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
+        $pdf->MultiCell(40, 12.2, '', 'R', 'C', 0, 0, '', '', true, 0, false, true, 20, 'T');
 
 
         $pdf->Ln(); // Pindah ke baris berikutnya
@@ -976,25 +976,25 @@ $pdf->MultiCell(27, 12.2, 'Tiba Kembali Kedudukan Asal', 1, 'C', 0, 0, '', '', t
 
         $no = 1; // Inisialisasi nomor
         $counter = 0; // Inisialisasi counter
-        $max_data_per_page = 5; // Jumlah maksimal data per halaman
-        
+        $max_data_per_page = 7; // Jumlah maksimal data per halaman
+
         while ($row = mysqli_fetch_assoc($result)) {
             $id_nama = $row['id_nama'];
             $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
-        
+
             while ($row = mysqli_fetch_assoc($querynama)) {
                 $rowheight = 10;
-        
-              // Logika jika nama, jabatan, atau pangkat panjang
-if (strlen($row['nama']) > 80 || strlen($row['jabatan']) > 60 || strlen($row['pangkat']) > 90) {
-    $rowheight = 18;
-}
 
-                
-        
+                // Logika jika nama, jabatan, atau pangkat panjang
+                if (strlen($row['nama']) > 80 || strlen($row['jabatan']) > 60 || strlen($row['pangkat']) > 90) {
+                    $rowheight = 18;
+                }
+
+
+
                 // ISI DATA
                 $pdf->MultiCell(8, $rowheight, $no++, 1, 'C', 0, 0, '', '', true); // Nomor
-                $pdf->MultiCell(50, $rowheight, $row['nama'] . "\n" . $row['NIP'], 1, 'L', 0, 0, '', '', true);
+                $pdf->MultiCell(40, $rowheight, $row['nama'] . "\n" . $row['NIP'], 1, 'L', 0, 0, '', '', true);
                 $pdf->MultiCell(30, $rowheight, $row['pangkat'], 1, 'L', 0, 0, '', '', true);
                 $pdf->MultiCell(35, $rowheight, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
                 $pdf->MultiCell(25, $rowheight, 'Semarang', 1, 'L', 0, 0, '', '', true);
@@ -1005,36 +1005,27 @@ if (strlen($row['nama']) > 80 || strlen($row['jabatan']) > 60 || strlen($row['pa
                 $pdf->MultiCell(27, $rowheight, tgl_indo($row_isi['tgl_pulang']), 1, 'L', 0, 0, '', '', true);
                 $pdf->MultiCell(20, $rowheight, $teks_hari . 'hari', 1, 'L', 0, 0, '', '', true);
                 $pdf->MultiCell(20, $rowheight, '', 1, 'L', 0, 0, '', '', true);
-        
+
                 $pdf->Ln(); // Pindah ke baris baru
                 $counter++; // Tambah counter
-        
+
                 // Jika sudah 5 data, buat halaman baru dan reset counter
-                if ($counter >= $max_data_per_page) {
+                if ($counter > $max_data_per_page) {
                     $pdf->AddPage(); // Tambah halaman baru
                     $counter = 0; // Reset counter
                 }
             }
         }
     }
-      $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $line_length = 100; // Panjang garis 
-
     $pdf->Cell(500, 5, "PENGGUNA ANGGARAN", 0, 1, 'C');
     $pdf->Ln(13);
-
-
-
     $pdf->Cell(500, 5, "Dr.SADIMIN,S.Pd, M.Eng", 0, 1, 'C');
-    // Menggambar garis di bawah nama
-    $pdf->Line($x + 268, $y + 58, $x + 131 + $line_length, $y + 58);
     $pdf->Cell(500, 5, "NIP. 197212061994121001", 0, 1, 'C');
     $no = 1;
-}        
+}
 
 
- 
+
 
 
 
