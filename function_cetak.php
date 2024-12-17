@@ -1,5 +1,8 @@
 <?php
 include 'koneksidb.php';
+$id_spt = $_GET['id'];
+
+
 
 if($_GET['act']== 'tambahproduk'){
     $id_spt = $_POST['id_spt'];
@@ -12,7 +15,7 @@ if($_GET['act']== 'tambahproduk'){
 
     if ($querytambah) {
         # code redicet setelah insert ke index
-        header("location:cetak_laporan.php");
+        header("location:cetak_laporan.php?id=".$id_spt);
     }
     else{
         echo "ERROR, tidak berhasil". mysqli_error($koneksi);
@@ -27,7 +30,7 @@ elseif($_GET['act']=='updateproduk'){
     $queryupdate = mysqli_query($koneksi, "UPDATE cetak_laporan SET id_spt='$id_spt', id_nama='$id_nama' WHERE id_laporan='$id_laporan' ");
 
     if ($queryupdate) {
-        header("location:cetak_laporan.php");    
+        header("location:cetak_laporan.php?id=".$id_spt);    
     }
     else{
         echo "ERROR, data gagal diupdate". mysqli_error($koneksi);
@@ -35,12 +38,14 @@ elseif($_GET['act']=='updateproduk'){
 }
 elseif ($_GET['act'] == 'deleteproduk'){
     $id_nama = $_GET['id_nama'];
-
+  
+    
     //query hapus
     $querydelete = mysqli_query($koneksi, "DELETE FROM cetak_laporan WHERE id_nama = '$id_nama'");
 
+
     if ($querydelete) {
-        header("location:cetak_laporan.php");
+        header("location:cetak_laporan.php?id=".$id_spt);
     }
     else{
         echo "ERROR, data gagal dihapus". mysqli_error($koneksi);

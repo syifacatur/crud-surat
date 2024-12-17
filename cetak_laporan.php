@@ -2,6 +2,7 @@
 include 'template/header_admin.php';
 include 'koneksidb.php';
 $id_spt = $_GET['id'];
+
 ?>
 
 <head>
@@ -142,7 +143,7 @@ $id_spt = $_GET['id'];
                                   <div class="modal-footer">
                                     <button id="nodelete" type="button" class="btn btn-danger pull-left"
                                       data-dismiss="modal">Cancel</button>
-                                    <a href="function_cetak.php?act=deleteproduk&id_nama=<?php echo $row['id_nama']; ?>"
+                                    <a href="function_cetak.php?act=deleteproduk&id_nama=<?php echo $row['id_nama']; ?>&id=<?php echo $id_spt?>"
                                       class="btn btn-success">Hapus</a>
                                   </div>
                                 </div>
