@@ -28,7 +28,7 @@ if ($result_dasar->num_rows > 0) {
 
 
     // Membuat objek PDF
-    $pdf = new TCPDF('P', 'mm', 'Legal');
+    $pdf = new TCPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
 
     
 
