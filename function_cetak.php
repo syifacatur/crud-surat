@@ -15,7 +15,7 @@ if($_GET['act']== 'tambahproduk'){
 
     if ($querytambah) {
         # code redicet setelah insert ke index
-        header("location:cetak_laporan.php?id=".$id_spt);
+        header("location:tambah_nama.php?id=".$id_spt);
     }
     else{
         echo "ERROR, tidak berhasil". mysqli_error($koneksi);
@@ -30,7 +30,7 @@ elseif($_GET['act']=='updateproduk'){
     $queryupdate = mysqli_query($koneksi, "UPDATE cetak_laporan SET id_spt='$id_spt', id_nama='$id_nama' WHERE id_laporan='$id_laporan' ");
 
     if ($queryupdate) {
-        header("location:cetak_laporan.php?id=".$id_spt);    
+        header("location:tambah_nama.php?id=".$id_spt);    
     }
     else{
         echo "ERROR, data gagal diupdate". mysqli_error($koneksi);
@@ -45,7 +45,7 @@ elseif ($_GET['act'] == 'deleteproduk'){
 
 
     if ($querydelete) {
-        header("location:cetak_laporan.php?id=".$id_spt);
+        header("location:tambah_nama.php?id=".$id_spt);
     }
     else{
         echo "ERROR, data gagal dihapus". mysqli_error($koneksi);
