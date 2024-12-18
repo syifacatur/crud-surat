@@ -112,18 +112,16 @@ if(empty($sess)){
           </div>
           <ul class="sidebar-menu">
             <li class="header">Navigation</li>
-            <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <!-- <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> -->
+
             
                 <?php
                 if($sess == "admin" || $sess == "user"){
-                  echo "<li class='treeview'>";
-                  echo "<a href='#'>";
-                  echo "<i class='fa fa-laptop'></i><span>Data</span><i class='fa fa-angle-left pull-right'></i></a>";
-                  echo "<ul class='treeview-menu'>";
+                 
+                  
                   echo "<li><a href='surat_perintah_tugas.php'><i class='fa fa-archive'></i> Surat Perintah Tugas </a></li>";
                   echo "<li><a href='daftar_nama.php'><i class='fa fa-archive'></i> Daftar Nama </a></li>";
                   echo "<li><a href='dasar_surat.php'><i class='fa fa-archive'></i> Dasar Surat </a></li>";
-                  echo "</ul>";
                   if($sess == "admin"){
                     echo "<li><a href='data_user.php'><i class='fa fa-user'></i> User</a></li>";
                   }
