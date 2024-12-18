@@ -63,7 +63,7 @@ include 'koneksidb.php';
                               </div>
                               <div class="modal-footer">
                                 <button id="nodelete" type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
-                                <a href="function_produk.php?act=deleteproduk&id_produk=<?php echo $row['id_produk']; ?>" class="btn btn-success">Hapus</a>
+                                <a href="function_dasarsurat.php?act=deleteproduk&id_produk=<?php echo $row['id_produk']; ?>" class="btn btn-success">Hapus</a>
                               </div>
                             </div>
                           </div>
@@ -80,7 +80,7 @@ include 'koneksidb.php';
                                 <h3 class="modal-title">Edit Deskripsi</h3>
                               </div>
                               <div class="modal-body">
-                                <form action="function_produk.php?act=updateproduk" method="post" role="form">
+                                <form action="function_dasarsurat.php?act=updateproduk" method="post" role="form">
                                   <?php
                                   $id_produk = $row['id_produk'];
                                   $query = "SELECT * FROM tb_produk WHERE id_produk='$id_produk'";
@@ -132,7 +132,7 @@ include 'koneksidb.php';
                   <h3 class="modal-title">Tambah </h3>
                 </div>
                 <div class="modal-body">
-                  <form action="function_produk.php?act=tambahproduk" method="post" role="form">
+                  <form action="function_dasarsurat.php?act=tambahproduk" method="post" role="form">
                     <div class="form-group">
                       <div class="row">
                       <label class="col-sm-3 control-label text-right">Deskripsi<span class="text-red">*</span></label>
