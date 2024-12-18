@@ -177,7 +177,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-user"></i> Tambah Nama</button></a>
 
                         
-                          <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
+                          <a target="_blank" href="cetak_spt.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
                             class="btn btn-default btn-xs" data="_blank"><i class="fa fa-print"></i> Cetak
                             SPT</button></a>
 
