@@ -10,7 +10,7 @@ if($_GET['act']== 'tambahproduk'){
 
     if ($querytambah) {
         # code redicet setelah insert ke index
-        header("location:data_produk.php");
+        header("location:Dasar_Surat.php");
     }
     else{
         echo "ERROR, tidak berhasil". mysqli_error($koneksi);
@@ -25,7 +25,7 @@ elseif($_GET['act']=='updateproduk'){
     $queryupdate = mysqli_query($koneksi, "UPDATE tb_produk SET kode_produk='$kode_produk', nama_produk='$nama_produk' WHERE id_produk='$id_produk' ");
 
     if ($queryupdate) {
-        header("location:data_produk.php");    
+        header("location:Dasar_Surat.php");    
     }
     else{
         echo "ERROR, data gagal diupdate". mysqli_error($koneksi);
@@ -38,7 +38,7 @@ elseif ($_GET['act'] == 'deleteproduk'){
     $querydelete = mysqli_query($koneksi, "DELETE FROM tb_produk WHERE id_produk = '$id_produk'");
 
     if ($querydelete) {
-        header("location:data_produk.php");
+        header("location:Dasar_Surat.php");
     }
     else{
         echo "ERROR, data gagal dihapus". mysqli_error($koneksi);

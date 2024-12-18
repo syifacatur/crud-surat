@@ -5,11 +5,11 @@ include 'koneksidb.php';
 
 <div class="content-wrapper">
 <section class="content-header">
-  <h1>Surat Perintah Tugas
+  <h1>Dasar Surat
   </h1>
   <ol class="breadcrumb">
   <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li class="active">Surat Perintah Tugas</li>
+  <li class="active">Dasar Surat</li>
   </ol>
 </section>
 <!-- Main content -->

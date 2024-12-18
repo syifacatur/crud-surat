@@ -75,11 +75,11 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
 
 <div class="content-wrapper">
   <section class="content-header">
-    <h1>Form_SPT
+    <h1>Surat Perintah Tugas
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Form_SPT</li>
+      <li class="active">Surat Perintah Tugas</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -174,7 +174,7 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                           data-target="#deleteproduk<?php echo $no; ?>"><i class="fa fa-trash"></i> Hapus</a>
 
                           <a target="_blank" href="cetak_laporan.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button
-                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-user"></i> TAMBAH NAMA</button></a>
+                            class="btn btn-default btn-xs" data="_blank"><i class="fa fa-user"></i> Tambah Nama</button></a>
 
                         
                           <a target="_blank" href="cetakform_dinamis.php?id=<?php echo $row['id_spt'] ?>" data="_blank"><button

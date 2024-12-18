@@ -120,13 +120,13 @@ if(empty($sess)){
                   echo "<a href='#'>";
                   echo "<i class='fa fa-laptop'></i><span>Data</span><i class='fa fa-angle-left pull-right'></i></a>";
                   echo "<ul class='treeview-menu'>";
-                  if($sess == "admin"){
-                    echo "<li><a href='data_user.php'><i class='fa fa-user'></i> Data User</a></li>";
-                  }
-                  echo "<li><a href='data_produk.php'><i class='fa fa-archive'></i> Surat Perintah Tugas </a></li>";
-                  echo "<li><a href='form_spt.php'><i class='fa fa-archive'></i> Form_SPT </a></li>";
-                  echo "<li><a href='daftar_nama.php'><i class='fa fa-archive'></i> daftar_nama </a></li>";
+                  echo "<li><a href='surat_perintah_tugas.php'><i class='fa fa-archive'></i> Surat Perintah Tugas </a></li>";
+                  echo "<li><a href='daftar_nama.php'><i class='fa fa-archive'></i> Daftar Nama </a></li>";
+                  echo "<li><a href='Dasar_Surat.php'><i class='fa fa-archive'></i> Dasar Surat </a></li>";
                   echo "</ul>";
+                  if($sess == "admin"){
+                    echo "<li><a href='data_user.php'><i class='fa fa-user'></i> User</a></li>";
+                  }
               
 
               
