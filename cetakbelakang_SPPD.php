@@ -149,7 +149,7 @@ $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" 
 $tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
 $tinggiMaks = max($tinggiNama, $tinggiInstansi)+20.5;
 
-$pdf->MultiCell(92, $tinggiMaks, "", 1, 'L', 0, 0, '', '', true);
+$pdf->MultiCell(92, $tinggiMaks, "", 'LTR', 'L', 0, 0, '', '', true);
 
 
 $pdf->SetX(102);
@@ -164,8 +164,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 
     // MultiCell untuk "b." di sebelah kode anggaran
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
 
-    // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "(Tempat Kedudukan)", 'R', 'L', 0, 1, '', '', true);
+   
 
     $pdf->SetX(102);
     $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
@@ -192,7 +191,7 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 
     $pdf->MultiCell(90, 0, "\n\nDr. SADIMIN, S.Pd, M.Eng", 'R', 'C', 0, 1, '', '', true);
     $pdf->SetLineWidth(0.2);
 
-    $pdf->Line($x + 120, $y + 49, $x + 65 + $line_length, $y + 49);
+    $pdf->Line($x + 120, $y + 44, $x + 65 + $line_length, $y + 44);
     $pdf->SetLineWidth(0.3);
 
     $pdf->SetX(102);
@@ -208,131 +207,130 @@ $pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  "."Semarang", 'TR', 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
-
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+8;
 
 $pdf->MultiCell(92, $tinggiMaks, "  II.  Tiba di                   :   ".$row_isi['kab_kota']."\n"."       Pada Tanggal"."       :   ". tgl_indo($row_isi['tgl_kegiatan']), 1, 'L', 0, 0, '', '', true);
 
 $pdf->SetX(102);
 // MultiCell untuk "a." di bagian atas
-$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+$pdf->MultiCell(6, 0, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ".$row_isi['kab_kota'], 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90,0 , "Berangkat dari      " . "        :  ".$row_isi['kab_kota'], 'TR', 'L', 0, 1, '', '', true);
 
 
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Ke      " . "                           :  "."Semarang", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Ke      " . "                           :  "."Semarang", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 26.5, "", 'L', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ". tgl_indo($row_isi['tgl_pulang']), 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Pada Tanggal"."               :  ". tgl_indo($row_isi['tgl_pulang']), 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "\n\n\n\n\n", 'BR', 'L', 0, 1, '', '', true);
 
     //BARIS 3
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+8;
 
 
 $pdf->MultiCell(92, $tinggiMaks, "  III. Tiba di                   :"."\n"."       Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
 
 $pdf->SetX(102);
 // MultiCell untuk "a." di bagian atas
-$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+$pdf->MultiCell(6, 0, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 0, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
 
 
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 26.5, "", 'L', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "\n\n\n\n\n", 'BR', 'L', 0, 1, '', '', true);
 
      //BARIS 4
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+8;
 
 
 $pdf->MultiCell(92, $tinggiMaks, "  IV. Tiba di                   :"."\n"."        Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
 $pdf->SetX(102);
 // MultiCell untuk "a." di bagian atas
-$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+$pdf->MultiCell(6, 0, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 0, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
 
 
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 26.5, "", 'L', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "\n\n\n\n\n", 'BR', 'L', 0, 1, '', '', true);
 
      //BARIS 5
 
 
 $tinggiNama = $pdf->getStringHeight(92, 'Pembebanan anggaran' . "\na. Instansi" . "\n\n\nb. Mata Anggaran");
 $tinggiInstansi = $pdf->getStringHeight(95, "\n" . 'a. APBD Tahun 2023 Anggaran ' . 'Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD' . "\n\nb. 5.04.0.00.0.00.01.X.XX.01.1.05.0009.5.1.2.4.1 ");
-$tinggiMaks = max($tinggiNama, $tinggiInstansi)-1.7;
+$tinggiMaks = max($tinggiNama, $tinggiInstansi)+8;
 
 
 $pdf->MultiCell(92, $tinggiMaks, "  V. Tiba di                   :"."\n"."       Pada Tanggal"."       :", 1, 'L', 0, 0, '', '', true);
 
 $pdf->SetX(102);
 // MultiCell untuk "a." di bagian atas
-$pdf->MultiCell(6, 3, "", 'T', 'C', 0, 0, '', '', true);
+$pdf->MultiCell(6, 0, "", 'T', 'C', 0, 0, '', '', true);
 
 // MultiCell untuk teks panjang setelah "a."
-$pdf->MultiCell(90, 3, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
+$pdf->MultiCell(90, 0, "Berangkat dari      " . "        :  ", 'TR', 'L', 0, 1, '', '', true);
 
 
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Ke      " . "                           :  ", 'R', 'L', 0, 1, '', '', true);
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 21.5, "", 'BL', 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 26.5, "", 'L', 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "Pada Tanggal"."               :  ", 'R', 'L', 0, 1, '', '', true);
 
     $pdf->SetX(102);
-    $pdf->MultiCell(6, 3, "", 0, 'C', 0, 0, '', '', true);
+    $pdf->MultiCell(6, 0, "", 0, 'C', 0, 0, '', '', true);
     // MultiCell untuk kode anggaran
-    $pdf->MultiCell(90, 3, "\n\n\n", 'BR', 'L', 0, 1, '', '', true);
+    $pdf->MultiCell(90, 0, "\n\n\n\n\n", 'BR', 'L', 0, 1, '', '', true);
 
     //BARIS 6
 
