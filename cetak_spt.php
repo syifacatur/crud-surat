@@ -325,26 +325,29 @@ if ($result_dasar->num_rows > 0) {
         }
     }
 
+    $rowheight = 5;
+    
 
+    // Logika untuk menyesuaikan $rowheight jika panjang maksud_tujuan lebih dari 80 karakter
+    if (strlen($row_isi['maksud_tujuan']) > 40) {
+        $rowheight = 16;
+        
+
+        
+    }
+    
     $pdf->SetX(38);
     $pdf->MultiCell(55, 10, ' a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 10, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->MultiCell(100, 15, $row_isi['maksud_tujuan'] . "\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(3); // Spasi
-    $pdf->Ln(3);
-    //$pdf->SetFont('helvetica', '', 8);
-    //$pdf->Cell(0, 3, 'Dokumen ini telah ditandatangani secara elektronik yang diterbitkan oleh balai sertifikasi Elektronik (BSrE),BSSN', 0, 1, 'C');
-// Mengatur ketebalan garis
-//$pdf->SetLineWidth(0.2); // Garis dengan ketebalan 0.5 mm
-
-    // Menggambar garis horizontal di bagian bawah halaman
-//$startX = 15; // Posisi X awal dari garis (kiri)
-//$endX = 195; // Posisi X akhir dari garis (kanan)
-//$y = $pdf->GetY(); // Posisi Y dari garis (sesuai dengan SetY yang diatur)
-
-    //$pdf->Line($startX, $y, $endX, $y); // Menggambar garis dari posisi X awal ke X akhir
-
+    $pdf->MultiCell(100, $rowheight, $row_isi['maksud_tujuan'] . "\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
+    $pdf->Ln(5); // Spasi
+   // Logika untuk menyesuaikan $rowheight jika panjang maksud_tujuan lebih dari 80 karakter
+   if (strlen($row_isi['maksud_tujuan']) > 40) {
     $pdf->Ln(10);
+
+    
+}
+    
     $pdf->SetX(38);
     $pdf->MultiCell(55, 0, ' b. Tempat yang dituju', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 0, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
