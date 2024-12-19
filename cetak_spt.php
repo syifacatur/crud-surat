@@ -340,7 +340,7 @@ if ($result_dasar->num_rows > 0) {
     $pdf->MultiCell(55, 10, ' a. Maksud dan Tujuan', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(10, 10, ':', 0, 'C', 0, 0, '', '', true, 0, false, true, 40, 'T');
     $pdf->MultiCell(100, $rowheight, $row_isi['maksud_tujuan'] . "\n", 0, 'J', 0, 0, '', '', true, 0, false, true, 40, 'T');
-    $pdf->Ln(5); // Spasi
+    $pdf->Ln(8); // Spasi
    // Logika untuk menyesuaikan $rowheight jika panjang maksud_tujuan lebih dari 80 karakter
    if (strlen($row_isi['maksud_tujuan']) > 40) {
     $pdf->Ln(10);
