@@ -104,18 +104,24 @@ if ($result_dasar->num_rows > 0) {
 
     $no = 6;
 
-    // MultiCell untuk teks utama dengan Cell terpisah untuk nomor urut
-    $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
-    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
-    $pdf->MultiCell(0, 5, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran'] . "\n", 0, 'J', 0, 1);
-    $pdf->Ln(0);
-    $no++;  // Increment nomor urut
-
-    // MultiCell berikutnya untuk dasar undangan
-    $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
-    $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
-    $pdf->MultiCell(0, 5, $row_isi['dasar_undangan'] . "\n", 0, 'J', 0, 1); // Kolom untuk isi teks
-    $no++;
+    // Cek apakah data pada kolom `anggaran` ada sebelum mencetak
+    if (!empty($row_isi['anggaran'])) {
+        $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
+        $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+        $pdf->MultiCell(0, 5, 'Dokumen Pelaksanaan Anggaran (DPA) BPSDMD Provinsi Jawa Tengah Tahun 2024 Nomor 01891/DPA/2024 APBD Tahun 2024 pada ' . $row_isi['anggaran'] . "\n", 0, 'J', 0, 1);
+        $pdf->Ln(0);
+        $no++; // Increment nomor urut jika data ada
+    }
+    
+    // Cek apakah data pada kolom `dasar_undangan` ada sebelum mencetak
+    if (!empty($row_isi['dasar_undangan'])) {
+        $pdf->Cell(30, 0, '', 0, 0, 'L'); // Kosongkan Cell di sebelah kiri untuk menyesuaikan "Dasar :"
+        $pdf->Cell(10, 0, $no . '. ', 0, 0, 'L');  // Nomor urut
+        $pdf->MultiCell(0, 5, $row_isi['dasar_undangan'] . "\n", 0, 'J', 0, 1);
+        $pdf->Ln(0);
+        $no++; // Increment nomor urut jika data ada
+    }
+    
 
     $pdf->Ln(2);
 
@@ -467,8 +473,12 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
             $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');
             $pdf->MultiCell(0, 0, 'Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat pemberi tugas. ' . "\n", 0, 'J', 0, 1);
+            // Tambahkan logika untuk setiap poin selanjutnya
+
+    $pdf->AddPage();
+
             $no++;
-            $pdf->Ln(45);
+            $pdf->Ln();
             $pdf->MultiCell(25, 0, '', 0, 'L', 0, 0, '', '', true, 0, false, true, 40, 'T');
             $pdf->Cell(5, 0, $no . '. ', 0, 0, 'L');
             $pdf->MultiCell(0, 0, 'Perintah ini dilaksanakan dengan penuh tanggung jawab.' . "\n", 0, 'J', 0, 1);
@@ -667,7 +677,9 @@ if ($result_dasar->num_rows > 0) {
         $pdf->MultiCell(30, 0, '    Keterangan', 'RTB', 'L', 0, 0, '172', '', true, 0, false, true, 40, 'T');
         $pdf->Ln();
 
-
+        $no = 1; // Inisialisasi nomor
+        $counter = 0; // Inisialisasi counter
+        $max_data_per_page = 7; // Jumlah maksimal data per halaman
         while ($row = mysqli_fetch_assoc($result)) {
                 $id_nama = $row['id_nama'];
                 $querynama = mysqli_query($conn, "SELECT * FROM daftar_nama WHERE id_nama = $id_nama");
@@ -708,6 +720,13 @@ if ($result_dasar->num_rows > 0) {
             $pdf->MultiCell(121, 0, $row['jabatan'], 1, 'L', 0, 0, '', '', true);
             $pdf->MultiCell(25, 0, '', 1, 'L', 0, 0, '', '', true);
             $pdf->Ln();
+            $counter++; // Tambah counter
+
+            // Jika sudah 5 data, buat halaman baru dan reset counter
+            if ($counter > $max_data_per_page) {
+                $pdf->AddPage(); // Tambah halaman baru
+                $counter = 0; // Reset counter
+            }
         }
     }
 
