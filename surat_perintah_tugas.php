@@ -36,11 +36,18 @@ include 'koneksidb.php';
       allowClear: true          // Menambahkan tombol untuk menghapus pilihan
             
     });
-    $('#anggaran').select2({
+    $(document).ready(function () {
+  // Inisialisasi Select2
+  $('#anggaran').select2({
+    placeholder: "--PILIH--",
+    allowClear: true
+  });
 
-placeholder: "--PILIH--", // Placeholder untuk dropdown
-allowClear: true          // Menambahkan tombol untuk menghapus pilihan
-      
+  // Set nilai yang tersimpan (jika ada)
+  var savedValue = '<?= $savedAnggaran ?>';
+  if (savedValue) {
+    $('#anggaran').val(savedValue).trigger('change');
+  }
 });
 $('#NIP2').select2({
 
@@ -48,12 +55,21 @@ placeholder: "--PILIH--", // Placeholder untuk dropdown
 allowClear: true          // Menambahkan tombol untuk menghapus pilihan
       
 });
-$('#anggaran2').select2({
+$(document).ready(function () {
+  // Inisialisasi Select2
+  $('#anggaran2').select2({
+    placeholder: "--PILIH--",
+    allowClear: true
+  });
 
-placeholder: "--PILIH--", // Placeholder untuk dropdown
-allowClear: true          // Menambahkan tombol untuk menghapus pilihan
-      
+  // Set nilai yang tersimpan (jika ada)
+  var savedValue = '<?= $savedAnggaran ?>';
+  if (savedValue) {
+    $('#anggaran2').val(savedValue).trigger('change');
+  }
 });
+
+
 $('#bidang').select2({
 
 placeholder: "--PILIH--", // Placeholder untuk dropdown
@@ -305,29 +321,29 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
       Anggaran<span class="text-red">*</span>
     </label>
     <div class="col-sm-8">
-      <select id="anggaran" class="form-control select2" name="anggaran" placeholder="Search..." value="<?php echo $row['anggaran']; ?>">
-        <option value="">--PILIH--</option>
-                                          <option
-                                            value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD">
-                                            Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat
-                                            Koordinasi dan Konsultasi SKPD </option>
-                                          <option
-                                            value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD">
-                                            kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan
-                                            Sistem Pemerintahan Berbasis Elektronik pada SKPD</option>
-                                          <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan
-                                            Pengolahan Administrasi Kepegawaian</option>
-                                          <option
-                                            value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi">
-                                            Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan
-                                            Pelatihan Pegawai Berdasarkan Tugas dan Fungsi</option>
+      <select id="anggaran" class="form-control select2" name="anggaran" placeholder="Search...">
+        <option value="" disabled selected>-- PILIH ANGGARAN --</option>
+        <option value="Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD" 
+          <?= ($row['anggaran'] == "Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD") ? 'selected' : ''; ?>>
+          Kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD
+        </option>
+        <option value="kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD" 
+          <?= ($row['anggaran'] == "kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD") ? 'selected' : ''; ?>>
+          kegiatan Administrasi Umum Perangkat Daerah Sub Kegiatan Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD
+        </option>
+        <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian" 
+          <?= ($row['anggaran'] == "Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian") ? 'selected' : ''; ?>>
+          Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendataan dan Pengolahan Administrasi Kepegawaian
+        </option>
+        <option value="Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi" 
+          <?= ($row['anggaran'] == "Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi") ? 'selected' : ''; ?>>
+          Kegiatan Administrasi Kepegawaian Perangkat Daerah Sub Kegiatan Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
 
-
-                                          </select>
-                                        </div>
-                                      </div>
                                       <div class="form-group">
                                         <div class="row">
                                           <label class="col-sm-3 control-label text-right">Maksud dan Tujuan
@@ -338,20 +354,16 @@ allowClear: true          // Menambahkan tombol untuk menghapus pilihan
                                         </div>
                                       </div>
                                     
-                                  <div class="form-group">
-                                        <div class="row">
-                                          <label class="col-sm-3 control-label text-right">NIP Penandatangan 
-                                            <span class="text-red">*</span>
-                                          </label>
-                                            <div class="col-sm-8">
-                                              <select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search.."value="<?php echo $row['NIP_penandatangan']; ?>">
-                                          <option value="">--PILIH--</option>
-
-                                         
-
-                                          
-                                          <option
-                                            value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+                                      <div class="form-group">
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">NIP Penandatangan 
+      <span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="NIP_penandatangan" class="form-control select2" name="NIP_penandatangan" placeholder="Search...">
+        <option value="" disabled>-- PILIH --</option>
+        
+        <option value="KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
 MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
@@ -361,10 +373,19 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 Dr. SADIMIN, S.Pd., M.Eng
 Pembina Utama Madya
-NIP. 197212061994121001
+NIP. 197212061994121001" 
+        <?= ($row['NIP_penandatangan'] == "KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
+MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
-">
+
+
+
+
+
+Dr. SADIMIN, S.Pd., M.Eng
+Pembina Utama Madya
+NIP. 197212061994121001") ? 'selected' : ''; ?>>
 KEPALA BADAN PENGEMBANGAN SUMBER DAYA 
 MANUSIA DAERAH PROVINSI JAWA TENGAH
 
@@ -373,14 +394,13 @@ MANUSIA DAERAH PROVINSI JAWA TENGAH
 
 
 
+
 Dr. SADIMIN, S.Pd., M.Eng
 Pembina Utama Madya
 NIP. 197212061994121001
-
-
- </option>
-                                          <option
-                                            value="Kepala Bidang Sertifikasi Kompetensi 
+        </option>
+        
+        <option value="Kepala Bidang Sertifikasi Kompetensi 
 Dan Penjaminan Mutu
 
 
@@ -390,10 +410,18 @@ Dan Penjaminan Mutu
 
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
-NIP. 197001121992032006
+NIP. 197001121992032006" 
+        <?= ($row['NIP_penandatangan'] == "Kepala Bidang Sertifikasi Kompetensi 
+Dan Penjaminan Mutu
 
 
-">
+
+
+
+
+Sri Sulistiyati, SE, M.Kom
+Pembina Tingkat I
+NIP. 197001121992032006") ? 'selected' : ''; ?>>
 Kepala Bidang Sertifikasi Kompetensi 
 Dan Penjaminan Mutu
 
@@ -401,15 +429,14 @@ Dan Penjaminan Mutu
 
 
 
+
 Sri Sulistiyati, SE, M.Kom
 Pembina Tingkat I
 NIP. 197001121992032006
-
-
-/option>
-                                          <option
-                                            value="Kepala Bidang Pengembangan
- Kompetensi Teknis
+        </option>
+        
+        <option value="Kepala Bidang Pengembangan 
+Kompetensi Teknis
 
 
 
@@ -418,10 +445,18 @@ NIP. 197001121992032006
 
 Sumarhendro, S.Sos
 Pembina Tingkat I
-NIP. 196709221998031006
+NIP. 196709221998031006" 
+        <?= ($row['NIP_penandatangan'] == "Kepala Bidang Pengembangan 
+Kompetensi Teknis
 
 
-">
+
+
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006") ? 'selected' : ''; ?>>
 Kepala Bidang Pengembangan 
 Kompetensi Teknis
 
@@ -430,15 +465,12 @@ Kompetensi Teknis
 
 
 
-
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
-
-
-</option>
-                                          <option
-                                            value="Kabid Pengembangan Kompetensi 
+        </option>
+        
+        <option value="Kabid Pengembangan Kompetensi 
 Jabatan Fungsional
 
 
@@ -448,10 +480,18 @@ Jabatan Fungsional
 
 Dr. Anon Priyantoro, S.Pd., M.Pd
 Pembina Tingkat I
-NIP. 197305011998011001
+NIP. 197305011998011001" 
+        <?= ($row['NIP_penandatangan'] == "Kabid Pengembangan Kompetensi 
+Jabatan Fungsional
 
 
-">
+
+
+
+
+Dr. Anon Priyantoro, S.Pd., M.Pd
+Pembina Tingkat I
+NIP. 197305011998011001") ? 'selected' : ''; ?>>
 Kabid Pengembangan Kompetensi 
 Jabatan Fungsional
 
@@ -463,11 +503,9 @@ Jabatan Fungsional
 Dr. Anon Priyantoro, S.Pd., M.Pd
 Pembina Tingkat I
 NIP. 197305011998011001
-
-
-</option>
-<option
-                                            value="Plt. Kepala Bidang Pengembangan
+        </option>
+        
+        <option value="Plt. Kepala Bidang Pengembangan 
 Kompetensi Manajerial
 
 
@@ -478,13 +516,21 @@ Kompetensi Manajerial
 Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
+IV/B" 
+        <?= ($row['NIP_penandatangan'] == "Plt. Kepala Bidang Pengembangan 
+Kompetensi Manajerial
 
 
 
 
-">
-Plt. Kepala Bidang Pengembangan
- Kompetensi Manajerial
+
+
+Sumarhendro, S.Sos
+Pembina Tingkat I
+NIP. 196709221998031006
+IV/B") ? 'selected' : ''; ?>>
+Plt. Kepala Bidang Pengembangan 
+Kompetensi Manajerial
 
 
 
@@ -495,33 +541,46 @@ Sumarhendro, S.Sos
 Pembina Tingkat I
 NIP. 196709221998031006
 IV/B
+        </option>
+        
+      </select>
+    </div>
+  </div>
+</div>
 
-
-
-
-</option>
-
-
-
-
-
-                                          </select>
-                                        </div>
-                                      </div>
                                       <div class="form-group">
-                                        <div class="row">
-                                          <label class="col-sm-3 control-label text-right">Bidang
-                                            <span class="text-red">*</span>
-                                          </label>
-                                            <div class="col-sm-8">
-                                              <select id="bidang" class="form-control select2" name="bidang" placeholder="Search.."value="<?php echo $row['bidang']; ?>">
-                                          <option value="">--PILIH--</option>
-                                          <option value="Sekretariat">Sekretariat</option>
-  <option value="Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)">Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)</option>
-  <option value="Bidang II (Pengembangan Kompetensi Teknis)">Bidang II (Pengembangan Kompetensi Teknis)</option>
-  <option value="Bidang III (Pengembangan Kompetensi Jabatan Fungsional)">Bidang III (Pengembangan Kompetensi Jabatan Fungsional)</option>
-  <option value="Bidang IV (Pengembangan Kompetensi Manajerial)">Bidang IV (Pengembangan Kompetensi Manajerial)</option>
-</select>
+  <div class="row">
+    <label class="col-sm-3 control-label text-right">Bidang
+      <span class="text-red">*</span>
+    </label>
+    <div class="col-sm-8">
+      <select id="bidang" class="form-control select2" name="bidang" placeholder="Search...">
+        <option value="" disabled>-- PILIH --</option>
+        <option value="Sekretariat" 
+          <?= ($row['bidang'] == "Sekretariat") ? 'selected' : ''; ?>>
+          Sekretariat
+        </option>
+        <option value="Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)" 
+          <?= ($row['bidang'] == "Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)") ? 'selected' : ''; ?>>
+          Bidang I (Sertifikasi Kompetensi dan Penjaminan Mutu)
+        </option>
+        <option value="Bidang II (Pengembangan Kompetensi Teknis)" 
+          <?= ($row['bidang'] == "Bidang II (Pengembangan Kompetensi Teknis)") ? 'selected' : ''; ?>>
+          Bidang II (Pengembangan Kompetensi Teknis)
+        </option>
+        <option value="Bidang III (Pengembangan Kompetensi Jabatan Fungsional)" 
+          <?= ($row['bidang'] == "Bidang III (Pengembangan Kompetensi Jabatan Fungsional)") ? 'selected' : ''; ?>>
+          Bidang III (Pengembangan Kompetensi Jabatan Fungsional)
+        </option>
+        <option value="Bidang IV (Pengembangan Kompetensi Manajerial)" 
+          <?= ($row['bidang'] == "Bidang IV (Pengembangan Kompetensi Manajerial)") ? 'selected' : ''; ?>>
+          Bidang IV (Pengembangan Kompetensi Manajerial)
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
                                       <div class="modal-footer">
                                         <button id="noedit" type="button" class="btn btn-danger pull-left"
                                           data-dismiss="modal">Batal</button>
