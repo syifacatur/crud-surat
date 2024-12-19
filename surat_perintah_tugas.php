@@ -560,7 +560,7 @@ IV/B
                     <form action="function_spt.php?act=tambahproduk" method="post" role="form">
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">NO SPT<span class="text-red">*</span></label>
+                          <label class="col-sm-3 control-label text-right">NO SPT<span class="text-red"></span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="no_spt" placeholder=""
                               value=""></div>
                         </div>
@@ -568,21 +568,21 @@ IV/B
                       <div class="form-group">
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Dasar Undangan<span
-                              class="text-red">*</span></label>
+                              class=""></span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="dasar_undangan"
                               placeholder="" value=""></div>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Lokasi<span class="text-red">*</span></label>
+                          <label class="col-sm-3 control-label text-right">Lokasi<span class="text-red"></span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="lokasi" placeholder=""
                               value=""></div>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Kab/Kota<span class="text-red">*</span></label>
+                          <label class="col-sm-3 control-label text-right">Kab/Kota<span class="text-red"></span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="kab_kota" placeholder=""
                               value=""></div>
                         </div>
@@ -590,14 +590,14 @@ IV/B
                       <div class="form-group">
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Berangkat<span
-                              class="text-red">*</span></label>
+                              class="text-red"></span></label>
                           <div class="col-sm-8"><input type="date" class="form-control" name="tgl_kegiatan"
                               placeholder="" value=""></div>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <label class="col-sm-3 control-label text-right">Pulang<span class="text-red">*</span></label>
+                          <label class="col-sm-3 control-label text-right">Pulang<span class="text-red"></span></label>
                           <div class="col-sm-8"><input type="date" class="form-control" name="tgl_pulang" placeholder=""
                               value=""></div>
                         </div>
@@ -605,7 +605,7 @@ IV/B
                       <div class="form-group">
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Tanggal SPT<span
-                              class="text-red">*</span></label>
+                              class="text-red"></span></label>
                           <div class="col-sm-8"><input type="date" class="form-control" name="tgl_spt" placeholder=""
                               value=""></div>
                         </div>
@@ -613,7 +613,7 @@ IV/B
                       <div class="form-group">
                         <div class="row">
                           <label class="col-sm-3 control-label text-right">Maksud dan Tujuan<span
-                              class="text-red">*</span></label>
+                              class="text-red"></span></label>
                           <div class="col-sm-8"><input type="text" class="form-control" name="maksud_tujuan"
                               placeholder="" value=""></div>
                         </div>
@@ -621,7 +621,7 @@ IV/B
                       <div class="form-group">
   <div class="row">
     <label class="col-sm-3 control-label text-right">
-      Anggaran<span class="text-red">*</span>
+      Anggaran<span class="text-red"></span>
     </label>
     <div class="col-sm-8">
       <select id="anggaran2" class="form-control select2" name="anggaran" placeholder="">
@@ -646,7 +646,7 @@ IV/B
                      <div class="form-group">
   <div class="row">
     <label class="col-sm-3 control-label text-right">
-      NIP Penandatangan<span class="text-red">*</span>
+      NIP Penandatangan<span class="text-red"></span>
     </label>
     <div class="col-sm-8">
       <select id="NIP2" class="form-control select2" name="NIP_penandatangan" placeholder="">
@@ -781,7 +781,7 @@ NIP. 196709221998031006
                       <div class="form-group">
   <div class="row">
     <label class="col-sm-3 control-label text-right">
-      Bidang<span class="text-red">*</span>
+      Bidang<span class="text-red"></span>
     </label>
     <div class="col-sm-8">
       <select id="bidang2" class="form-control select2" name="bidang" placeholder="">
