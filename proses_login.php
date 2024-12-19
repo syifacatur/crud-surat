@@ -16,11 +16,13 @@
 			$_SESSION['username'] = $data['username'];
 			$_SESSION['user_role'] = $data['user_role'];
 
-			header('location: index.php');
+			header('location: surat_perintah_tugas.php');
 		} 
 		else 
 		{
 			$error = true;
+			
+
 		}
 	}
 ?>
